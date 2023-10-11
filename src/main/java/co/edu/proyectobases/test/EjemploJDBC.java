@@ -6,6 +6,7 @@ import co.edu.proyectobases.repository.Repositorio;
 import co.edu.proyectobases.utils.ConexionBaseDatos;
 
 import java.sql.*;
+import java.util.Date;
 
 public class EjemploJDBC {
     //static Connection conn = null;
@@ -20,30 +21,24 @@ public class EjemploJDBC {
         try (Connection conn = ConexionBaseDatos.getInstance();){
             //vamos a crear la instancia del repositorio
             Repositorio<Producto> repositorio = new ProductoRepositorioImpl();
+
+            System.out.println("=========LISTAR===========");
             repositorio.listar().forEach(p -> System.out.println(p.getNombre()));
-            System.out.println("====================");
-            System.out.println(repositorio.listarPorId(2));
+
+            System.out.println("=========LISTAR POR ID===========");
+            System.out.println(repositorio.listarPorId(2L));
+            System.out.println("=========CREAR PRODUCTO===========");
+            Producto producto = new Producto();
+            producto.setNombre("Iphone X");
+            producto.setPrecio(500);
+            producto.setFechaRegistro(new Date());
+            repositorio.guardar(producto);
+
+            System.out.println("Guardado con exito");
+            repositorio.listar().forEach(System.out::println);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-//        finally {
-//            cerrarConecion();
-//        }
 
     }
-
-    /**
-     * SIRVE PARA CERRAR LA BD
-      */
-//    public static void cerrarConecion(){
-//        try {
-//            if ((result != null) && (stmt != null) && (conn != null )) {
-//                result.close();
-//                stmt.close();
-//                conn.close();
-//            }
-//        } catch (SQLException e) {
-//            throw new RuntimeException(e);
-//        }
-//    }
 }
