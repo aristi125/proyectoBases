@@ -11,7 +11,7 @@ public class ConexionBaseDatos {
      private static String password = "michael125";
      private static Connection connection;
 
-     //METODO PARA ESTABLECER LA CONECCION
+     //METODO PARA ESTABLECER LA CONEXION
     public static Connection getInstance() throws SQLException {
         if (connection == null){
             connection = DriverManager.getConnection(url,username,password);
