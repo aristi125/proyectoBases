@@ -1,7 +1,8 @@
 package co.edu.proyectobases.model;
 
-public class Especialidad {
+public enum Especialidad {
 
-    //deberia ser una especialidad
-
+    Aerobicos,
+    Gimnacia,
+    Pesas
 }

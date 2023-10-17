@@ -1,19 +1,24 @@
 package co.edu.proyectobases.model;
 
-import lombok.Getter;
-import lombok.Setter;
+import jakarta.persistence.*;
+
+import lombok.*;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
-
+@Entity
 @Getter
 @Setter
+@ToString
+@AllArgsConstructor
+@NoArgsConstructor
+
 public class Persona implements Serializable{
 
-    //@Id
+    @Id
     private int cod;
-    //@OneToMany
     private String primerNombre;
     private String segundoNombre;
     private String primerApellido;
@@ -26,45 +31,10 @@ public class Persona implements Serializable{
     private String barrio;
     private String casa;
 
-    //======== Constructores
+    @OneToMany (mappedBy = "persona")
+    private List<Telefono> listaTelefonos;
 
 
-    public Persona() {
-    }
-
-    public Persona(int cod, String primerNombre, String segundoNombre, String primerApellido, String segundoApellido, Date diaNacimiento, Date mesNacimiento, Date anioNacimiento, String carrera, String calle, String barrio, String casa) {
-        this.cod = cod;
-        this.primerNombre = primerNombre;
-        this.segundoNombre = segundoNombre;
-        this.primerApellido = primerApellido;
-        this.segundoApellido = segundoApellido;
-        this.diaNacimiento = diaNacimiento;
-        this.mesNacimiento = mesNacimiento;
-        this.anioNacimiento = anioNacimiento;
-        this.carrera = carrera;
-        this.calle = calle;
-        this.barrio = barrio;
-        this.casa = casa;
-    }
-
-    // ============ToString
 
 
-    @Override
-    public String   toString() {
-        return "Persona{" +
-                "cod=" + cod +
-                ", primerNombre='" + primerNombre + '\'' +
-                ", segundoNombre='" + segundoNombre + '\'' +
-                ", primerApellido='" + primerApellido + '\'' +
-                ", segundoApellido='" + segundoApellido + '\'' +
-                ", diaNacimiento=" + diaNacimiento +
-                ", mesNacimiento=" + mesNacimiento +
-                ", anioNacimiento=" + anioNacimiento +
-                ", carrera='" + carrera + '\'' +
-                ", calle='" + calle + '\'' +
-                ", barrio='" + barrio + '\'' +
-                ", casa='" + casa + '\'' +
-                '}';
-    }
 }

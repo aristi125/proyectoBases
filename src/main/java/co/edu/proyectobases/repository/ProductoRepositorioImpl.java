@@ -1,13 +1,13 @@
 package co.edu.proyectobases.repository;
 
-import co.edu.proyectobases.model.Producto;
+import co.edu.proyectobases.model.Producto1;
 import co.edu.proyectobases.utils.ConexionBaseDatos;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProductoRepositorioImpl implements Repositorio<Producto> {
+public class ProductoRepositorioImpl implements Repositorio<Producto1> {
 
     //METODO QUE DEVUELVE LA CONECCION AL A BD
     //metodo para obtener la coneccion
@@ -18,15 +18,15 @@ public class ProductoRepositorioImpl implements Repositorio<Producto> {
 
     //METODOS SOBRE ESCRITOS
     @Override
-    public List<Producto> listar() {
-        List<Producto> productos = new ArrayList<>();
+    public List<Producto1> listar() {
+        List<Producto1> productos = new ArrayList<>();
 
         //creamos la sentencia
         try (Statement stmt = getConnection().createStatement();
              ResultSet reslut = stmt.executeQuery("SELECT * FROM productos")){
             //iteramos el resultSet o el cursor y lo guardamos en la lista productos
             while (reslut.next()){
-                Producto p = cearProducto(reslut);
+                Producto1 p = cearProducto(reslut);
                 //los pasamos a la lista
                 productos.add(p);
             }
@@ -39,9 +39,9 @@ public class ProductoRepositorioImpl implements Repositorio<Producto> {
 
 
     @Override
-    public Producto listarPorId(Integer id) {
+    public Producto1 listarPorId(Integer id) {
         //devolver un tipo producto con un WHERE
-        Producto producto = null;
+        Producto1 producto = null;
         try(PreparedStatement pstmt = getConnection().
                 prepareStatement("SELECT * FROM productos WHERE id=?");) {
             pstmt.setInt(1,id);
@@ -60,7 +60,7 @@ public class ProductoRepositorioImpl implements Repositorio<Producto> {
     }
 
     @Override
-    public void guardar(Producto producto) {
+    public void guardar(Producto1 producto) {
 
     }
 
@@ -71,8 +71,8 @@ public class ProductoRepositorioImpl implements Repositorio<Producto> {
     //===============================================================
 
     //METODOS CREADOS
-    private static Producto cearProducto(ResultSet reslut) throws SQLException {
-        Producto p = new Producto();
+    private static Producto1 cearProducto(ResultSet reslut) throws SQLException {
+        Producto1 p = new Producto1();
         p.setId(reslut.getInt("id"));
         p.setNombre(reslut.getString("nombre"));
         p.setPrecio(reslut.getInt("precio"));

@@ -5,6 +5,7 @@ module co.edu.proyectobases {
     requires org.controlsfx.controls;
     requires java.sql;
     requires lombok;
+    requires jakarta.persistence;
 
     opens co.edu.proyectobases to javafx.fxml;
     exports co.edu.proyectobases;

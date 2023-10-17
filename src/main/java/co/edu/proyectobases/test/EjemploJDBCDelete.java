@@ -1,6 +1,6 @@
 package co.edu.proyectobases.test;
 
-import co.edu.proyectobases.model.Producto;
+import co.edu.proyectobases.model.Producto1;
 import co.edu.proyectobases.repository.ProductoRepositorioImpl;
 import co.edu.proyectobases.repository.Repositorio;
 import co.edu.proyectobases.utils.ConexionBaseDatos;
@@ -21,7 +21,7 @@ public class EjemploJDBCUpdate {
         //Y LOS DIRVES QUE TENEMOS DISPONIBLES
         try (Connection conn = ConexionBaseDatos.getInstance();){
             //vamos a crear la instancia del repositorio
-            Repositorio<Producto> repositorio = new ProductoRepositorioImpl();
+            Repositorio<Producto1> repositorio = new ProductoRepositorioImpl();
 
             System.out.println("=========LISTAR===========");
             repositorio.listar().forEach(p -> System.out.println(p.getNombre()));
@@ -29,7 +29,7 @@ public class EjemploJDBCUpdate {
             System.out.println("=========LISTAR POR ID===========");
             System.out.println(repositorio.listarPorId(2L));
             System.out.println("=========ACTUALIZAR PRODUCTO===========");
-            Producto producto = new Producto();
+            Producto1 producto = new Producto1();
             producto.setId(3L);
             producto.setNombre("Iphone 14");
             producto.setPrecio(600);

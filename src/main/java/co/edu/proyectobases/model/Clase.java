@@ -1,34 +1,23 @@
 package co.edu.proyectobases.model;
 
-import lombok.Getter;
-import lombok.Setter;
 
+import jakarta.persistence.*;
+import lombok.*;
+
+import java.io.Serializable;
+
+@Entity
 @Getter
 @Setter
-public class Clase {
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString
+public class Clase implements Serializable {
+    @Id
     private int codClase;
     private String nombre;
 
-    //=======Constructores
+    @ManyToOne
+    private AgendaGym agendaGym;
 
-
-    public Clase(int codClase, String nombre) {
-        this.codClase = codClase;
-        this.nombre = nombre;
-    }
-
-
-    public Clase() {
-    }
-
-
-    //========== ToSting
-
-    @Override
-    public String toString() {
-        return "Clase{" +
-                "codClase=" + codClase +
-                ", nombre='" + nombre + '\'' +
-                '}';
-    }
 }

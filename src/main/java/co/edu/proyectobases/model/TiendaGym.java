@@ -1,45 +1,31 @@
 package co.edu.proyectobases.model;
 
-public class TiendaGym {
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import lombok.*;
+
+import java.io.Serializable;
+import java.util.List;
+
+@Entity
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
+public class TiendaGym implements Serializable {
+    @Id
     private int codTienda;
     private String nombre;
 
-    //================== Gettes and setter
-    public int getCodTienda() {
-        return codTienda;
-    }
+    @OneToMany (mappedBy = "tiendaGym")
+    private List<Vendedor> listaVendedor;
 
-    public void setCodTienda(int codTienda) {
-        this.codTienda = codTienda;
-    }
+    @OneToMany(mappedBy = "tiendaGym")
+    private List<Cliente> listCliente;
 
-    public String getNombre() {
-        return nombre;
-    }
+    @OneToMany (mappedBy = "tiendaGym")
+    private List<Producto> listProductos;
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    //=====Contrucotres
-
-
-    public TiendaGym(int codTienda, String nombre) {
-        this.codTienda = codTienda;
-        this.nombre = nombre;
-    }
-
-    public TiendaGym() {
-    }
-
-    //===== ToString
-
-
-    @Override
-    public String toString() {
-        return "TiendaGym{" +
-                "codTienda=" + codTienda +
-                ", nombre='" + nombre + '\'' +
-                '}';
-    }
 }
