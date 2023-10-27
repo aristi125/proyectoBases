@@ -1,0 +1,193 @@
+CREATE TABLE administrador (
+    persona_cod INTEGER NOT NULL
+);
+
+ALTER TABLE administrador ADD CONSTRAINT administrador_pk PRIMARY KEY ( persona_cod );
+
+CREATE TABLE agenda (
+    codagenda        INTEGER NOT NULL,
+    horainicio       DATE,
+    horafinalizacion DATE
+);
+
+ALTER TABLE agenda ADD CONSTRAINT agenda_pk PRIMARY KEY ( codagenda );
+
+CREATE TABLE agendac (
+    codagenda           INTEGER NOT NULL,
+    cliente_persona_cod INTEGER NOT NULL
+);
+
+ALTER TABLE agendac ADD CONSTRAINT agendacliente_pk PRIMARY KEY ( codagenda );
+
+CREATE TABLE agendagym (
+    codagenda INTEGER NOT NULL
+);
+
+ALTER TABLE agendagym ADD CONSTRAINT agendagym_pk PRIMARY KEY ( codagenda );
+
+CREATE TABLE clase (
+    codclase                   INTEGER NOT NULL,
+    nombre                     VARCHAR2(100),
+    agendagym_agenda_codagenda INTEGER NOT NULL,
+    tipo                       VARCHAR2(100)
+);
+
+ALTER TABLE clase ADD CONSTRAINT clase_pk PRIMARY KEY ( codclase );
+
+CREATE TABLE cliente (
+    persona_cod                INTEGER NOT NULL,
+    agendagym_agenda_codagenda INTEGER NOT NULL,
+    tiendagym_codtienda        INTEGER NOT NULL
+);
+
+ALTER TABLE cliente ADD CONSTRAINT cliente_pk PRIMARY KEY ( persona_cod );
+
+CREATE TABLE entrenador (
+    persona_cod         INTEGER NOT NULL,
+    agendagym_codagenda INTEGER NOT NULL
+);
+
+ALTER TABLE entrenador ADD CONSTRAINT entrenador_pk PRIMARY KEY ( persona_cod );
+
+CREATE TABLE especialidad (
+    entrenador_persona_cod INTEGER NOT NULL
+);
+
+CREATE TABLE grupomuscular (
+    codgrupomuscular   INTEGER NOT NULL,
+    nombre             VARCHAR2(100),
+    maquina_codmaquina INTEGER NOT NULL,
+    rutina_codrutina   INTEGER NOT NULL
+);
+
+ALTER TABLE grupomuscular ADD CONSTRAINT grupomuscular_pk PRIMARY KEY ( codgrupomuscular );
+
+CREATE TABLE maquina (
+    codmaquina INTEGER NOT NULL,
+    nombre     VARCHAR2(100)
+);
+
+ALTER TABLE maquina ADD CONSTRAINT maquina_pk PRIMARY KEY ( codmaquina );
+
+CREATE TABLE maquinaagendac (
+    agendac_codagenda  INTEGER NOT NULL,
+    maquina_codmaquina INTEGER NOT NULL
+);
+
+CREATE TABLE maquinaagendagym (
+    agendagym_agenda_codagenda INTEGER NOT NULL,
+    maquina_codmaquina         INTEGER NOT NULL
+);
+
+CREATE TABLE persona (
+    cod             INTEGER NOT NULL,
+    primernombre    VARCHAR2(100),
+    segundonombre   VARCHAR2(100),
+    primerapellido  VARCHAR2(100),
+    segundoapellido VARCHAR2(100),
+    fechanacimiento DATE,
+    carrera         VARCHAR2(60),
+    calle           VARCHAR2(100),
+    barrio          VARCHAR2(100),
+    casa            VARCHAR2(100)
+);
+
+ALTER TABLE persona ADD CONSTRAINT persona_pk PRIMARY KEY ( cod );
+
+CREATE TABLE rutina (
+    codrutina   INTEGER NOT NULL,
+    nombre      VARCHAR2(100),
+    descripcion VARCHAR2(200)
+);
+
+ALTER TABLE rutina ADD CONSTRAINT rutina_pk PRIMARY KEY ( codrutina );
+
+CREATE TABLE rutinaclase (
+    clase_codclase   INTEGER NOT NULL,
+    rutina_codrutina INTEGER NOT NULL
+);
+
+CREATE TABLE telefono (
+    codtelefono          INTEGER NOT NULL,
+    numerotelefono       INTEGER,
+    telefono_codtelefono INTEGER,
+    persona_cod          INTEGER NOT NULL
+);
+
+ALTER TABLE telefono ADD CONSTRAINT telefono_pk PRIMARY KEY ( codtelefono );
+
+ALTER TABLE administrador
+    ADD CONSTRAINT administrador_persona_fk FOREIGN KEY ( persona_cod )
+        REFERENCES persona ( cod );
+
+ALTER TABLE agendac
+    ADD CONSTRAINT agendacliente_agenda_fk FOREIGN KEY ( codagenda )
+        REFERENCES agenda ( codagenda );
+
+ALTER TABLE agendac
+    ADD CONSTRAINT agendacliente_cliente_fk FOREIGN KEY ( cliente_persona_cod )
+        REFERENCES cliente ( persona_cod );
+
+ALTER TABLE agendagym
+    ADD CONSTRAINT agendagym_agenda_fk FOREIGN KEY ( codagenda )
+        REFERENCES agenda ( codagenda );
+
+ALTER TABLE clase
+    ADD CONSTRAINT clase_agendagym_fk FOREIGN KEY ( agendagym_agenda_codagenda )
+        REFERENCES agendagym ( codagenda );
+
+ALTER TABLE cliente
+    ADD CONSTRAINT cliente_agendagym_fk FOREIGN KEY ( agendagym_agenda_codagenda )
+        REFERENCES agendagym ( codagenda );
+
+ALTER TABLE cliente
+    ADD CONSTRAINT cliente_persona_fk FOREIGN KEY ( persona_cod )
+        REFERENCES persona ( cod );
+
+ALTER TABLE entrenador
+    ADD CONSTRAINT entrenador_agendagym_fk FOREIGN KEY ( agendagym_codagenda )
+        REFERENCES agendagym ( codagenda );
+
+ALTER TABLE entrenador
+    ADD CONSTRAINT entrenador_persona_fk FOREIGN KEY ( persona_cod )
+        REFERENCES persona ( cod );
+
+ALTER TABLE especialidad
+    ADD CONSTRAINT especialidad_entrenador_fk FOREIGN KEY ( entrenador_persona_cod )
+        REFERENCES entrenador ( persona_cod );
+
+ALTER TABLE grupomuscular
+    ADD CONSTRAINT grupomuscular_maquina_fk FOREIGN KEY ( maquina_codmaquina )
+        REFERENCES maquina ( codmaquina );
+
+ALTER TABLE grupomuscular
+    ADD CONSTRAINT grupomuscular_rutina_fk FOREIGN KEY ( rutina_codrutina )
+        REFERENCES rutina ( codrutina );
+
+ALTER TABLE maquinaagendac
+    ADD CONSTRAINT maquinaagendac_agendac_fk FOREIGN KEY ( agendac_codagenda )
+        REFERENCES agendac ( codagenda );
+
+ALTER TABLE maquinaagendac
+    ADD CONSTRAINT maquinaagendac_maquina_fk FOREIGN KEY ( maquina_codmaquina )
+        REFERENCES maquina ( codmaquina );
+
+ALTER TABLE maquinaagendagym
+    ADD CONSTRAINT maquinaagendagym_agendagym_fk FOREIGN KEY ( agendagym_agenda_codagenda )
+        REFERENCES agendagym ( codagenda );
+
+ALTER TABLE maquinaagendagym
+    ADD CONSTRAINT maquinaagendagym_maquina_fk FOREIGN KEY ( maquina_codmaquina )
+        REFERENCES maquina ( codmaquina );
+
+ALTER TABLE rutinaclase
+    ADD CONSTRAINT rutinaclase_clase_fk FOREIGN KEY ( clase_codclase )
+        REFERENCES clase ( codclase );
+
+ALTER TABLE rutinaclase
+    ADD CONSTRAINT rutinaclase_rutina_fk FOREIGN KEY ( rutina_codrutina )
+        REFERENCES rutina ( codrutina );
+
+ALTER TABLE telefono
+    ADD CONSTRAINT telefono_telefono_fk FOREIGN KEY ( persona_cod )
+        REFERENCES persona ( cod );
