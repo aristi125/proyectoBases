@@ -1,9 +1,7 @@
 package co.edu.proyectobases.test;
 
 import co.edu.proyectobases.model.Persona;
-import co.edu.proyectobases.model.Producto1;
 import co.edu.proyectobases.repository.PersonaRepositorioImpl;
-import co.edu.proyectobases.repository.ProductoRepositorioImpl;
 import co.edu.proyectobases.repository.Repositorio;
 import co.edu.proyectobases.utils.ConexionBaseDatos;
 
@@ -28,7 +26,8 @@ public class EjemploJDBC {
             repositorio.listar().forEach(p -> System.out.println(p.getPrimerNombre()));
 
             System.out.println("=========LISTAR POR ID===========");
-            System.out.println(repositorio.listarPorId(1));
+            //System.out.println(repositorio.listarPorId(1));
+
             System.out.println("=========CREAR PRODUCTO===========");
             Persona persona = new Persona();
             persona.setPrimerNombre("Juan");

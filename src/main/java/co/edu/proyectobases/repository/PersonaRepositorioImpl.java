@@ -40,7 +40,7 @@ public class PersonaRepositorioImpl implements Repositorio<Persona> {
         //devolver un tipo producto con un WHERE
         Persona persona = null;
         try(PreparedStatement pstmt = getConnection().
-                prepareStatement("SELECT * FROM productos WHERE id=?");) {
+                prepareStatement("SELECT * FROM persona WHERE id=?");) {
             pstmt.setInt(1,id);
             ResultSet result = pstmt.executeQuery();
 
