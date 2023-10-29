@@ -8,14 +8,14 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
-/**
-@Entity
+
+
 @Getter
 @Setter
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
-*/
+
 public class Persona implements Serializable{
 
     //@Id
@@ -24,9 +24,7 @@ public class Persona implements Serializable{
     private String segundoNombre;
     private String primerApellido;
     private String segundoApellido;
-    private Date diaNacimiento;
-    private Date mesNacimiento;
-    private Date anioNacimiento;
+    private Date fechaNacimiento;
     private String carrera;
     private String calle;
     private String barrio;
