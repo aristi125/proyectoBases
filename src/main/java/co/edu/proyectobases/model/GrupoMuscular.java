@@ -10,6 +10,7 @@ import lombok.Setter;
 
 import java.io.Serializable;
 
+/*
 @Entity
 @Getter
 @Setter
@@ -24,3 +25,4 @@ public class GrupoMuscular implements Serializable {
     @ManyToOne
     private Maquina maquina;
 }
+*/

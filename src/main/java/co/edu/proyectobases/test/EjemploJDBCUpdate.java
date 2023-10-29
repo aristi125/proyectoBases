@@ -5,10 +5,11 @@ import co.edu.proyectobases.repository.ProductoRepositorioImpl;
 import co.edu.proyectobases.repository.Repositorio;
 import co.edu.proyectobases.utils.ConexionBaseDatos;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.Date;
 
-public class EjemploJDBC {
+public class EjemploJDBCUpdate {
     //static Connection conn = null;
     //para listar lo de la BD
     //debuleve un cursor que esta dentro del resulset
@@ -23,18 +24,27 @@ public class EjemploJDBC {
             Repositorio<Producto1> repositorio = new ProductoRepositorioImpl();
 
             System.out.println("=========LISTAR===========");
-            repositorio.listar().forEach(p -> System.out.println(p.getNombre()));
+            repositorio.listar().forEach(p -> System.out.println(p.getPrimerNombre()));
 
             System.out.println("=========LISTAR POR ID===========");
-            System.out.println(repositorio.listarPorId(2L));
-            System.out.println("=========CREAR PRODUCTO===========");
+            System.out.println(repositorio.listarPorId(1));
+            System.out.println("=========ACTUALIZAR PRODUCTO===========");
             Producto1 producto = new Producto1();
-            producto.setNombre("Iphone X");
-            producto.setPrecio(500);
-            producto.setFechaRegistro(new Date());
+            producto.setCod(2);
+            producto.setPrimerNombre("Juan");
+            producto.setSegundoNombre("Perez");
+            producto.setPrimerApellido("Perez");
+            producto.setSegundoApellido("Perez");
+            producto.setDiaNacimiento(new Date());
+            producto.setMesNacimiento(new Date());
+            producto.setAnioNacimiento(new Date());
+            producto.setCarrera("Informatica");
+            producto.setCalle("Calle 1");
+            producto.setBarrio("Barrio 1");
+            producto.setCasa("Casa 1");
             repositorio.guardar(producto);
 
-            System.out.println("Guardado con exito");
+            System.out.println("Se actualizo con exito");
             repositorio.listar().forEach(System.out::println);
         } catch (SQLException e) {
             throw new RuntimeException(e);

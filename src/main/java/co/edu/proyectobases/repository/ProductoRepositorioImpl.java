@@ -73,10 +73,18 @@ public class ProductoRepositorioImpl implements Repositorio<Producto1> {
     //METODOS CREADOS
     private static Producto1 cearProducto(ResultSet reslut) throws SQLException {
         Producto1 p = new Producto1();
-        p.setId(reslut.getInt("id"));
-        p.setNombre(reslut.getString("nombre"));
-        p.setPrecio(reslut.getInt("precio"));
-        p.setFechaRegistro(reslut.getDate("fecha_registro"));
+        p.setCod(reslut.getInt("cod"));
+        p.setCalle(reslut.getString("calle"));
+        p.setBarrio(reslut.getString("barrio"));
+        p.setCasa(reslut.getString("casa"));
+        p.setPrimerNombre(reslut.getString("primerNombre"));
+        p.setSegundoNombre(reslut.getString("segundoNombre"));
+        p.setPrimerApellido(reslut.getString("primerApellido"));
+        p.setSegundoApellido(reslut.getString("segundoApellido"));
+        p.setDiaNacimiento(reslut.getDate("diaNacimiento"));
+        p.setMesNacimiento(reslut.getDate("mesNacimiento"));
+        p.setAnioNacimiento(reslut.getDate("anioNacimiento"));
+        p.setCarrera(reslut.getString("carrera"));
         return p;
     }
     //=====================================

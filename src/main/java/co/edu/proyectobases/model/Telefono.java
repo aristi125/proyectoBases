@@ -7,19 +7,21 @@ import lombok.*;
 
 import java.io.Serializable;
 
+/**
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
+*/
 public class Telefono implements Serializable {
 
-    @Id
+   // @Id
     private String codTelefono;
     private String telefono;
 
-    @ManyToOne
+   // @ManyToOne
     private Persona persona;
 
 }

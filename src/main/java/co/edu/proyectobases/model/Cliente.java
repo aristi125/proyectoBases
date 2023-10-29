@@ -5,12 +5,11 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 
 import java.util.List;
-
+/**
 @Entity
 public class Cliente extends Persona{
 
-    @ManyToOne
-    private TiendaGym tiendaGym;
+
 
     @OneToMany(mappedBy = "cliente")
     private List<Producto> listProductos;
@@ -22,3 +21,4 @@ public class Cliente extends Persona{
     private AgendaGym agendaGym;
 
 }
+*/

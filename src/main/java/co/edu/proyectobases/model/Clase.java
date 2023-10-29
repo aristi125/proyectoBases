@@ -6,18 +6,22 @@ import lombok.*;
 
 import java.io.Serializable;
 
+/**
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
+*/
+/*
 public class Clase implements Serializable {
-    @Id
+    //@Id
     private int codClase;
     private String nombre;
 
-    @ManyToOne
+   // @ManyToOne
     private AgendaGym agendaGym;
 
 }
+*/

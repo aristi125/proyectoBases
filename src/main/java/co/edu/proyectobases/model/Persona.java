@@ -8,16 +8,17 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
+/**
 @Entity
 @Getter
 @Setter
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
-
+*/
 public class Persona implements Serializable{
 
-    @Id
+    //@Id
     private int cod;
     private String primerNombre;
     private String segundoNombre;
@@ -31,7 +32,7 @@ public class Persona implements Serializable{
     private String barrio;
     private String casa;
 
-    @OneToMany (mappedBy = "persona")
+   // @OneToMany (mappedBy = "persona")
     private List<Telefono> listaTelefonos;
 
 
