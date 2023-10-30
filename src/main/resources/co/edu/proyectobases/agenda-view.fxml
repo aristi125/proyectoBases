@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="491.0" prefWidth="687.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.proyectobases.controllers.AgendaController">
+   <children>
+      <HBox alignment="CENTER" layoutX="69.0" layoutY="14.0" prefHeight="63.0" prefWidth="550.0" style="-fx-background-radius: 30; -fx-background-color: #457b9d;">
+         <children>
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="18.0" prefWidth="561.0" text="Agenda">
+               <font>
+                  <Font name="System Bold Italic" size="33.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <DatePicker fx:id="dateHoraInicio" layoutX="128.0" layoutY="216.0" />
+      <DatePicker fx:id="dateHoraFinal" layoutX="128.0" layoutY="262.0" />
+      <Label layoutX="28.0" layoutY="220.0" text="Hora de Inicio:" />
+      <Label layoutX="27.0" layoutY="266.0" prefHeight="18.0" prefWidth="77.0" text="Hora de fin:" />
+      <Label layoutX="25.0" layoutY="152.0" text="Codigo id:" />
+      <TextField fx:id="txtId" layoutX="129.0" layoutY="143.0" prefHeight="26.0" prefWidth="175.0" promptText="codigo: 01" style="-fx-background-radius: 10;" />
+      <Label layoutX="25.0" layoutY="185.0" prefHeight="18.0" prefWidth="54.0" text="Nombre:" />
+      <TextField layoutX="128.0" layoutY="177.0" prefHeight="26.0" prefWidth="175.0" promptText="michael" style="-fx-background-radius: 10;" />
+      <Button fx:id="btnAgendar" layoutX="142.0" layoutY="321.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="97.0" text="Agendar">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Button>
+      <Button fx:id="bntAtras" layoutX="32.0" layoutY="385.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="65.0" text="atras">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <Separator layoutX="321.0" layoutY="120.0" orientation="VERTICAL" prefHeight="306.0" prefWidth="3.0" style="-fx-background-color: #000000;" />
+      <TableView fx:id="tblAgenda" layoutX="344.0" layoutY="203.0" prefHeight="200.0" prefWidth="332.0">
+        <columns>
+          <TableColumn fx:id="cmCodigoId" prefWidth="75.0" text="Codigo" />
+          <TableColumn fx:id="cmNombre" prefWidth="75.0" text="Nombre" />
+            <TableColumn fx:id="cmHoraInicio" prefWidth="75.0" text="Inicio" />
+            <TableColumn fx:id="cmHoraFin" prefWidth="75.0" text="Fin" />
+        </columns>
+      </TableView>
+      <Label layoutX="344.0" layoutY="148.0" text="Buscar:" />
+      <TextField fx:id="txtFiltrar" layoutX="398.0" layoutY="144.0" prefHeight="26.0" prefWidth="219.0" promptText="filtrar" style="-fx-background-radius: 10;" />
+   </children>
+</AnchorPane>

@@ -1,15 +1,17 @@
 package co.edu.proyectobases.model;
 
+import lombok.*;
+
 import java.io.Serializable;
 
-// @Entity
-/*
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString
 public class MaquinaAgendaC implements Serializable {
 
-    // @ManyToOne
     private AgendaC agendaCliente;
 
-    // @ManyToOne
     private Maquina maquina;
 }
-*/

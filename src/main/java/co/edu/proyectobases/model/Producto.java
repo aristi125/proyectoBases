@@ -2,7 +2,7 @@ package co.edu.proyectobases.model;
 
 import java.util.Date;
 
-public class Producto1 {
+public class Producto {
     private Integer cod;
     private String primerNombre;
     private String segundoNombre;
@@ -19,10 +19,10 @@ public class Producto1 {
     //CONSTRUCTORES
 
 
-    public Producto1() {
+    public Producto() {
     }
 
-    public Producto1(Integer cod, String primerNombre, String segundoNombre, String primerApellido, String segundoApellido, Date diaNacimiento, Date mesNacimiento, Date anioNacimiento, String carrera, String calle, String barrio, String casa) {
+    public Producto(Integer cod, String primerNombre, String segundoNombre, String primerApellido, String segundoApellido, Date diaNacimiento, Date mesNacimiento, Date anioNacimiento, String carrera, String calle, String barrio, String casa) {
         this.cod = cod;
         this.primerNombre = primerNombre;
         this.segundoNombre = segundoNombre;

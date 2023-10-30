@@ -1,14 +1,10 @@
 package co.edu.proyectobases.model;
 
-import jakarta.persistence.*;
-
 import lombok.*;
 
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
-
-
 
 @Getter
 @Setter
@@ -18,7 +14,6 @@ import java.util.List;
 
 public class Persona implements Serializable{
 
-    //@Id
     private int cod;
     private String primerNombre;
     private String segundoNombre;
@@ -30,10 +25,6 @@ public class Persona implements Serializable{
     private String barrio;
     private String casa;
 
-   // @OneToMany (mappedBy = "persona")
     private List<Telefono> listaTelefonos;
-
-
-
 
 }

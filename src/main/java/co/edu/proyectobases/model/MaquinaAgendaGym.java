@@ -1,13 +1,17 @@
 package co.edu.proyectobases.model;
 
-// @Entity
-/*
+import lombok.*;
+
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString
 public class MaquinaAgendaGym {
 
-   // @ManyToOne
+
     private Maquina maquina;
 
-   // @ManyToOne
+
     private AgendaGym agendaGym;
 }
-*/

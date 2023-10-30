@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.proyectobases.controllers.ClaseController">
+   <children>
+      <HBox alignment="CENTER" layoutX="87.0" layoutY="14.0" prefHeight="71.0" prefWidth="443.0" style="-fx-background-radius: 30; -fx-background-color: #457b9d;">
+         <children>
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="18.0" prefWidth="506.0" text="Clases">
+               <font>
+                  <Font name="System Bold Italic" size="33.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <Label layoutX="40.0" layoutY="120.0" text="codigo clase: " />
+      <TextField fx:id="txtCodClase" layoutX="149.0" layoutY="116.0" promptText="codigo" style="-fx-background-radius: 10;" />
+      <Label layoutX="40.0" layoutY="155.0" text="nombre clase:" />
+      <TextField fx:id="txtNombreClase" layoutX="150.0" layoutY="151.0" promptText="nombre clase" style="-fx-background-radius: 10;" />
+      <Label layoutX="35.0" layoutY="191.0" text="nombre cliente:" />
+      <TextField fx:id="txtNombreCliente" layoutX="151.0" layoutY="187.0" promptText="nombre cliente" style="-fx-background-radius: 10;" />
+      <Label layoutX="35.0" layoutY="226.0" text="nombre entrenador:" />
+      <TextField fx:id="txtNombreEntrenador" layoutX="151.0" layoutY="222.0" promptText="nombre entrenador" style="-fx-background-radius: 10;" />
+      <Separator layoutX="325.0" layoutY="91.0" orientation="VERTICAL" prefHeight="299.0" prefWidth="6.0" style="-fx-background-color: #000000;" />
+      <Button layoutX="151.0" layoutY="272.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="74.0" text="Ingresar" />
+      <Button layoutX="35.0" layoutY="348.0" mnemonicParsing="false" text="Atras" />
+      <TableView layoutX="342.0" layoutY="135.0" prefHeight="200.0" prefWidth="298.0">
+        <columns>
+          <TableColumn fx:id="cmCodClase" prefWidth="75.0" text="codigo" />
+          <TableColumn fx:id="cmNombreClase" prefWidth="75.0" text="clase" />
+            <TableColumn fx:id="cmNombreCliente" prefWidth="75.0" text="cliente" />
+            <TableColumn fx:id="cmNombreEntrenador" prefWidth="75.0" text="entrenador" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>
