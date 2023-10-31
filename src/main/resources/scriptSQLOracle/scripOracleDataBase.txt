@@ -41,10 +41,6 @@ CREATE TABLE cliente (
 
 ALTER TABLE cliente ADD CONSTRAINT cliente_pk PRIMARY KEY ( persona_cod );
 
--- Eliminar la referencia al campo 'tiendagym_codtienda' en la tabla 'cliente'
-ALTER TABLE cliente DROP COLUMN tiendagym_codtienda;
-
-
 CREATE TABLE entrenador (
     persona_cod         INTEGER NOT NULL,
     agendagym_codagenda INTEGER NOT NULL

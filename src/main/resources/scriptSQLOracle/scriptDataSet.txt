@@ -80,6 +80,87 @@ VALUES
     (20, 'Liliana', 'Patricia', 'García', 'Silva', TO_DATE('1997-05-08', 'YYYY-MM-DD'), 'Medicina', 'Calle 4142', 'Barrio T', 'Casa 20');
 
 
+-- Insertar registros en la tabla 'telefono'
+INSERT INTO telefono (codtelefono, numerotelefono, persona_cod)
+VALUES
+    (1, 1234567890, 1);
+
+INSERT INTO telefono (codtelefono, numerotelefono, persona_cod)
+VALUES
+    (2, 9876543210, 2);
+
+INSERT INTO telefono (codtelefono, numerotelefono, persona_cod)
+VALUES
+    (3, 5551234567, 3);
+
+INSERT INTO telefono (codtelefono, numerotelefono, persona_cod)
+VALUES
+    (4, 5559876543, 4);
+
+INSERT INTO telefono (codtelefono, numerotelefono, persona_cod)
+VALUES
+    (5, 1112223333, 5);
+
+INSERT INTO telefono (codtelefono, numerotelefono, persona_cod)
+VALUES
+    (6, 4445556666, 6);
+
+INSERT INTO telefono (codtelefono, numerotelefono, persona_cod)
+VALUES
+    (7, 7778889999, 7);
+
+INSERT INTO telefono (codtelefono, numerotelefono, persona_cod)
+VALUES
+    (8, 2223334444, 8);
+
+INSERT INTO telefono (codtelefono, numerotelefono, persona_cod)
+VALUES
+    (9, 9998887777, 9);
+
+INSERT INTO telefono (codtelefono, numerotelefono, persona_cod)
+VALUES
+    (10, 3332221111, 10);
+
+INSERT INTO telefono (codtelefono, numerotelefono, persona_cod)
+VALUES
+    (11, 1589210521, 11);
+
+INSERT INTO telefono (codtelefono, numerotelefono, persona_cod)
+VALUES
+    (12, 6713095124, 12);
+
+INSERT INTO telefono (codtelefono, numerotelefono, persona_cod)
+VALUES
+    (13, 7013451205, 13);
+
+INSERT INTO telefono (codtelefono, numerotelefono, persona_cod)
+VALUES
+    (14, 8414593512, 14);
+
+INSERT INTO telefono (codtelefono, numerotelefono, persona_cod)
+VALUES
+    (15, 9786102468, 15);
+
+INSERT INTO telefono (codtelefono, numerotelefono, persona_cod)
+VALUES
+    (16, 17878541236, 16);
+
+INSERT INTO telefono (codtelefono, numerotelefono, persona_cod)
+VALUES
+    (17, 2124569022, 17);
+
+INSERT INTO telefono (codtelefono, numerotelefono, persona_cod)
+VALUES
+    (18, 3453216533, 18);
+
+INSERT INTO telefono (codtelefono, numerotelefono, persona_cod)
+VALUES
+    (19, 7894536578, 19);
+
+INSERT INTO telefono (codtelefono, numerotelefono, persona_cod)
+VALUES
+    (20, 45452316982, 20);
+
 -- Insertar registros en la tabla 'administrador'
 INSERT INTO administrador (persona_cod)
 VALUES (1);
@@ -110,40 +191,6 @@ VALUES (9);
 
 INSERT INTO administrador (persona_cod)
 VALUES (10);
-
-
--- Insertar registros en la tabla 'entrenador'
-INSERT INTO entrenador (persona_cod, agendagym_codagenda)
-VALUES (11, 1);
-
-INSERT INTO entrenador (persona_cod, agendagym_codagenda)
-VALUES (12, 2);
-
-INSERT INTO entrenador (persona_cod, agendagym_codagenda)
-VALUES (13, 3);
-
-INSERT INTO entrenador (persona_cod, agendagym_codagenda)
-VALUES (14, 4);
-
-INSERT INTO entrenador (persona_cod, agendagym_codagenda)
-VALUES (15, 5);
-
-
--- Insertar registros en la tabla 'cliente'
-INSERT INTO cliente (persona_cod, agendagym_agenda_codagenda)
-VALUES (16, 1);
-
-INSERT INTO cliente (persona_cod, agendagym_agenda_codagenda)
-VALUES (17, 1);
-
-INSERT INTO cliente (persona_cod, agendagym_agenda_codagenda)
-VALUES (18, 2);
-
-INSERT INTO cliente (persona_cod, agendagym_agenda_codagenda)
-VALUES (19, 2);
-
-INSERT INTO cliente (persona_cod, agendagym_agenda_codagenda)
-VALUES (20, 2);
 
 
 -- Insertar registros en la tabla 'agenda'
@@ -259,6 +306,45 @@ VALUES (14);
 INSERT INTO agendagym (codagenda)
 VALUES (15);
 
+
+-- Insertar registros en la tabla 'entrenador'
+INSERT INTO entrenador (persona_cod, agendagym_codagenda)
+VALUES (11, 1);
+
+INSERT INTO entrenador (persona_cod, agendagym_codagenda)
+VALUES (12, 2);
+
+INSERT INTO entrenador (persona_cod, agendagym_codagenda)
+VALUES (13, 3);
+
+INSERT INTO entrenador (persona_cod, agendagym_codagenda)
+VALUES (14, 4);
+
+INSERT INTO entrenador (persona_cod, agendagym_codagenda)
+VALUES (15, 5);
+
+
+-- Insertar registros en la tabla 'cliente'
+INSERT INTO cliente (persona_cod, agendagym_agenda_codagenda)
+VALUES (16, 1);
+
+INSERT INTO cliente (persona_cod, agendagym_agenda_codagenda)
+VALUES (17, 1);
+
+INSERT INTO cliente (persona_cod, agendagym_agenda_codagenda)
+VALUES (18, 2);
+
+INSERT INTO cliente (persona_cod, agendagym_agenda_codagenda)
+VALUES (19, 2);
+
+INSERT INTO cliente (persona_cod, agendagym_agenda_codagenda)
+VALUES (20, 2);
+
+
+
+
+
+
 -- Insertar registros en la tabla 'agendac'
 INSERT INTO agendac (codagenda, cliente_persona_cod)
 VALUES (6, 16);
@@ -291,6 +377,8 @@ INSERT INTO agendac (codagenda, cliente_persona_cod)
 VALUES (20, 20);
 
 
+
+
 -- Insertar registros en la tabla 'clase'
 INSERT INTO clase (codclase, nombre, agendagym_agenda_codagenda, tipo)
 VALUES
@@ -298,39 +386,39 @@ VALUES
 
 INSERT INTO clase (codclase, nombre, agendagym_agenda_codagenda, tipo)
 VALUES
-    (2, 'Spinning', 2, 'Cardio');
+    (2, 'Spinning', 1, 'Cardio');
 
 INSERT INTO clase (codclase, nombre, agendagym_agenda_codagenda, tipo)
 VALUES
-    (3, 'Zumba', 3, 'Baile');
+    (3, 'Zumba', 1, 'Baile');
 
 INSERT INTO clase (codclase, nombre, agendagym_agenda_codagenda, tipo)
 VALUES
-    (4, 'Pilates', 4, 'Aeróbico');
+    (4, 'Pilates', 2, 'Aeróbico');
 
 INSERT INTO clase (codclase, nombre, agendagym_agenda_codagenda, tipo)
 VALUES
-    (5, 'Body Pump', 5, 'Musculación');
+    (5, 'Body Pump', 3, 'Musculación');
 
 INSERT INTO clase (codclase, nombre, agendagym_agenda_codagenda, tipo)
 VALUES
-    (6, 'Aeróbica', 6, 'Aeróbico');
+    (6, 'Aeróbica', 3, 'Aeróbico');
 
 INSERT INTO clase (codclase, nombre, agendagym_agenda_codagenda, tipo)
 VALUES
-    (7, 'Boxeo', 7, 'Deportes');
+    (7, 'Boxeo', 4, 'Deportes');
 
 INSERT INTO clase (codclase, nombre, agendagym_agenda_codagenda, tipo)
 VALUES
-    (8, 'CrossFit', 8, 'Musculación');
+    (8, 'CrossFit', 4, 'Musculación');
 
 INSERT INTO clase (codclase, nombre, agendagym_agenda_codagenda, tipo)
 VALUES
-    (9, 'Natación', 9, 'Deportes');
+    (9, 'Natación', 5, 'Deportes');
 
 INSERT INTO clase (codclase, nombre, agendagym_agenda_codagenda, tipo)
 VALUES
-    (10, 'Baile Latino', 10, 'Baile');
+    (10, 'Baile Latino', 11, 'Baile');
 
 INSERT INTO clase (codclase, nombre, agendagym_agenda_codagenda, tipo)
 VALUES
@@ -346,31 +434,31 @@ VALUES
 
 INSERT INTO clase (codclase, nombre, agendagym_agenda_codagenda, tipo)
 VALUES
-    (14, 'Body Combat', 14, 'Cardio');
+    (14, 'Body Combat', 13, 'Cardio');
 
 INSERT INTO clase (codclase, nombre, agendagym_agenda_codagenda, tipo)
 VALUES
-    (15, 'Body Balance', 15, 'Aeróbico');
+    (15, 'Body Balance', 13, 'Aeróbico');
 
 INSERT INTO clase (codclase, nombre, agendagym_agenda_codagenda, tipo)
 VALUES
-    (16, 'HIIT', 16, 'Cardio');
+    (16, 'HIIT', 13, 'Cardio');
 
 INSERT INTO clase (codclase, nombre, agendagym_agenda_codagenda, tipo)
 VALUES
-    (17, 'Ciclismo Indoor', 17, 'Cardio');
+    (17, 'Ciclismo Indoor', 14, 'Cardio');
 
 INSERT INTO clase (codclase, nombre, agendagym_agenda_codagenda, tipo)
 VALUES
-    (18, 'Entrenamiento Funcional', 18, 'Musculación');
+    (18, 'Entrenamiento Funcional', 15, 'Musculación');
 
 INSERT INTO clase (codclase, nombre, agendagym_agenda_codagenda, tipo)
 VALUES
-    (19, 'Aqua Aeróbics', 19, 'Aeróbico');
+    (19, 'Aqua Aeróbics', 15, 'Aeróbico');
 
 INSERT INTO clase (codclase, nombre, agendagym_agenda_codagenda, tipo)
 VALUES
-    (20, 'Salsa Dance', 20, 'Baile');
+    (20, 'Salsa Dance', 15, 'Baile');
 
 
 -- Insertar registros en la tabla 'especialidad'
@@ -506,34 +594,34 @@ VALUES
 
 -- Insertar registros en la tabla 'maquinaagendac'
 INSERT INTO maquinaagendac (agendac_codagenda, maquina_codmaquina)
-VALUES (1, 1);
+VALUES (6, 1);
 
 INSERT INTO maquinaagendac (agendac_codagenda, maquina_codmaquina)
-VALUES (2, 2);
+VALUES (7, 2);
 
 INSERT INTO maquinaagendac (agendac_codagenda, maquina_codmaquina)
-VALUES (3, 3);
+VALUES (8, 3);
 
 INSERT INTO maquinaagendac (agendac_codagenda, maquina_codmaquina)
-VALUES (4, 4);
+VALUES (9, 4);
 
 INSERT INTO maquinaagendac (agendac_codagenda, maquina_codmaquina)
-VALUES (5, 5);
+VALUES (10, 5);
 
 INSERT INTO maquinaagendac (agendac_codagenda, maquina_codmaquina)
-VALUES (6, 6);
+VALUES (16, 6);
 
 INSERT INTO maquinaagendac (agendac_codagenda, maquina_codmaquina)
-VALUES (7, 7);
+VALUES (17, 7);
 
 INSERT INTO maquinaagendac (agendac_codagenda, maquina_codmaquina)
-VALUES (8, 8);
+VALUES (18, 8);
 
 INSERT INTO maquinaagendac (agendac_codagenda, maquina_codmaquina)
-VALUES (9, 9);
+VALUES (19, 9);
 
 INSERT INTO maquinaagendac (agendac_codagenda, maquina_codmaquina)
-VALUES (10, 10);
+VALUES (20, 10);
 
 
 -- Insertar registros en la tabla 'maquinaagendagym'
@@ -553,19 +641,19 @@ INSERT INTO maquinaagendagym (agendagym_agenda_codagenda, maquina_codmaquina)
 VALUES (5, 5);
 
 INSERT INTO maquinaagendagym (agendagym_agenda_codagenda, maquina_codmaquina)
-VALUES (6, 6);
+VALUES (11, 6);
 
 INSERT INTO maquinaagendagym (agendagym_agenda_codagenda, maquina_codmaquina)
-VALUES (7, 7);
+VALUES (12, 7);
 
 INSERT INTO maquinaagendagym (agendagym_agenda_codagenda, maquina_codmaquina)
-VALUES (8, 8);
+VALUES (13, 8);
 
 INSERT INTO maquinaagendagym (agendagym_agenda_codagenda, maquina_codmaquina)
-VALUES (9, 9);
+VALUES (14, 9);
 
 INSERT INTO maquinaagendagym (agendagym_agenda_codagenda, maquina_codmaquina)
-VALUES (10, 10);
+VALUES (15, 10);
 
 
 
@@ -727,87 +815,4 @@ VALUES
 
 INSERT INTO grupomuscular (codgrupomuscular, nombre, maquina_codmaquina, rutina_codrutina)
 VALUES
-    (20, 'Psoas', 5, 5);
-
-
--- Insertar registros en la tabla 'telefono'
-INSERT INTO telefono (codtelefono, numerotelefono, persona_cod)
-VALUES
-    (1, 1234567890, 1);
-
-INSERT INTO telefono (codtelefono, numerotelefono, persona_cod)
-VALUES
-    (2, 9876543210, 2);
-
-INSERT INTO telefono (codtelefono, numerotelefono, persona_cod)
-VALUES
-    (3, 5551234567, 3);
-
-INSERT INTO telefono (codtelefono, numerotelefono, persona_cod)
-VALUES
-    (4, 5559876543, 4);
-
-INSERT INTO telefono (codtelefono, numerotelefono, persona_cod)
-VALUES
-    (5, 1112223333, 5);
-
-INSERT INTO telefono (codtelefono, numerotelefono, persona_cod)
-VALUES
-    (6, 4445556666, 6);
-
-INSERT INTO telefono (codtelefono, numerotelefono, persona_cod)
-VALUES
-    (7, 7778889999, 7);
-
-INSERT INTO telefono (codtelefono, numerotelefono, persona_cod)
-VALUES
-    (8, 2223334444, 8);
-
-INSERT INTO telefono (codtelefono, numerotelefono, persona_cod)
-VALUES
-    (9, 9998887777, 9);
-
-INSERT INTO telefono (codtelefono, numerotelefono, persona_cod)
-VALUES
-    (10, 3332221111, 10);
-
-INSERT INTO telefono (codtelefono, numerotelefono, persona_cod)
-VALUES
-    (11, 1589210521, 11);
-
-INSERT INTO telefono (codtelefono, numerotelefono, persona_cod)
-VALUES
-    (12, 6713095124, 12);
-
-INSERT INTO telefono (codtelefono, numerotelefono, persona_cod)
-VALUES
-    (13, 7013451205, 13);
-
-INSERT INTO telefono (codtelefono, numerotelefono, persona_cod)
-VALUES
-    (14, 8414593512, 14);
-
-INSERT INTO telefono (codtelefono, numerotelefono, persona_cod)
-VALUES
-    (15, 9786102468, 15);
-
-INSERT INTO telefono (codtelefono, numerotelefono, persona_cod)
-VALUES
-    (16, 17878541236, 16);
-
-INSERT INTO telefono (codtelefono, numerotelefono, persona_cod)
-VALUES
-    (17, 2124569022, 17);
-
-INSERT INTO telefono (codtelefono, numerotelefono, persona_cod)
-VALUES
-    (18, 3453216533, 18);
-
-INSERT INTO telefono (codtelefono, numerotelefono, persona_cod)
-VALUES
-    (19, 7894536578, 19);
-
-INSERT INTO telefono (codtelefono, numerotelefono, persona_cod)
-VALUES
-    (20, 45452316982, 20);
-
+    (20, 'Pesas', 5, 5);
