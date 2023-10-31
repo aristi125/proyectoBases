@@ -122,11 +122,13 @@ CREATE TABLE rutinaclase (
 CREATE TABLE telefono (
     codtelefono          INTEGER NOT NULL,
     numerotelefono       INTEGER,
-    telefono_codtelefono INTEGER,
     persona_cod          INTEGER NOT NULL
 );
 
 ALTER TABLE telefono ADD CONSTRAINT telefono_pk PRIMARY KEY ( codtelefono );
+
+ALTER TABLE telefono
+ADD CONSTRAINT telefono_numerotelefono_uk UNIQUE (numerotelefono);
 
 ALTER TABLE administrador
     ADD CONSTRAINT administrador_persona_fk FOREIGN KEY ( persona_cod )
