@@ -35,7 +35,7 @@ public class TelefonoRepositorioImpl implements Repositorio<Telefono> {
             throw new RuntimeException(e);
         }
 
-        return T;
+        return telefono;
     }
 
 

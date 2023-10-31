@@ -36,11 +36,14 @@ ALTER TABLE clase ADD CONSTRAINT clase_pk PRIMARY KEY ( codclase );
 
 CREATE TABLE cliente (
     persona_cod                INTEGER NOT NULL,
-    agendagym_agenda_codagenda INTEGER NOT NULL,
-    tiendagym_codtienda        INTEGER NOT NULL
+    agendagym_agenda_codagenda INTEGER NOT NULL
 );
 
 ALTER TABLE cliente ADD CONSTRAINT cliente_pk PRIMARY KEY ( persona_cod );
+
+-- Eliminar la referencia al campo 'tiendagym_codtienda' en la tabla 'cliente'
+ALTER TABLE cliente DROP COLUMN tiendagym_codtienda;
+
 
 CREATE TABLE entrenador (
     persona_cod         INTEGER NOT NULL,
@@ -50,7 +53,16 @@ CREATE TABLE entrenador (
 ALTER TABLE entrenador ADD CONSTRAINT entrenador_pk PRIMARY KEY ( persona_cod );
 
 CREATE TABLE especialidad (
-    entrenador_persona_cod INTEGER NOT NULL
+    codespecialidad INTEGER NOT NULL,
+    nombre          VARCHAR2(100)
+);
+
+ALTER TABLE especialidad ADD CONSTRAINT especialidad_pk PRIMARY KEY (codespecialidad);
+
+-- Tabla intermedia para la relación entre entrenadores y especialidades
+CREATE TABLE entrenador_especialidad (
+    entrenador_persona_cod INTEGER NOT NULL,
+    especialidad_codespecialidad INTEGER NOT NULL
 );
 
 CREATE TABLE grupomuscular (

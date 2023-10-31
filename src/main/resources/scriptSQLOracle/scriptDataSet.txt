@@ -1,0 +1,276 @@
+-- Insertar registros en la tabla 'persona'
+INSERT INTO persona (cod, primernombre, segundonombre, primerapellido, segundoapellido, fechanacimiento, carrera, calle, barrio, casa)
+VALUES
+    (1, 'Juan', 'Carlos', 'Pérez', 'Gómez', TO_DATE('1990-01-15', 'YYYY-MM-DD'), 'Ingeniería', 'Calle 123', 'Barrio A', 'Casa 1'),
+    (2, 'Ana', 'María', 'López', 'García', TO_DATE('1985-05-20', 'YYYY-MM-DD'), 'Medicina', 'Calle 456', 'Barrio B', 'Casa 2'),
+    (3, 'Luis', 'Alberto', 'Martínez', 'Rodríguez', TO_DATE('1988-09-10', 'YYYY-MM-DD'), 'Derecho', 'Avenida Central', 'Barrio C', 'Casa 3'),
+    (4, 'Sofía', 'Isabel', 'Fernández', 'Sánchez', TO_DATE('1995-03-25', 'YYYY-MM-DD'), 'Arquitectura', 'Calle 789', 'Barrio D', 'Casa 4'),
+    (5, 'Carlos', 'Andrés', 'Ramírez', 'Peralta', TO_DATE('1992-11-12', 'YYYY-MM-DD'), 'Economía', 'Calle 1011', 'Barrio E', 'Casa 5'),
+    (6, 'Lorena', 'Maribel', 'Gómez', 'Vargas', TO_DATE('1983-07-30', 'YYYY-MM-DD'), 'Psicología', 'Calle 1314', 'Barrio F', 'Casa 6'),
+    (7, 'Javier', 'Eduardo', 'Díaz', 'Luna', TO_DATE('1980-04-18', 'YYYY-MM-DD'), 'Historia', 'Calle 1516', 'Barrio G', 'Casa 7'),
+    (8, 'María', 'José', 'Gutiérrez', 'Martínez', TO_DATE('1987-02-05', 'YYYY-MM-DD'), 'Medicina', 'Calle 1718', 'Barrio H', 'Casa 8'),
+    (9, 'Pedro', 'Pablo', 'López', 'Gómez', TO_DATE('1989-06-22', 'YYYY-MM-DD'), 'Ingeniería Civil', 'Calle 1920', 'Barrio I', 'Casa 9'),
+    (10, 'Isabel', 'Cristina', 'Hernández', 'Díaz', TO_DATE('1998-08-15', 'YYYY-MM-DD'), 'Diseño Gráfico', 'Calle 2122', 'Barrio J', 'Casa 10'),
+    (11, 'Fernando', 'Andrés', 'Pérez', 'López', TO_DATE('1996-12-01', 'YYYY-MM-DD'), 'Contabilidad', 'Calle 2324', 'Barrio K', 'Casa 11'),
+    (12, 'Carmen', 'Lucía', 'Vargas', 'Soto', TO_DATE('1986-10-07', 'YYYY-MM-DD'), 'Ingeniería Industrial', 'Calle 2526', 'Barrio L', 'Casa 12'),
+    (13, 'Hugo', 'Alejandro', 'Mendoza', 'García', TO_DATE('1993-04-03', 'YYYY-MM-DD'), 'Medicina', 'Calle 2728', 'Barrio M', 'Casa 13'),
+    (14, 'Rosa', 'María', 'Torres', 'Silva', TO_DATE('1984-06-14', 'YYYY-MM-DD'), 'Psicología', 'Calle 2930', 'Barrio N', 'Casa 14'),
+    (15, 'Pablo', 'Javier', 'Sánchez', 'Vargas', TO_DATE('1994-09-19', 'YYYY-MM-DD'), 'Arquitectura', 'Calle 3132', 'Barrio O', 'Casa 15'),
+    (16, 'Martha', 'Elena', 'Gómez', 'Pérez', TO_DATE('1982-03-28', 'YYYY-MM-DD'), 'Ingeniería Eléctrica', 'Calle 3334', 'Barrio P', 'Casa 16'),
+    (17, 'Jorge', 'Luis', 'Ramírez', 'Díaz', TO_DATE('1981-01-10', 'YYYY-MM-DD'), 'Derecho', 'Calle 3536', 'Barrio Q', 'Casa 17'),
+    (18, 'Ana', 'Isabel', 'Martínez', 'Gómez', TO_DATE('1991-07-04', 'YYYY-MM-DD'), 'Economía', 'Calle 3738', 'Barrio R', 'Casa 18'),
+    (19, 'Carlos', 'Manuel', 'Díaz', 'Vargas', TO_DATE('1987-11-26', 'YYYY-MM-DD'), 'Historia del Arte', 'Calle 3940', 'Barrio S', 'Casa 19'),
+    (20, 'Liliana', 'Patricia', 'García', 'Silva', TO_DATE('1997-05-08', 'YYYY-MM-DD'), 'Medicina', 'Calle 4142', 'Barrio T', 'Casa 20');
+
+-- Insertar registros en la tabla 'administrador'
+INSERT INTO administrador (persona_cod)
+VALUES (1), (2), (3), (4), (5), (6), (7), (8), (9), (10);
+
+-- Insertar registros en la tabla 'entrenador'
+INSERT INTO entrenador (persona_cod, agendagym_codagenda)
+VALUES (11, 21), (12, 22), (13, 23), (14, 24), (15, 25);
+
+-- Insertar registros en la tabla 'cliente'
+INSERT INTO cliente (persona_cod, agendagym_agenda_codagenda)
+VALUES (16, 31), (17, 32), (18, 33), (19, 34), (20, 35);
+
+-- Insertar registros en la tabla 'agenda'
+INSERT INTO agenda (codagenda, horainicio, horafinalizacion)
+VALUES
+    (1, TO_DATE('2023-10-30 08:00:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2023-10-30 09:00:00', 'YYYY-MM-DD HH24:MI:SS')),
+    (2, TO_DATE('2023-10-30 09:30:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2023-10-30 10:30:00', 'YYYY-MM-DD HH24:MI:SS')),
+    (3, TO_DATE('2023-10-30 11:00:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2023-10-30 12:00:00', 'YYYY-MM-DD HH24:MI:SS')),
+    (4, TO_DATE('2023-10-30 13:30:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2023-10-30 14:30:00', 'YYYY-MM-DD HH24:MI:SS')),
+    (5, TO_DATE('2023-10-30 15:00:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2023-10-30 16:00:00', 'YYYY-MM-DD HH24:MI:SS')),
+    (6, TO_DATE('2023-10-31 08:00:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2023-10-31 09:00:00', 'YYYY-MM-DD HH24:MI:SS')),
+    (7, TO_DATE('2023-10-31 10:30:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2023-10-31 11:30:00', 'YYYY-MM-DD HH24:MI:SS')),
+    (8, TO_DATE('2023-10-31 13:00:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2023-10-31 14:00:00', 'YYYY-MM-DD HH24:MI:SS')),
+    (9, TO_DATE('2023-10-31 15:30:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2023-10-31 16:30:00', 'YYYY-MM-DD HH24:MI:SS')),
+    (10, TO_DATE('2023-11-01 08:30:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2023-11-01 09:30:00', 'YYYY-MM-DD HH24:MI:SS')),
+    (11, TO_DATE('2023-11-01 11:00:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2023-11-01 12:00:00', 'YYYY-MM-DD HH24:MI:SS')),
+    (12, TO_DATE('2023-11-01 14:30:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2023-11-01 15:30:00', 'YYYY-MM-DD HH24:MI:SS')),
+    (13, TO_DATE('2023-11-01 16:00:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2023-11-01 17:00:00', 'YYYY-MM-DD HH24:MI:SS')),
+    (14, TO_DATE('2023-11-02 08:00:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2023-11-02 09:00:00', 'YYYY-MM-DD HH24:MI:SS')),
+    (15, TO_DATE('2023-11-02 10:30:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2023-11-02 11:30:00', 'YYYY-MM-DD HH24:MI:SS')),
+    (16, TO_DATE('2023-11-02 13:00:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2023-11-02 14:00:00', 'YYYY-MM-DD HH24:MI:SS')),
+    (17, TO_DATE('2023-11-02 15:30:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2023-11-02 16:30:00', 'YYYY-MM-DD HH24:MI:SS')),
+    (18, TO_DATE('2023-11-03 08:30:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2023-11-03 09:30:00', 'YYYY-MM-DD HH24:MI:SS')),
+    (19, TO_DATE('2023-11-03 10:00:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2023-11-03 11:00:00', 'YYYY-MM-DD HH24:MI:SS')),
+    (20, TO_DATE('2023-11-03 13:30:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2023-11-03 14:30:00', 'YYYY-MM-DD HH24:MI:SS'));
+
+-- Insertar registros en la tabla 'agendagym'
+INSERT INTO agendagym (codagenda)
+VALUES (1), (2), (3), (4), (5), (6), (7), (8), (9), (10), (11), (12), (13), (14), (15), (16), (17), (18), (19), (20);
+
+-- Insertar registros en la tabla 'agendac'
+INSERT INTO agendac (codagenda, cliente_persona_cod)
+VALUES
+    (1, 16), (2, 17), (3, 18), (4, 19), (5, 20),
+    (6, 1), (7, 2), (8, 3), (9, 4), (10, 5),
+    (11, 6), (12, 7), (13, 8), (14, 9), (15, 10),
+    (16, 11), (17, 12), (18, 13), (19, 14), (20, 15);
+
+
+-- Insertar registros en la tabla 'agenda'
+INSERT INTO agenda (codagenda, horainicio, horafinalizacion)
+VALUES
+    (1, TO_DATE('2023-10-30 08:00:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2023-10-30 09:00:00', 'YYYY-MM-DD HH24:MI:SS')),
+    (2, TO_DATE('2023-10-30 09:30:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2023-10-30 10:30:00', 'YYYY-MM-DD HH24:MI:SS')),
+    (3, TO_DATE('2023-10-30 11:00:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2023-10-30 12:00:00', 'YYYY-MM-DD HH24:MI:SS')),
+    (4, TO_DATE('2023-10-30 13:30:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2023-10-30 14:30:00', 'YYYY-MM-DD HH24:MI:SS')),
+    (5, TO_DATE('2023-10-30 15:00:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2023-10-30 16:00:00', 'YYYY-MM-DD HH24:MI:SS')),
+    (6, TO_DATE('2023-10-31 08:00:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2023-10-31 09:00:00', 'YYYY-MM-DD HH24:MI:SS')),
+    (7, TO_DATE('2023-10-31 10:30:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2023-10-31 11:30:00', 'YYYY-MM-DD HH24:MI:SS')),
+    (8, TO_DATE('2023-10-31 13:00:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2023-10-31 14:00:00', 'YYYY-MM-DD HH24:MI:SS')),
+    (9, TO_DATE('2023-10-31 15:30:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2023-10-31 16:30:00', 'YYYY-MM-DD HH24:MI:SS')),
+    (10, TO_DATE('2023-11-01 08:30:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2023-11-01 09:30:00', 'YYYY-MM-DD HH24:MI:SS')),
+    (11, TO_DATE('2023-11-01 11:00:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2023-11-01 12:00:00', 'YYYY-MM-DD HH24:MI:SS')),
+    (12, TO_DATE('2023-11-01 14:30:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2023-11-01 15:30:00', 'YYYY-MM-DD HH24:MI:SS')),
+    (13, TO_DATE('2023-11-01 16:00:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2023-11-01 17:00:00', 'YYYY-MM-DD HH24:MI:SS')),
+    (14, TO_DATE('2023-11-02 08:00:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2023-11-02 09:00:00', 'YYYY-MM-DD HH24:MI:SS')),
+    (15, TO_DATE('2023-11-02 10:30:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2023-11-02 11:30:00', 'YYYY-MM-DD HH24:MI:SS')),
+    (16, TO_DATE('2023-11-02 13:00:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2023-11-02 14:00:00', 'YYYY-MM-DD HH24:MI:SS')),
+    (17, TO_DATE('2023-11-02 15:30:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2023-11-02 16:30:00', 'YYYY-MM-DD HH24:MI:SS')),
+    (18, TO_DATE('2023-11-03 08:30:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2023-11-03 09:30:00', 'YYYY-MM-DD HH24:MI:SS')),
+    (19, TO_DATE('2023-11-03 10:00:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2023-11-03 11:00:00', 'YYYY-MM-DD HH24:MI:SS')),
+    (20, TO_DATE('2023-11-03 13:30:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2023-11-03 14:30:00', 'YYYY-MM-DD HH24:MI:SS'));
+
+-- Insertar registros en la tabla 'agendagym'
+INSERT INTO agendagym (codagenda)
+VALUES (1), (2), (3), (4), (5), (6), (7), (8), (9), (10), (11), (12), (13), (14), (15), (16), (17), (18), (19), (20);
+
+-- Insertar registros en la tabla 'agendac'
+INSERT INTO agendac (codagenda, cliente_persona_cod)
+VALUES
+    (1, 16), (2, 17), (3, 18), (4, 19), (5, 20),
+    (6, 1), (7, 2), (8, 3), (9, 4), (10, 5),
+    (11, 6), (12, 7), (13, 8), (14, 9), (15, 10),
+    (16, 11), (17, 12), (18, 13), (19, 14), (20, 15);
+
+
+-- Insertar registros en la tabla 'clase'
+INSERT INTO clase (codclase, nombre, agendagym_agenda_codagenda, tipo)
+VALUES
+    (1, 'Yoga', 1, 'Aeróbico'),
+    (2, 'Spinning', 2, 'Cardio'),
+    (3, 'Zumba', 3, 'Baile'),
+    (4, 'Pilates', 4, 'Aeróbico'),
+    (5, 'Body Pump', 5, 'Musculación'),
+    (6, 'Aeróbica', 6, 'Aeróbico'),
+    (7, 'Boxeo', 7, 'Deportes'),
+    (8, 'CrossFit', 8, 'Musculación'),
+    (9, 'Natación', 9, 'Deportes'),
+    (10, 'Baile Latino', 10, 'Baile'),
+    (11, 'Piloxing', 11, 'Cardio'),
+    (12, 'Kickboxing', 12, 'Deportes'),
+    (13, 'Step', 13, 'Aeróbico'),
+    (14, 'Body Combat', 14, 'Cardio'),
+    (15, 'Body Balance', 15, 'Aeróbico'),
+    (16, 'HIIT', 16, 'Cardio'),
+    (17, 'Ciclismo Indoor', 17, 'Cardio'),
+    (18, 'Entrenamiento Funcional', 18, 'Musculación'),
+    (19, 'Aqua Aeróbics', 19, 'Aeróbico'),
+    (20, 'Salsa Dance', 20, 'Baile');
+
+
+-- Insertar registros en la tabla 'especialidad'
+INSERT INTO especialidad (codespecialidad, nombre)
+VALUES
+    (1, 'Entrenamiento de resistencia'),
+    (2, 'Yoga'),
+    (3, 'Entrenamiento de alta intensidad'),
+    (4, 'Pilates'),
+    (5, 'Entrenamiento funcional'),
+    (6, 'Boxeo'),
+    (7, 'Aeróbicos'),
+    (8, 'Musculación'),
+    (9, 'Zumba'),
+    (10, 'Natación');
+
+-- Insertar registros en la tabla intermedia 'entrenador_especialidad'
+INSERT INTO entrenador_especialidad (entrenador_persona_cod, especialidad_codespecialidad)
+VALUES
+    (1, 1), (1, 2), -- Entrenador 1 tiene especialidades 1 y 2
+    (2, 2), (2, 3), (2, 4), -- Entrenador 2 tiene especialidades 2, 3 y 4
+    (3, 5), (3, 6), -- Entrenador 3 tiene especialidades 5 y 6
+    (4, 7), (4, 8), (4, 9), (4, 10); -- Entrenador 4 tiene especialidades 7, 8, 9 y 10
+
+-- Insertar registros en la tabla 'maquina'
+INSERT INTO maquina (codmaquina, nombre)
+VALUES
+    (1, 'Máquina de Pesas 1'),
+    (2, 'Cinta de Correr 1'),
+    (3, 'Bicicleta Estacionaria 1'),
+    (4, 'Máquina de Pesas 2'),
+    (5, 'Cinta de Correr 2'),
+    (6, 'Máquina de Pesas 3'),
+    (7, 'Bicicleta Estacionaria 2'),
+    (8, 'Máquina de Pesas 4'),
+    (9, 'Cinta de Correr 3'),
+    (10, 'Máquina de Pesas 5');
+
+-- Insertar registros en la tabla 'maquinaagendac'
+INSERT INTO maquinaagendac (agendac_codagenda, maquina_codmaquina)
+VALUES
+    (1, 1), (2, 2), (3, 3), (4, 4), (5, 5),
+    (6, 6), (7, 7), (8, 8), (9, 9), (10, 10);
+
+-- Insertar registros en la tabla 'maquinaagendagym'
+INSERT INTO maquinaagendagym (agendagym_agenda_codagenda, maquina_codmaquina)
+VALUES
+    (1, 1), (2, 2), (3, 3), (4, 4), (5, 5),
+    (6, 6), (7, 7), (8, 8), (9, 9), (10, 10);
+
+
+-- Insertar registros en la tabla 'rutina'
+INSERT INTO rutina (codrutina, nombre, descripcion)
+VALUES
+    (1, 'Rutina de Principiantes', 'Rutina de ejercicios para principiantes'),
+    (2, 'Rutina de Cardio', 'Rutina de ejercicios de alto impacto para mejorar el cardio'),
+    (3, 'Rutina de Musculación', 'Rutina de ejercicios de musculación para ganar fuerza'),
+    (4, 'Rutina de Yoga', 'Rutina de ejercicios de yoga para la flexibilidad'),
+    (5, 'Rutina de Estiramiento', 'Rutina de estiramientos para mejorar la flexibilidad');
+
+-- Insertar registros en la tabla 'rutinaclase'
+INSERT INTO rutinaclase (clase_codclase, rutina_codrutina)
+VALUES
+    (1, 1), (1, 2), -- Clase 1 incluye rutinas 1 y 2
+    (2, 2), (3, 2), (4, 2), -- Clase 2 incluye rutinas 2, 3 y 4
+    (5, 3), -- Clase 3 incluye rutina 3
+    (1, 4), -- Clase 1 incluye rutina 4
+    (2, 5), (3, 5), -- Clase 2 incluye rutinas 5
+    (4, 1), -- Clase 4 incluye rutina 1
+    (5, 2); -- Clase 5 incluye rutina 2
+
+-- Insertar registros en la tabla 'grupomuscular'
+INSERT INTO grupomuscular (codgrupomuscular, nombre, maquina_codmaquina, rutina_codrutina)
+VALUES
+    (1, 'Pecho', 1, 1),
+    (2, 'Espalda', 2, 2),
+    (3, 'Piernas', 3, 3),
+    (4, 'Brazos', 4, 4),
+    (5, 'Hombros', 5, 5),
+    (6, 'Abdominales', 1, 1),
+    (7, 'Glúteos', 2, 2),
+    (8, 'Cardio', 3, 3),
+    (9, 'Flexibilidad', 4, 4),
+    (10, 'Core', 5, 5),
+    (11, 'Tríceps', 1, 1),
+    (12, 'Bíceps', 2, 2),
+    (13, 'Cuádriceps', 3, 3),
+    (14, 'Isquiotibiales', 4, 4),
+    (15, 'Trapecios', 5, 5),
+    (16, 'Deltoides', 1, 1),
+    (17, 'Lumbares', 2, 2),
+    (18, 'Trapecio', 3, 3),
+    (19, 'Pantorrillas', 4, 4),
+    (20, 'Psoas', 5, 5);
+
+
+-- Insertar registros en la tabla 'telefono'
+INSERT INTO telefono (codtelefono, numerotelefono, telefono_codtelefono, persona_cod)
+VALUES
+    (1, 1234567890, NULL, 1),
+    (2, 9876543210, NULL, 2),
+    (3, 5551234567, 1, 3),
+    (4, 5559876543, 2, 4),
+    (5, 1112223333, NULL, 5),
+    (6, 4445556666, 3, 6),
+    (7, 7778889999, NULL, 7),
+    (8, 2223334444, 4, 8),
+    (9, 9998887777, 5, 9),
+    (10, 3332221111, 6, 10),
+    (11, 5555555555, NULL, 11),
+    (12, 6666666666, 7, 12),
+    (13, 7777777777, 8, 13),
+    (14, 8888888888, NULL, 14),
+    (15, 9999999999, 10, 15),
+    (16, 1111111111, 11, 16),
+    (17, 2222222222, 12, 17),
+    (18, 3333333333, 13, 18),
+    (19, 4444444444, 14, 19),
+    (20, 6666666666, 15, 20);
+
+-- Insertar registros en la tabla 'telefono'
+INSERT INTO telefono (codtelefono, numerotelefono, telefono_codtelefono, persona_cod)
+VALUES
+    (1, 1234567890, NULL, 1),
+    (2, 9876543210, NULL, 2),
+    (3, 5551234567, 1, 3),
+    (4, 5559876543, 2, 4),
+    (5, 1112223333, NULL, 5),
+    (6, 4445556666, 3, 6),
+    (7, 7778889999, NULL, 7),
+    (8, 2223334444, 4, 8),
+    (9, 9998887777, 5, 9),
+    (10, 3332221111, 6, 10),
+    (11, 5555555555, NULL, 11),
+    (12, 6666666666, 7, 12),
+    (13, 7777777777, 8, 13),
+    (14, 8888888888, NULL, 14),
+    (15, 9999999999, 10, 15),
+    (16, 1111111111, 11, 16),
+    (17, 2222222222, 12, 17),
+    (18, 3333333333, 13, 18),
+    (19, 4444444444, 14, 19),
+    (20, 6666666666, 15, 20);
