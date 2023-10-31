@@ -1,7 +1,6 @@
 package co.edu.proyectobases.test;
 
-import co.edu.proyectobases.model.Producto;
-import co.edu.proyectobases.repository.ProductoRepositorioImpl;
+import co.edu.proyectobases.repository.TelefonoRepositorioImpl;
 import co.edu.proyectobases.repository.Repositorio;
 import co.edu.proyectobases.utils.ConexionBaseDatos;
 
@@ -21,7 +20,7 @@ public class EjemploJDBCUpdate {
         //Y LOS DIRVES QUE TENEMOS DISPONIBLES
         try (Connection conn = ConexionBaseDatos.getInstance();){
             //vamos a crear la instancia del repositorio
-            Repositorio<Producto> repositorio = new ProductoRepositorioImpl();
+            Repositorio<Producto> repositorio = new TelefonoRepositorioImpl();
 
             System.out.println("=========LISTAR===========");
             repositorio.listar().forEach(p -> System.out.println(p.getPrimerNombre()));

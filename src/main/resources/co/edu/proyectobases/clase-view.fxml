@@ -10,7 +10,6 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="400.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.proyectobases.controllers.ClaseController">
    <children>
       <HBox alignment="CENTER" layoutX="87.0" layoutY="14.0" prefHeight="71.0" prefWidth="443.0" style="-fx-background-radius: 30; -fx-background-color: #457b9d;">
@@ -33,7 +32,7 @@
       <Separator layoutX="325.0" layoutY="91.0" orientation="VERTICAL" prefHeight="299.0" prefWidth="6.0" style="-fx-background-color: #000000;" />
       <Button layoutX="151.0" layoutY="272.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="74.0" text="Ingresar" />
       <Button layoutX="35.0" layoutY="348.0" mnemonicParsing="false" text="Atras" />
-      <TableView layoutX="342.0" layoutY="135.0" prefHeight="200.0" prefWidth="298.0">
+      <TableView layoutX="344.0" layoutY="164.0" prefHeight="200.0" prefWidth="298.0">
         <columns>
           <TableColumn fx:id="cmCodClase" prefWidth="75.0" text="codigo" />
           <TableColumn fx:id="cmNombreClase" prefWidth="75.0" text="clase" />
@@ -41,5 +40,7 @@
             <TableColumn fx:id="cmNombreEntrenador" prefWidth="75.0" text="entrenador" />
         </columns>
       </TableView>
+      <Label layoutX="344.0" layoutY="120.0" text="Buscar:" />
+      <TextField fx:id="txtFiltrar" layoutX="399.0" layoutY="116.0" prefHeight="26.0" prefWidth="163.0" promptText="Filtrar:" style="-fx-background-radius: 10;" />
    </children>
 </AnchorPane>

@@ -1,13 +1,14 @@
 package co.edu.proyectobases.repository;
 
-import co.edu.proyectobases.model.Producto;
+import co.edu.proyectobases.model.Persona;
+import co.edu.proyectobases.model.Telefono;
 import co.edu.proyectobases.utils.ConexionBaseDatos;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProductoRepositorioImpl implements Repositorio<Producto> {
+public class TelefonoRepositorioImpl implements Repositorio<Telefono> {
 
     //METODO QUE DEVUELVE LA CONECCION AL A BD
     //metodo para obtener la coneccion
@@ -18,30 +19,30 @@ public class ProductoRepositorioImpl implements Repositorio<Producto> {
 
     //METODOS SOBRE ESCRITOS
     @Override
-    public List<Producto> listar() {
-        List<Producto> productos = new ArrayList<>();
+    public List<Telefono> listar() {
+        List<Telefono> telefono = new ArrayList<>();
 
         //creamos la sentencia
         try (Statement stmt = getConnection().createStatement();
-             ResultSet reslut = stmt.executeQuery("SELECT * FROM productos")){
+             ResultSet reslut = stmt.executeQuery("SELECT * FROM telefono")){
             //iteramos el resultSet o el cursor y lo guardamos en la lista productos
             while (reslut.next()){
-                Producto p = cearProducto(reslut);
+                Telefono p = cearProducto(reslut);
                 //los pasamos a la lista
-                productos.add(p);
+                telefono.add(p);
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
 
-        return productos;
+        return T;
     }
 
 
     @Override
-    public Producto listarPorId(Integer id) {
+    public Telefono listarPorId(Integer id) {
         //devolver un tipo producto con un WHERE
-        Producto producto = null;
+        Telefono telefono = null;
         try(PreparedStatement pstmt = getConnection().
                 prepareStatement("SELECT * FROM productos WHERE id=?");) {
             pstmt.setInt(1,id);
@@ -49,18 +50,18 @@ public class ProductoRepositorioImpl implements Repositorio<Producto> {
 
             //solo busca a un producto en especifico
             if (result.next()){
-                producto = cearProducto(result);
+                telefono = cearProducto(result);
             }
             result.close();
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        return producto;
+        return telefono;
     }
 
     @Override
-    public void guardar(Producto producto) {
+    public void guardar(Telefono telefono) {
 
     }
 
@@ -71,9 +72,9 @@ public class ProductoRepositorioImpl implements Repositorio<Producto> {
     //===============================================================
 
     //METODOS CREADOS
-    private static Producto cearProducto(ResultSet reslut) throws SQLException {
-        Producto p = new Producto();
-        p.setCod(reslut.getInt("cod"));
+    private static Telefono cearProducto(ResultSet reslut) throws SQLException {
+        Telefono p = new Telefono();
+       /* p.setCod(reslut.getInt("cod"));
         p.setCalle(reslut.getString("calle"));
         p.setBarrio(reslut.getString("barrio"));
         p.setCasa(reslut.getString("casa"));
@@ -86,6 +87,8 @@ public class ProductoRepositorioImpl implements Repositorio<Producto> {
         p.setAnioNacimiento(reslut.getDate("anioNacimiento"));
         p.setCarrera(reslut.getString("carrera"));
         return p;
+        */
+        return null;
     }
     //=====================================
 }
