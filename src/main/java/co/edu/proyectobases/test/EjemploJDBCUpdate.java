@@ -7,6 +7,7 @@ import co.edu.proyectobases.utils.ConexionBaseDatos;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.Date;
+/**
 
 public class EjemploJDBCUpdate {
     //static Connection conn = null;
@@ -51,3 +52,5 @@ public class EjemploJDBCUpdate {
 
     }
 }
+
+*/
