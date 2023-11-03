@@ -41,10 +41,6 @@ CREATE TABLE cliente (
 
 ALTER TABLE cliente ADD CONSTRAINT cliente_pk PRIMARY KEY ( persona_cod );
 
--- Eliminar la referencia al campo 'tiendagym_codtienda' en la tabla 'cliente'
-ALTER TABLE cliente DROP COLUMN tiendagym_codtienda;
-
-
 CREATE TABLE entrenador (
     persona_cod         INTEGER NOT NULL,
     agendagym_codagenda INTEGER NOT NULL
@@ -122,11 +118,13 @@ CREATE TABLE rutinaclase (
 CREATE TABLE telefono (
     codtelefono          INTEGER NOT NULL,
     numerotelefono       INTEGER,
-    telefono_codtelefono INTEGER,
     persona_cod          INTEGER NOT NULL
 );
 
 ALTER TABLE telefono ADD CONSTRAINT telefono_pk PRIMARY KEY ( codtelefono );
+
+ALTER TABLE telefono
+ADD CONSTRAINT telefono_numerotelefono_uk UNIQUE (numerotelefono);
 
 ALTER TABLE administrador
     ADD CONSTRAINT administrador_persona_fk FOREIGN KEY ( persona_cod )
