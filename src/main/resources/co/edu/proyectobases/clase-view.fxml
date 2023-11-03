@@ -10,9 +10,9 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.proyectobases.controllers.ClaseController">
+<AnchorPane prefHeight="400.0" prefWidth="724.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.proyectobases.controllers.ClaseController">
    <children>
-      <HBox alignment="CENTER" layoutX="87.0" layoutY="14.0" prefHeight="71.0" prefWidth="443.0" style="-fx-background-radius: 30; -fx-background-color: #457b9d;">
+      <HBox alignment="CENTER" layoutX="122.0" layoutY="14.0" prefHeight="71.0" prefWidth="443.0" style="-fx-background-radius: 30; -fx-background-color: #457b9d;">
          <children>
             <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="18.0" prefWidth="506.0" text="Clases">
                <font>
@@ -32,12 +32,13 @@
       <Separator layoutX="325.0" layoutY="91.0" orientation="VERTICAL" prefHeight="299.0" prefWidth="6.0" style="-fx-background-color: #000000;" />
       <Button layoutX="151.0" layoutY="272.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="74.0" text="Ingresar" />
       <Button layoutX="35.0" layoutY="348.0" mnemonicParsing="false" text="Atras" />
-      <TableView layoutX="344.0" layoutY="164.0" prefHeight="200.0" prefWidth="298.0">
+      <TableView layoutX="344.0" layoutY="164.0" prefHeight="200.0" prefWidth="369.0">
         <columns>
           <TableColumn fx:id="cmCodClase" prefWidth="75.0" text="codigo" />
           <TableColumn fx:id="cmNombreClase" prefWidth="75.0" text="clase" />
             <TableColumn fx:id="cmNombreCliente" prefWidth="75.0" text="cliente" />
             <TableColumn fx:id="cmNombreEntrenador" prefWidth="75.0" text="entrenador" />
+            <TableColumn fx:id="cmRutina" prefWidth="75.0" text="rutina" />
         </columns>
       </TableView>
       <Label layoutX="344.0" layoutY="120.0" text="Buscar:" />

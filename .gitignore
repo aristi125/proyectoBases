@@ -40,3 +40,7 @@ bin/
 
 ### Mac OS ###
 .DS_Store
+**/*.localz
+**/*.local
+**/*.git
+**/*.DS_Store
