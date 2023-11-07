@@ -6,7 +6,9 @@ module co.edu.proyectobases {
     requires java.sql;
     requires lombok;
     requires jakarta.persistence;
+    requires java.desktop;
 
+    opens co.edu.proyectobases.controllers to javafx.fxml;
     opens co.edu.proyectobases to javafx.fxml;
 
     exports co.edu.proyectobases.model;
@@ -15,5 +17,4 @@ module co.edu.proyectobases {
     exports co.edu.proyectobases.utils;
     exports co.edu.proyectobases;
     exports co.edu.proyectobases.controllers;
-    opens co.edu.proyectobases.controllers to javafx.fxml;
 }

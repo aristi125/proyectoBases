@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.Reflection?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane prefHeight="503.0" prefWidth="853.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.proyectobases.controllers.PrincipalController">
+   <center>
+      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #30373e;" BorderPane.alignment="CENTER">
+         <children>
+            <Label text="Elige tu Consulta" textFill="WHITE">
+               <font>
+                  <Font name="Comic Sans MS Bold" size="80.0" />
+               </font>
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
+            </Label>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="30.0">
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
+               <children>
+                  <Button fx:id="btnSencilla1" mnemonicParsing="false" onAction="#evenActionSencilla1" style="-fx-background-radius: 15;" text="Sencilla 1">
+                     <font>
+                        <Font name="System Italic" size="20.0" />
+                     </font>
+                     <effect>
+                        <Reflection />
+                     </effect>
+                  </Button>
+                  <Button fx:id="btnSencilla2" mnemonicParsing="false" onAction="#evenActionSencilla2" style="-fx-background-radius: 15;" text="Sencilla 2">
+                     <font>
+                        <Font name="System Italic" size="20.0" />
+                     </font>
+                     <effect>
+                        <Reflection />
+                     </effect>
+                  </Button>
+                  <Button fx:id="btnSencilla3" mnemonicParsing="false" onAction="#evenActionSencilla3" style="-fx-background-radius: 15;" text="Sencilla 3">
+                     <font>
+                        <Font name="System Italic" size="20.0" />
+                     </font>
+                     <effect>
+                        <Reflection />
+                     </effect>
+                  </Button>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="30.0">
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
+               <children>
+                  <Button fx:id="btnInterme1" mnemonicParsing="false" onAction="#evenActionInterme1" style="-fx-background-radius: 15;" text="Interme 1">
+                     <font>
+                        <Font name="System Italic" size="20.0" />
+                     </font>
+                     <effect>
+                        <Reflection />
+                     </effect>
+                  </Button>
+                  <Button fx:id="btnInterme2" mnemonicParsing="false" onAction="#evenActionInterme2" style="-fx-background-radius: 15;" text="interme 2">
+                     <font>
+                        <Font name="System Italic" size="20.0" />
+                     </font>
+                     <effect>
+                        <Reflection />
+                     </effect>
+                  </Button>
+                  <Button fx:id="btnInterme3" mnemonicParsing="false" onAction="#evenActionInterme3" style="-fx-background-radius: 15;" text="interme 3">
+                     <font>
+                        <Font name="System Italic" size="20.0" />
+                     </font>
+                     <effect>
+                        <Reflection />
+                     </effect>
+                  </Button>
+                  <Button fx:id="btnInterme4" mnemonicParsing="false" onAction="#evenActionInterme4" style="-fx-background-radius: 15;" text="Interme 4">
+                     <font>
+                        <Font name="System Italic" size="20.0" />
+                     </font>
+                     <effect>
+                        <Reflection />
+                     </effect>
+                  </Button>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="30.0">
+               <children>
+                  <Button fx:id="btnAvanza1" mnemonicParsing="false" onAction="#evenActionAvanza1" style="-fx-background-radius: 15;" text="Avanza 1">
+                     <effect>
+                        <Reflection />
+                     </effect>
+                     <font>
+                        <Font name="System Italic" size="20.0" />
+                     </font></Button>
+                  <Button fx:id="btnAvanza2" mnemonicParsing="false" onAction="#evenActionAvanza2" style="-fx-background-radius: 15;" text="Avanza 2">
+                     <font>
+                        <Font name="System Italic" size="20.0" />
+                     </font>
+                     <effect>
+                        <Reflection />
+                     </effect>
+                  </Button>
+                  <Button fx:id="btnAvanza3" mnemonicParsing="false" onAction="#evenActionAvanza3" style="-fx-background-radius: 15;" text="Avanza 3">
+                     <font>
+                        <Font name="System Italic" size="20.0" />
+                     </font>
+                     <effect>
+                        <Reflection />
+                     </effect>
+                  </Button>
+               </children>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </HBox>
+         </children>
+      </VBox>
+   </center>
+</BorderPane>
