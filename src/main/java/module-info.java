@@ -7,6 +7,7 @@ module co.edu.proyectobases {
     requires lombok;
     requires jakarta.persistence;
     requires java.desktop;
+    requires com.oracle.database.jdbc;
 
     opens co.edu.proyectobases.controllers to javafx.fxml;
     opens co.edu.proyectobases to javafx.fxml;

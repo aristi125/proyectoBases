@@ -1,6 +1,7 @@
 package co.edu.proyectobases.controllers;
 
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
 import java.util.Objects;
 import java.util.ResourceBundle;
@@ -114,7 +115,10 @@ public class LoginController {
      *
      * @param event
      */
+    /**
     private void loadStage(Event event) throws Exception {
+
+
         try{
             //OCULTAMOS LA VENTANA Y HABRIMOS LA OTRA VENTANA
             ((Node) (event.getSource())).getScene().getWindow().hide();
@@ -129,8 +133,9 @@ public class LoginController {
             newStage.setScene(scene);
             newStage.show();*/
 
-
+/**
              FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/src/main/resources/co/edu/proyectobases/principal-view.fxml"));
+             fxmlLoader.setController(PrincipalController.class);
              Parent root = fxmlLoader.load();
             System.out.println("Despues del problema");
             Scene scene = new Scene(root);
@@ -153,9 +158,45 @@ public class LoginController {
         }catch (IOException ex){
             Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null , ex);
         }
+
+    }
+*/
+
+private void loadStage(Event event) {
+
+    try {
+
+        // Obtener el stage actual
+        Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+        // Cargar el FXML especificando el paquete base
+        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("co/edu/proyectobases/principal-view.fxml"));
+        loader.setController(PrincipalController.class);
+        Parent root = loader.load();
+
+        // Crear la scene
+        Scene scene = new Scene(root);
+
+        // Setear la scene en el stage actual
+        currentStage.setScene(scene);
+
+        currentStage.show();
+
+        // Manejar el cierre
+        currentStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+            @Override
+            public void handle(WindowEvent event) {
+                Platform.exit();
+            }
+        });
+
+    } catch (IOException ex) {
+        Logger logger = Logger.getLogger(LoginController.class.getName());
+        logger.log(Level.SEVERE, null, ex);
     }
 
-    public void setStage(Stage primaryStage) {
-        stage = primaryStage;
+}
+    public void setStage(Stage stage) {
+        this.stage = stage;
     }
 }
