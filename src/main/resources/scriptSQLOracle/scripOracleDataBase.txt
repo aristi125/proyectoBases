@@ -1,11 +1,12 @@
 CREATE TABLE administrador (
-    persona_cod INTEGER NOT NULL
+    persona_cod INTEGER NOT NULL,
+    usuario VARCHAR2(100) NOT NULL,
+    contrasena VARCHAR2(100) NOT NULL
 );
+
 
 ALTER TABLE administrador ADD CONSTRAINT administrador_pk PRIMARY KEY ( persona_cod );
 
-ALTER TABLE administrador ADD COLUMN usuario TEXT NOT NULL;
-ALTER TABLE administrador ADD COLUMN contraseña TEXT NOT NULL;
 
 CREATE TABLE agenda (
     codagenda        INTEGER NOT NULL,
