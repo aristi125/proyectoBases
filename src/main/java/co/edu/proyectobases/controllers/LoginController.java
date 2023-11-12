@@ -130,7 +130,7 @@ public class LoginController {
             newStage.show();*/
 
 
-             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/src/main/resources/co/edu/proyectobases/principal-view.fxml"));
+             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("principal-view.fxml"));
              Parent root = fxmlLoader.load();
             System.out.println("Despues del problema");
             Scene scene = new Scene(root);
