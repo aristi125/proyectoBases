@@ -10,7 +10,6 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.proyectobases.controllers.GrupoMuscularController">
    <children>
       <HBox alignment="CENTER" layoutX="122.0" layoutY="14.0" prefHeight="50.0" prefWidth="346.0" style="-fx-background-radius: 30; -fx-background-color: #457b9d;">
@@ -23,12 +22,12 @@
          </children>
       </HBox>
       <Label layoutX="28.0" layoutY="101.0" text="Codigo:" />
-      <TextField fx:id="txtCodigo" layoutX="86.0" layoutY="97.0" promptText="cod maquina" style="-fx-background-radius: 10;" />
+      <TextField fx:id="txtCodigo" layoutX="86.0" layoutY="97.0" onKeyTyped="#evenKey" promptText="cod maquina" style="-fx-background-radius: 10;" />
       <Label layoutX="28.0" layoutY="142.0" text="Nombre:" />
-      <TextField fx:id="txtNombreMaquina" layoutX="87.0" layoutY="138.0" promptText="nom maquina" style="-fx-background-radius: 10;" />
+      <TextField fx:id="txtNombreMaquina" layoutX="87.0" layoutY="138.0" onKeyTyped="#evenKey" promptText="nom maquina" style="-fx-background-radius: 10;" />
       <Label layoutX="28.0" layoutY="183.0" text="Maquina:" />
-      <TextField fx:id="txtMaquina" layoutX="88.0" layoutY="179.0" promptText="nom maquina" style="-fx-background-radius: 10;" />
-      <TableView layoutX="323.0" layoutY="170.0" prefHeight="200.0" prefWidth="230.0">
+      <TextField fx:id="txtMaquina" layoutX="88.0" layoutY="179.0" onKeyTyped="#evenKey" promptText="nom maquina" style="-fx-background-radius: 10;" />
+      <TableView fx:id="tblGrupoMuscular" layoutX="323.0" layoutY="170.0" prefHeight="200.0" prefWidth="230.0">
         <columns>
           <TableColumn fx:id="cmCodigo" prefWidth="75.0" text="codigo" />
           <TableColumn fx:id="cmNombre" prefWidth="75.0" text="nombre" />
@@ -36,9 +35,10 @@
         </columns>
       </TableView>
       <Separator layoutX="265.0" layoutY="83.0" orientation="VERTICAL" prefHeight="298.0" prefWidth="5.0" style="-fx-background-color: #000000;" />
-      <Label layoutX="334.0" layoutY="101.0" text="Buscar:" />
-      <TextField fx:id="txtFiltrar" layoutX="384.0" layoutY="97.0" promptText="Filtrar" style="-fx-background-radius: 10;" />
-      <Button fx:id="btnAgregar" layoutX="28.0" layoutY="232.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="70.0" style="-fx-background-radius: 15;" text="Agregar" />
-      <Button fx:id="btnAtras" layoutX="26.0" layoutY="345.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="50.0" style="-fx-background-radius: 15;" text="atras" />
+      <Label layoutX="294.0" layoutY="101.0" text="Buscar:" />
+      <TextField fx:id="txtFiltrar" layoutX="344.0" layoutY="97.0" onKeyTyped="#evenKey" prefHeight="26.0" prefWidth="112.0" promptText="Filtrar" style="-fx-background-radius: 10;" />
+      <Button fx:id="btnAgregar" layoutX="28.0" layoutY="232.0" mnemonicParsing="false" onAction="#evenActionAgregar" prefHeight="26.0" prefWidth="70.0" style="-fx-background-radius: 15;" text="Agregar" />
+      <Button fx:id="btnAtras" layoutX="26.0" layoutY="345.0" mnemonicParsing="false" onAction="#evenActionAtras" prefHeight="26.0" prefWidth="50.0" style="-fx-background-radius: 15;" text="atras" />
+      <Button fx:id="btnBuscar" layoutX="476.0" layoutY="97.0" mnemonicParsing="false" onAction="#evenActionBuscar" text="buscar" />
    </children>
 </AnchorPane>

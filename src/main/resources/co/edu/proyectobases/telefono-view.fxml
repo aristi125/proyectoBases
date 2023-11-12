@@ -10,7 +10,6 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.proyectobases.controllers.TelefonoController">
    <children>
       <HBox alignment="CENTER" layoutX="108.0" layoutY="14.0" prefHeight="39.0" prefWidth="384.0" style="-fx-background-radius: 30; -fx-background-color: #457b9d;">
@@ -25,11 +24,11 @@
       <Label layoutX="35.0" layoutY="126.0" text="Codigo Telefono:" />
       <Label layoutX="35.0" layoutY="184.0" text="Persona:" />
       <Label layoutX="35.0" layoutY="156.0" text="Telefono:" />
-      <TextField fx:id="txtCodTelefono" layoutX="138.0" layoutY="122.0" promptText="Codigo" />
-      <TextField fx:id="txtTelefono" layoutX="138.0" layoutY="152.0" promptText="1234567890" />
-      <TextField fx:id="txtMombre" layoutX="138.0" layoutY="182.0" promptText="nombre" />
+      <TextField fx:id="txtCodTelefono" layoutX="138.0" layoutY="122.0" onKeyTyped="#evenKey" promptText="Codigo" />
+      <TextField fx:id="txtTelefono" layoutX="138.0" layoutY="152.0" onKeyTyped="#evenKey" promptText="1234567890" />
+      <TextField fx:id="txtMombre" layoutX="138.0" layoutY="182.0" onKeyTyped="#evenKey" promptText="nombre" />
       <Separator layoutX="300.0" layoutY="72.0" orientation="VERTICAL" prefHeight="304.0" prefWidth="0.0" style="-fx-background-color: #000;" />
-      <Button fx:id="btnAgregar" layoutX="138.0" layoutY="238.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="81.0" style="-fx-background-radius: 15;" text="Agregar">
+      <Button fx:id="btnAgregar" layoutX="138.0" layoutY="238.0" mnemonicParsing="false" onAction="#evenActionAgregar" prefHeight="26.0" prefWidth="81.0" style="-fx-background-radius: 15;" text="Agregar">
          <font>
             <Font size="14.0" />
          </font>
@@ -39,7 +38,7 @@
             <Font size="14.0" />
          </font>
       </Button>
-      <TableView layoutX="338.0" layoutY="124.0" prefHeight="200.0" prefWidth="231.0">
+      <TableView fx:id="tblTelefono" layoutX="338.0" layoutY="124.0" prefHeight="200.0" prefWidth="231.0">
         <columns>
           <TableColumn fx:id="cmCodigoTele" prefWidth="75.0" text="codigo" />
           <TableColumn fx:id="cmTelefono" prefWidth="75.0" text="telefono" />
@@ -47,6 +46,7 @@
         </columns>
       </TableView>
       <Label layoutX="324.0" layoutY="94.0" text="Buscar:" />
-      <TextField fx:id="txtFiltrar" layoutX="370.0" layoutY="90.0" promptText="Filtrar" />
+      <TextField fx:id="txtFiltrar" layoutX="370.0" layoutY="90.0" onKeyTyped="#evenKey" prefHeight="26.0" prefWidth="121.0" promptText="Filtrar" />
+      <Button fx:id="btnBuscar" layoutX="507.0" layoutY="90.0" mnemonicParsing="false" onAction="#evenActionBuscar" text="buscar" />
    </children>
 </AnchorPane>

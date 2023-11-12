@@ -11,7 +11,6 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="575.0" prefWidth="789.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.proyectobases.controllers.PersonaController">
    <children>
       <HBox alignment="CENTER" layoutX="144.0" layoutY="14.0" prefHeight="54.0" prefWidth="367.0" style="-fx-background-radius: 30; -fx-background-color: #457b9d;">
@@ -39,7 +38,7 @@
       <TextField fx:id="txtPrimerApe" layoutX="178.0" layoutY="207.0" promptText="Primer apellido" style="-fx-background-radius: 10;" />
       <TextField fx:id="txtSegundoApe" layoutX="178.0" layoutY="235.0" promptText="Segundo apellido" style="-fx-background-radius: 10;" />
       <DatePicker fx:id="DateFechaNaci" layoutX="178.0" layoutY="265.0" prefHeight="26.0" prefWidth="150.0" style="-fx-background-radius: 10;" />
-      <TextField fx:id="txtCarrera" layoutX="457.0" layoutY="155.0" promptText="Carrera" style="-fx-background-radius: 10;" />
+      <TextField fx:id="txtCarrera" layoutX="457.0" layoutY="155.0" onKeyTyped="#evenKey" promptText="Carrera" style="-fx-background-radius: 10;" />
       <TextField fx:id="txtCalle" layoutX="457.0" layoutY="182.0" promptText="Calle" style="-fx-background-radius: 10;" />
       <TextField fx:id="txtBarrio" layoutX="458.0" layoutY="210.0" promptText="Barrio" style="-fx-background-radius: 10;" />
       <TextField fx:id="txtCasa" layoutX="459.0" layoutY="237.0" promptText="Casa" style="-fx-background-radius: 10;" />
@@ -54,7 +53,7 @@
       </HBox>
       <Separator layoutX="21.0" layoutY="83.0" prefHeight="3.0" prefWidth="746.0" style="-fx-background-color: #000000;" />
       <Separator layoutX="29.0" layoutY="348.0" prefHeight="3.0" prefWidth="738.0" style="-fx-background-color: #000000;" />
-      <TableView layoutX="17.0" layoutY="365.0" prefHeight="154.0" prefWidth="754.0">
+      <TableView fx:id="tblPersona" layoutX="17.0" layoutY="365.0" prefHeight="154.0" prefWidth="754.0">
         <columns>
           <TableColumn fx:id="cmCodigo" prefWidth="75.0" text="codigo" />
           <TableColumn fx:id="cmPrimerNom" prefWidth="75.0" text="primer nom" />
@@ -68,7 +67,8 @@
             <TableColumn fx:id="cmCasa" prefWidth="75.0" text="casa" />
         </columns>
       </TableView>
-      <Button fx:id="btnAgregar" layoutX="324.0" layoutY="308.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="140.0" style="-fx-background-radius: 15;" text="agregar" />
-      <Button fx:id="btnAtras" layoutX="21.0" layoutY="536.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="62.0" style="-fx-background-radius: 15;" text="atras" />
+      <Button fx:id="btnAgregar" layoutX="324.0" layoutY="308.0" mnemonicParsing="false" onAction="#evenActionAgregar" prefHeight="26.0" prefWidth="140.0" style="-fx-background-radius: 15;" text="agregar" />
+      <Button fx:id="btnAtras" layoutX="21.0" layoutY="536.0" mnemonicParsing="false" onAction="#evenActionAtras" prefHeight="26.0" prefWidth="62.0" style="-fx-background-radius: 15;" text="atras" />
+      <Button fx:id="btnBuscar" layoutX="696.0" layoutY="537.0" mnemonicParsing="false" onAction="#evenActionBuscar" text="Buscar" />
    </children>
 </AnchorPane>

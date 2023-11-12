@@ -1,6 +1,7 @@
 package co.edu.proyectobases.controllers;
 
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
 import java.util.Objects;
 import java.util.ResourceBundle;
@@ -109,53 +110,41 @@ public class LoginController {
 
     }
 
-    /**
-     * PARA CARGAR LA VENTANA DE VIENVENIDA
-     *
-     * @param event
-     */
-    private void loadStage(Event event) throws Exception {
-        try{
-            //OCULTAMOS LA VENTANA Y HABRIMOS LA OTRA VENTANA
-            ((Node) (event.getSource())).getScene().getWindow().hide();
+private void loadStage(Event event) {
 
-            //DATOS PARA HABRIR LA OTRA VENTANA
-            /*System.out.println("Antes del problema");
-            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("principal-view.fxml")));
-            System.out.println("Despues del problema");
-            Scene scene = new Scene(root);
-            Stage newStage = new Stage();
-            newStage.setTitle("Pagina Principal :3");
-            newStage.setScene(scene);
-            newStage.show();*/
+    try {
 
+        // Obtener el stage actual
+        Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
-             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("principal-view.fxml"));
-             Parent root = fxmlLoader.load();
-            System.out.println("Despues del problema");
-            Scene scene = new Scene(root);
-            System.out.println("Despues del problema 2");
-            Stage newStage = new Stage();
-            //  stage.setTitle("Hello!");
-            newStage.setScene(scene);
-            System.out.println("Despues del problema 3");
-            newStage.show();
-            System.out.println("Despues del problema 4");
+        // Cargar el FXML especificando el paquete base
+        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("co/edu/proyectobases/principal-view.fxml"));
+        loader.setController(PrincipalController.class);
+        Parent root = loader.load();
 
+        // Crear la scene
+        Scene scene = new Scene(root);
 
-            newStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
-                @Override
-                public void handle(WindowEvent event) {
-                    Platform.exit();
-                }
-            });
+        // Setear la scene en el stage actual
+        currentStage.setScene(scene);
 
-        }catch (IOException ex){
-            Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null , ex);
-        }
+        currentStage.show();
+
+        // Manejar el cierre
+        currentStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+            @Override
+            public void handle(WindowEvent event) {
+                Platform.exit();
+            }
+        });
+
+    } catch (IOException ex) {
+        Logger logger = Logger.getLogger(LoginController.class.getName());
+        logger.log(Level.SEVERE, null, ex);
     }
 
-    public void setStage(Stage primaryStage) {
-        stage = primaryStage;
+}
+    public void setStage(Stage stage) {
+        this.stage = stage;
     }
 }

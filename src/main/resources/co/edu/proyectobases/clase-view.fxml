@@ -22,17 +22,17 @@
          </children>
       </HBox>
       <Label layoutX="40.0" layoutY="120.0" text="codigo clase: " />
-      <TextField fx:id="txtCodClase" layoutX="149.0" layoutY="116.0" promptText="codigo" style="-fx-background-radius: 10;" />
+      <TextField fx:id="txtCodClase" layoutX="149.0" layoutY="116.0" onKeyTyped="#evenKey" promptText="codigo" style="-fx-background-radius: 10;" />
       <Label layoutX="40.0" layoutY="155.0" text="nombre clase:" />
-      <TextField fx:id="txtNombreClase" layoutX="150.0" layoutY="151.0" promptText="nombre clase" style="-fx-background-radius: 10;" />
+      <TextField fx:id="txtNombreClase" layoutX="150.0" layoutY="151.0" onKeyTyped="#evenKey" promptText="nombre clase" style="-fx-background-radius: 10;" />
       <Label layoutX="35.0" layoutY="191.0" text="nombre cliente:" />
-      <TextField fx:id="txtNombreCliente" layoutX="151.0" layoutY="187.0" promptText="nombre cliente" style="-fx-background-radius: 10;" />
+      <TextField fx:id="txtNombreCliente" layoutX="151.0" layoutY="187.0" onKeyTyped="#evenKey" promptText="nombre cliente" style="-fx-background-radius: 10;" />
       <Label layoutX="35.0" layoutY="226.0" text="nombre entrenador:" />
-      <TextField fx:id="txtNombreEntrenador" layoutX="151.0" layoutY="222.0" promptText="nombre entrenador" style="-fx-background-radius: 10;" />
+      <TextField fx:id="txtNombreEntrenador" layoutX="151.0" layoutY="222.0" onKeyTyped="#evenKey" promptText="nombre entrenador" style="-fx-background-radius: 10;" />
       <Separator layoutX="325.0" layoutY="91.0" orientation="VERTICAL" prefHeight="299.0" prefWidth="6.0" style="-fx-background-color: #000000;" />
-      <Button layoutX="151.0" layoutY="272.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="74.0" text="Ingresar" />
-      <Button layoutX="35.0" layoutY="348.0" mnemonicParsing="false" text="Atras" />
-      <TableView layoutX="344.0" layoutY="164.0" prefHeight="200.0" prefWidth="369.0">
+      <Button fx:id="btnAgregar" layoutX="151.0" layoutY="272.0" mnemonicParsing="false" onAction="#evenActionAgregar" prefHeight="26.0" prefWidth="74.0" text="Agregar" />
+      <Button fx:id="btnAtras" layoutX="35.0" layoutY="348.0" mnemonicParsing="false" onAction="#evenActionAtras" text="Atras" />
+      <TableView fx:id="tblClase" layoutX="344.0" layoutY="164.0" prefHeight="200.0" prefWidth="369.0">
         <columns>
           <TableColumn fx:id="cmCodClase" prefWidth="75.0" text="codigo" />
           <TableColumn fx:id="cmNombreClase" prefWidth="75.0" text="clase" />
@@ -42,6 +42,7 @@
         </columns>
       </TableView>
       <Label layoutX="344.0" layoutY="120.0" text="Buscar:" />
-      <TextField fx:id="txtFiltrar" layoutX="399.0" layoutY="116.0" prefHeight="26.0" prefWidth="163.0" promptText="Filtrar:" style="-fx-background-radius: 10;" />
+      <TextField fx:id="txtFiltrar" layoutX="399.0" layoutY="116.0" onKeyTyped="#evenKey" prefHeight="26.0" prefWidth="163.0" promptText="Filtrar:" style="-fx-background-radius: 10;" />
+      <Button fx:id="btnBuscar" layoutX="580.0" layoutY="116.0" mnemonicParsing="false" onAction="#evenActionBuscar" text="buscar" />
    </children>
 </AnchorPane>

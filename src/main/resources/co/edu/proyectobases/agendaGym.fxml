@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -7,7 +8,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
-
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.proyectobases.controllers.AgendaGymController">
    <children>
@@ -21,7 +21,7 @@
          </children>
       </HBox>
       <Label layoutX="37.0" layoutY="103.0" text="Buscar:" />
-      <TableView layoutX="37.0" layoutY="147.0" prefHeight="200.0" prefWidth="529.0">
+      <TableView fx:id="tblAgendaGym" layoutX="37.0" layoutY="147.0" prefHeight="200.0" prefWidth="529.0">
         <columns>
           <TableColumn fx:id="cmIdAgendaGym" prefWidth="75.0" text="id agendaGym" />
           <TableColumn fx:id="cmEntrenador" prefWidth="75.0" text="entrenador" />
@@ -32,6 +32,7 @@
             <TableColumn fx:id="CmHoraFin" prefWidth="75.0" text="fin" />
         </columns>
       </TableView>
-      <TextField fx:id="txtFiltrar" layoutX="91.0" layoutY="99.0" promptText="filtrar" />
+      <TextField fx:id="txtFiltrar" layoutX="91.0" layoutY="99.0" onKeyTyped="#evenKey" promptText="filtrar" />
+      <Button fx:id="btnBuscar" layoutX="261.0" layoutY="99.0" mnemonicParsing="false" onAction="#evenActionBuscar" text="buscar" />
    </children>
 </AnchorPane>
