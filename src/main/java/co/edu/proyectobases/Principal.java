@@ -1,8 +1,11 @@
 package co.edu.proyectobases;
 
+import co.edu.proyectobases.controllers.AgendaController;
 import co.edu.proyectobases.controllers.LoginController;
+import co.edu.proyectobases.controllers.PrincipalController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
@@ -21,19 +24,25 @@ public class Principal extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Persona.fxml"));
-        Parent root = fxmlLoader.load();
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("login-view.fxml"));
+
+        Parent root = loader.load();
+
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);
-        LoginController controller = fxmlLoader.getController();
-        controller.setStage(primaryStage);
+
+        // Obtener el controlador del FXMLLoader
+        Object controller = loader.getController();
+
+        if (controller instanceof LoginController) {
+            ((LoginController)controller).setStage(primaryStage);
+        } else if (controller instanceof PrincipalController) {
+            ((PrincipalController)controller).setStage(primaryStage);
+        }
+
         primaryStage.show();
 
-        /*Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("login-view.fxml")));
-        Scene scene = new Scene(root);
-        primaryStage.setTitle("Login :3");
-        primaryStage.setScene(scene);
-        primaryStage.show();*/
     }
 
     @Override

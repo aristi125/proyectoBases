@@ -49,6 +49,7 @@ public class PrincipalController {
 
     @FXML
     private Button btnSencilla3;
+    private Object stage;
 
     @FXML
     void evenActionAvanza1(ActionEvent event) {
@@ -102,6 +103,8 @@ public class PrincipalController {
 
     @FXML
     void initialize() {
+
+        location = getClass().getResource("principal-view.fxml");
         assert btnAvanza1 != null : "fx:id=\"btnAvanza1\" was not injected: check your FXML file 'principal-view.fxml'.";
         assert btnAvanza2 != null : "fx:id=\"btnAvanza2\" was not injected: check your FXML file 'principal-view.fxml'.";
         assert btnAvanza3 != null : "fx:id=\"btnAvanza3\" was not injected: check your FXML file 'principal-view.fxml'.";
@@ -129,5 +132,9 @@ public class PrincipalController {
 
         stage.show();
 
+    }
+
+    public void setStage(Stage primaryStage) {
+        this.stage = primaryStage;
     }
 }

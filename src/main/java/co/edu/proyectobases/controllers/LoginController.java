@@ -9,6 +9,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.*;
 
+import co.edu.proyectobases.dao.AdministradorDAO;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
@@ -70,13 +71,15 @@ public class LoginController {
     void evenaction(ActionEvent event) throws Exception {
         Object evt = event.getSource();
 
+        AdministradorDAO adm = new AdministradorDAO();
+
         if (evt.equals(btnIngresar)){
 
             if (!txtUsuario.getText().isEmpty() && !txtContrasena.getText().isEmpty()){
-                String usuario = "root";
-                String contrasena = "123";
-
-                if(txtUsuario.getText().equals(usuario) && txtContrasena.getText().equals(contrasena)){
+               // String usuario = "root";
+               // String contrasena = "123";
+                int state = adm.login(txtUsuario.getText(), txtContrasena.getText());
+                if(state == 1){
 
                    /* FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("principal-view.fxml"));
                     System.out.println("entro 1");
@@ -119,9 +122,11 @@ private void loadStage(Event event) {
 
         // Cargar el FXML especificando el paquete base
         FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("co/edu/proyectobases/principal-view.fxml"));
-        loader.setController(PrincipalController.class);
+        // loader.setController(PrincipalController.class);
         Parent root = loader.load();
 
+        PrincipalController controller = loader.getController();
+        controller.setStage(stage);
         // Crear la scene
         Scene scene = new Scene(root);
 

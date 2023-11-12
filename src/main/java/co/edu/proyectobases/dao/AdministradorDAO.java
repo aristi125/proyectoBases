@@ -14,6 +14,10 @@ public class AdministradorDAO {
     String user;
     String password;
 
+    public AdministradorDAO() {
+
+    }
+
 
     public String getUser() {
         return user;
