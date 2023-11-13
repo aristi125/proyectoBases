@@ -35,6 +35,9 @@ public class PersonaController {
     private DatePicker DateFechaNaci;
 
     @FXML
+    private Button btn;
+
+    @FXML
     private Button btnAgregar;
 
     @FXML
@@ -92,6 +95,9 @@ public class PersonaController {
     private TextField txtCodigoPersona;
 
     @FXML
+    private TextField txtFiltrar;
+
+    @FXML
     private TextField txtPrimerApe;
 
     @FXML
@@ -104,6 +110,11 @@ public class PersonaController {
     private TextField txtSegundoNom;
 
     private Stage stage;
+
+    @FXML
+    void evenActioEliminar(ActionEvent event) {
+
+    }
 
     @FXML
     void evenActionAgregar(ActionEvent event) {
@@ -159,6 +170,7 @@ public class PersonaController {
     @FXML
     void initialize() {
         assert DateFechaNaci != null : "fx:id=\"DateFechaNaci\" was not injected: check your FXML file 'Persona.fxml'.";
+        assert btn != null : "fx:id=\"btn\" was not injected: check your FXML file 'Persona.fxml'.";
         assert btnAgregar != null : "fx:id=\"btnAgregar\" was not injected: check your FXML file 'Persona.fxml'.";
         assert btnAtras != null : "fx:id=\"btnAtras\" was not injected: check your FXML file 'Persona.fxml'.";
         assert btnBuscar != null : "fx:id=\"btnBuscar\" was not injected: check your FXML file 'Persona.fxml'.";
@@ -178,13 +190,16 @@ public class PersonaController {
         assert txtCarrera != null : "fx:id=\"txtCarrera\" was not injected: check your FXML file 'Persona.fxml'.";
         assert txtCasa != null : "fx:id=\"txtCasa\" was not injected: check your FXML file 'Persona.fxml'.";
         assert txtCodigoPersona != null : "fx:id=\"txtCodigoPersona\" was not injected: check your FXML file 'Persona.fxml'.";
+        assert txtFiltrar != null : "fx:id=\"txtFiltrar\" was not injected: check your FXML file 'Persona.fxml'.";
         assert txtPrimerApe != null : "fx:id=\"txtPrimerApe\" was not injected: check your FXML file 'Persona.fxml'.";
         assert txtPrimerNom != null : "fx:id=\"txtPrimerNom\" was not injected: check your FXML file 'Persona.fxml'.";
         assert txtSegundoApe != null : "fx:id=\"txtSegundoApe\" was not injected: check your FXML file 'Persona.fxml'.";
         assert txtSegundoNom != null : "fx:id=\"txtSegundoNom\" was not injected: check your FXML file 'Persona.fxml'.";
 
     }
-    public void setStage(Stage primaryStage) {
-        this.stage = primaryStage;
+
+    public void setStage(Stage stage) {
+        this.stage =  stage;
     }
+
 }
