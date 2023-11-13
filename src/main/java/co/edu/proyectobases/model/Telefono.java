@@ -14,6 +14,6 @@ public class Telefono implements Serializable {
 
     private String codTelefono;
     private String telefono;
-    private Persona persona;
+    private Integer fk_cod_persona;
 
 }

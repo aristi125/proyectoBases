@@ -1,8 +1,7 @@
 package co.edu.proyectobases.model;
 
-public enum Especialidad {
+public class Especialidad {
 
-    Aerobicos,
-    Gimnacia,
-    Pesas
+    private Integer cod_especialidad;
+    private String nombre;
 }

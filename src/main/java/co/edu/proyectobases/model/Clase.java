@@ -11,9 +11,9 @@ import java.io.Serializable;
 
 public class Clase implements Serializable {
 
-    private int codClase;
+    private Integer codClase;
+    private Integer fk_cod_agendaGym;
     private String nombre;
-
-    private AgendaGym agendaGym;
+    private String tipo;
 
 }

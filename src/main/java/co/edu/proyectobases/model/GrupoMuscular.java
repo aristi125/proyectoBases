@@ -14,7 +14,8 @@ import java.io.Serializable;
 @NoArgsConstructor
 public class GrupoMuscular implements Serializable {
 
-    private int codGrupoMuscular;
+    private Integer codGrupoMuscular;
     private String nombre;
-    private Maquina maquina;
+    private Integer fk_cod_maquina;
+    private Integer fk_cod_rutina;
 }

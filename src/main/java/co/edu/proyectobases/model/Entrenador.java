@@ -10,7 +10,7 @@ import lombok.*;
 
 public class Entrenador extends Persona{
 
-    private AgendaGym agendaGym;
+    private Integer fk_cod_agendaGym;
 
     private Especialidad especialidad;
 

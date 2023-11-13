@@ -10,8 +10,6 @@ import lombok.*;
 public class MaquinaAgendaGym {
 
 
-    private Maquina maquina;
-
-
-    private AgendaGym agendaGym;
+    private Integer fk_cod_maquina;
+    private Integer fk_cod_agendaGym;
 }
