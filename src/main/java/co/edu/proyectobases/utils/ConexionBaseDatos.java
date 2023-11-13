@@ -38,5 +38,9 @@ public class ConexionBaseDatos {
         return connection;
     }
 
+    public static void close() throws SQLException {
+        ConexionBaseDatos.getInstance().getConnection().close();
+    }
+
 }
 

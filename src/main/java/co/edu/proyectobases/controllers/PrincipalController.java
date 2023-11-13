@@ -2,10 +2,12 @@ package co.edu.proyectobases.controllers;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import co.edu.proyectobases.utils.ConexionBaseDatos;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
@@ -294,6 +296,7 @@ public class PrincipalController {
         }
     }
 
+
     @FXML
     void initialize() {
 
@@ -308,8 +311,9 @@ public class PrincipalController {
         assert btnSencilla1 != null : "fx:id=\"btnSencilla1\" was not injected: check your FXML file 'principal-view.fxml'.";
         assert btnSencilla2 != null : "fx:id=\"btnSencilla2\" was not injected: check your FXML file 'principal-view.fxml'.";
         assert btnSencilla3 != null : "fx:id=\"btnSencilla3\" was not injected: check your FXML file 'principal-view.fxml'.";
-
     }
+
+
 
     public void loadStage(Event event) throws IOException {
 

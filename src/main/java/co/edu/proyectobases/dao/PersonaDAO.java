@@ -30,10 +30,17 @@ public class PersonaDAO {
             pst.setString(10, casa);
 
             pst.executeUpdate();
-
+connection.commit();
+        } catch (SQLException e) {
+            // Lanzar la excepción para que pueda ser manejada en el nivel superior
+            throw new SQLException("Error al agregar persona", e);
         }
-        //connection.close();
+        // connection.close(); // No es necesario cerrar la conexión explícitamente aquí
     }
+
+
+
+
     public ArrayList<Persona> consultarTodos() {
         Connection connection = null;
         PreparedStatement pst;
@@ -135,10 +142,10 @@ public class PersonaDAO {
         } finally {
             try {
                 if (connection != null) {
-                    connection.close();
+                    //connection.close();
                 }
-            } catch (SQLException e) {
-                System.err.println(e.getMessage());
+            } finally {
+
             }
         }
 

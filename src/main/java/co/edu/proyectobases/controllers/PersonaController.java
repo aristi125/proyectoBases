@@ -130,6 +130,7 @@ public class PersonaController implements Initializable {
 
     private Stage stage;
     private  ObservableList<Persona> personasView;
+    Connection conn = ConexionBaseDatos.getInstance().getConnection();
 
 
     private final String coCodigo = "cmCodigo";
@@ -157,34 +158,42 @@ public class PersonaController implements Initializable {
             llenarTabla();
         }
 
-
-
     }
 
     @FXML
     void evenActionAgregar(ActionEvent event) throws ParseException, SQLException {
 
+        try {
 
-        personaDAO.agregar(
-                Integer.parseInt(txtCodigoPersona.getText()),
-                txtPrimerNom.getText(),
-                txtSegundoNom.getText(),
-                txtPrimerApe.getText(),
-                txtSegundoApe.getText(),
-                DateFechaNaci.getValue().toString(),
-                txtCalle.getText(),
-                txtCasa.getText(),
-                txtCarrera.getText(),
-                txtBarrio.getText()
-        );
+                System.out.println("Boton Agregar presionado");
 
-        tblPersona.getItems().clear();
-        llenarTabla();
+                personaDAO.agregar(
+                        Integer.parseInt(txtCodigoPersona.getText()),
+                        txtPrimerNom.getText(),
+                        txtSegundoNom.getText(),
+                        txtPrimerApe.getText(),
+                        txtSegundoApe.getText(),
+                        DateFechaNaci.getValue().toString(),
+                        txtCalle.getText(),
+                        txtCasa.getText(),
+                        txtCarrera.getText(),
+                        txtBarrio.getText()
+                );
+
+                System.out.println("Persona agregada correctamente");
+
+                tblPersona.getItems().clear();
+                llenarTabla();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.err.println("Error al agregar persona: " + e.getMessage());
+        }
 
     }
 
     @FXML
-    void evenActionAtras(ActionEvent event) {
+    void evenActionAtras(ActionEvent event) throws SQLException {
         try {
 
             // Obtener el stage actual
@@ -276,13 +285,11 @@ public class PersonaController implements Initializable {
                 // agregar otros campos...
 
                 personas.add(row);
-
             }
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
         return personas;
 
     }
@@ -336,11 +343,11 @@ public class PersonaController implements Initializable {
         this.stage =  stage;
     }
 
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-       // ArrayList<Persona> personas = personaDAO.consultarTodos();
-       // refrezcar();
         llenarTabla();
+        //stop();
     }
 
     public ObservableList<Map> todasPersona(){
@@ -348,10 +355,11 @@ public class PersonaController implements Initializable {
 
         ObservableList<Map> personasList = FXCollections.observableArrayList();
         try{
-            ConexionBaseDatos conexion = ConexionBaseDatos.getInstance();
-            PreparedStatement consulta = conexion.getConnection().prepareStatement(sql);
+            Connection conexion = ConexionBaseDatos.getInstance().getConnection();
+            PreparedStatement consulta = conexion.prepareStatement(sql);
             ResultSet resultSet = consulta.executeQuery();
             while (resultSet.next()){
+
                 Persona persona = new Persona();
                 Map<String, Object> coleccion = new HashMap<>();
                 persona.setCod(Integer.parseInt(resultSet.getString("cod")));
@@ -366,7 +374,6 @@ public class PersonaController implements Initializable {
                 persona.setCarrera(resultSet.getString("carrera"));
                 persona.setCalle(resultSet.getString("calle"));
                 persona.setBarrio(resultSet.getString("barrio"));
-
 
                 //// Agregar al ObservableList
 
@@ -385,8 +392,9 @@ public class PersonaController implements Initializable {
 
             }
 
-            resultSet.close();
-            //consulta.close();
+            //resultSet.close();
+            consulta.close();
+
         }catch (Exception e){
             throw new RuntimeException(e);
         }
@@ -396,6 +404,8 @@ public class PersonaController implements Initializable {
 
     private void llenarTabla(){
         ObservableList<Map> lista = todasPersona();
+
+
         this.cmCodigo.setCellValueFactory(new MapValueFactory(coCodigo));
         this.cmPrimerNom.setCellValueFactory(new MapValueFactory(coPrimerNom));
         this.cmSegundoNom.setCellValueFactory(new MapValueFactory(coSegundoNom));
@@ -405,41 +415,17 @@ public class PersonaController implements Initializable {
         this.cmCarrera.setCellValueFactory(new MapValueFactory(coCarrera));
         this.cmCalle.setCellValueFactory(new MapValueFactory(coCalle));
         this.cmBarrio.setCellValueFactory(new MapValueFactory(coBarrio));
+        this.cmCasa.setCellValueFactory(new MapValueFactory(coCasa));
 
         this.tblPersona.setItems(lista);
     }
 
-    public void refrezcar(){
-
-
-        personasView = FXCollections.observableArrayList();
-
-        personasView.clear();
-
-        List<Persona> personas = personaDAO.consultarTodos();
-
-        //Agregar al ObservableList
-        personasView.addAll(personas);
-
-
-
-
-        this.cmCodigo.setCellFactory(new PropertyValueFactory("cod"));
-        this.cmPrimerNom.setCellFactory(new PropertyValueFactory("primerNombre"));
-        this.cmSegundoNom.setCellFactory(new PropertyValueFactory("segundoNombre"));
-        this.cmPrimeApe.setCellFactory(new PropertyValueFactory("primerApellido"));
-        this.cmSegundoApe.setCellFactory(new PropertyValueFactory("segundoApellido"));
-        this.cmFechaNaci.setCellFactory(new PropertyValueFactory("fechaNacimiento"));
-        this.cmCarrera.setCellFactory(new PropertyValueFactory("carrera"));
-        this.cmCalle.setCellFactory(new PropertyValueFactory("calle"));
-        this.cmBarrio.setCellFactory(new PropertyValueFactory("barrio"));
-        this.cmCasa.setCellFactory(new PropertyValueFactory("casa"));
-
-        //tblPersona.setItems(personasView);
-
-
-
+    public void stop() {
+        try {
+            ConexionBaseDatos.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
-
 
 }
