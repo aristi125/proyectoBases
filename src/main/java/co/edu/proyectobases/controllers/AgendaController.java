@@ -97,4 +97,5 @@ public class AgendaController {
     public void setStage(Stage primaryStage) {
         this.stage = primaryStage;
     }
+
 }

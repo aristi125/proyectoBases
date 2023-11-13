@@ -9,6 +9,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
+import javafx.stage.Stage;
 
 public class GrupoMuscularController {
 
@@ -51,6 +52,7 @@ public class GrupoMuscularController {
     @FXML
     private TextField txtNombreMaquina;
 
+    private Stage stage;
     @FXML
     void evenActionAgregar(ActionEvent event) {
 
@@ -86,5 +88,7 @@ public class GrupoMuscularController {
         assert txtNombreMaquina != null : "fx:id=\"txtNombreMaquina\" was not injected: check your FXML file 'grupoMuscular-view.fxml'.";
 
     }
-
+    public void setStage(Stage primaryStage) {
+        this.stage = primaryStage;
+    }
 }

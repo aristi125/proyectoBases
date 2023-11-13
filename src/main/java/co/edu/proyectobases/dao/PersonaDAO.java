@@ -1,44 +1,10 @@
 package co.edu.proyectobases.dao;
 
+import javax.swing.*;
 import java.awt.*;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import javax.swing.JOptionPane;
+import java.sql.*;
 
-public class AdministradorDAO {
-
-    String url = "jdbc:oracle:thin:@localhost:1521:XE";
-    String user;
-    String password;
-
-    public AdministradorDAO() {
-
-    }
-
-
-    public String getUser() {
-        return user;
-    }
-
-    public void setUser(String user) {
-        this.user = user;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public AdministradorDAO(String user, String password) {
-        this.user = user;
-        this.password = password;
-    }
+public class PersonaDAO {
 
 
     private static volatile Connection connection = null;
@@ -53,8 +19,8 @@ public class AdministradorDAO {
         }
         return connection;
     }
-
-    public int login(String usuario, String contrasena) {
+/**
+    public void agregar(Integer cod,String primernombre,String segundonombre,String primerapellido,String segundoapellido) {
 
         Connection connection = null;
         PreparedStatement pst;
@@ -98,4 +64,5 @@ public class AdministradorDAO {
         }
         return state;
     }
+ */
 }

@@ -76,22 +76,9 @@ public class LoginController {
         if (evt.equals(btnIngresar)){
 
             if (!txtUsuario.getText().isEmpty() && !txtContrasena.getText().isEmpty()){
-               // String usuario = "root";
-               // String contrasena = "123";
+
                 int state = adm.login(txtUsuario.getText(), txtContrasena.getText());
                 if(state == 1){
-
-                   /* FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("principal-view.fxml"));
-                    System.out.println("entro 1");
-                    Parent root = fxmlLoader.load();
-                    System.out.println("entro 2");
-                    PrincipalController controller = fxmlLoader.getController();
-                    Scene scene = new Scene(root);
-                    Stage stage = new Stage();
-                    stage.setScene(scene);
-                    //controller.init();
-                    stage.show();
-                    stage.close();*/
 
                     //LLAMAMOS AL METODO LOADSTAGE PARA CARGAR OTRA VENTANA
                     loadStage(event);

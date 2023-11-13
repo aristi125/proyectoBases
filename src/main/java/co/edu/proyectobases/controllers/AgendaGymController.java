@@ -9,6 +9,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
+import javafx.stage.Stage;
 
 public class AgendaGymController {
 
@@ -48,6 +49,8 @@ public class AgendaGymController {
     @FXML
     private TextField txtFiltrar;
 
+    private Stage stage;
+
     @FXML
     void evenActionBuscar(ActionEvent event) {
 
@@ -72,6 +75,8 @@ public class AgendaGymController {
         assert txtFiltrar != null : "fx:id=\"txtFiltrar\" was not injected: check your FXML file 'agendaGym.fxml'.";
 
     }
-
+    public void setStage(Stage primaryStage) {
+        this.stage = primaryStage;
+    }
 }
 

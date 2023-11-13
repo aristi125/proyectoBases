@@ -3,14 +3,21 @@ package co.edu.proyectobases.controllers;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
 public class PrincipalController {
 
@@ -49,11 +56,42 @@ public class PrincipalController {
 
     @FXML
     private Button btnSencilla3;
-    private Object stage;
+    private Stage stage;
 
     @FXML
     void evenActionAvanza1(ActionEvent event) {
+        try {
 
+            // Obtener el stage actual
+            Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+            // Cargar el FXML especificando el paquete base
+            FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("co/edu/proyectobases/clase-view.fxml"));
+            // loader.setController(PrincipalController.class);
+            Parent root = loader.load();
+
+            ClaseController controller = loader.getController();
+            controller.setStage(stage);
+            // Crear la scene
+            Scene scene = new Scene(root);
+
+            // Setear la scene en el stage actual
+            currentStage.setScene(scene);
+
+            currentStage.show();
+
+            // Manejar el cierre
+            currentStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+                @Override
+                public void handle(WindowEvent event) {
+                    Platform.exit();
+                }
+            });
+
+        } catch (IOException ex) {
+            Logger logger = Logger.getLogger(LoginController.class.getName());
+            logger.log(Level.SEVERE, null, ex);
+        }
     }
 
     @FXML
@@ -68,17 +106,110 @@ public class PrincipalController {
 
     @FXML
     void evenActionInterme1(ActionEvent event) {
+        try {
 
+            // Obtener el stage actual
+            Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+            // Cargar el FXML especificando el paquete base
+            FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("co/edu/proyectobases/agenda-view.fxml"));
+            // loader.setController(PrincipalController.class);
+            Parent root = loader.load();
+
+            AgendaController controller = loader.getController();
+            controller.setStage(stage);
+            // Crear la scene
+            Scene scene = new Scene(root);
+
+            // Setear la scene en el stage actual
+            currentStage.setScene(scene);
+
+            currentStage.show();
+
+            // Manejar el cierre
+            currentStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+                @Override
+                public void handle(WindowEvent event) {
+                    Platform.exit();
+                }
+            });
+
+        } catch (IOException ex) {
+            Logger logger = Logger.getLogger(LoginController.class.getName());
+            logger.log(Level.SEVERE, null, ex);
+        }
     }
 
     @FXML
     void evenActionInterme2(ActionEvent event) {
+        try {
 
+            // Obtener el stage actual
+            Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+            // Cargar el FXML especificando el paquete base
+            FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("co/edu/proyectobases/agendaC-view.fxml"));
+            // loader.setController(PrincipalController.class);
+            Parent root = loader.load();
+
+            AgendaCController controller = loader.getController();
+            controller.setStage(stage);
+            // Crear la scene
+            Scene scene = new Scene(root);
+
+            // Setear la scene en el stage actual
+            currentStage.setScene(scene);
+
+            currentStage.show();
+
+            // Manejar el cierre
+            currentStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+                @Override
+                public void handle(WindowEvent event) {
+                    Platform.exit();
+                }
+            });
+
+        } catch (IOException ex) {
+            Logger logger = Logger.getLogger(LoginController.class.getName());
+            logger.log(Level.SEVERE, null, ex);
+        }
     }
 
     @FXML
     void evenActionInterme3(ActionEvent event) {
+        try {
 
+            // Obtener el stage actual
+            Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+            // Cargar el FXML especificando el paquete base
+            FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("co/edu/proyectobases/telefono-view.fxml"));
+            // loader.setController(PrincipalController.class);
+            Parent root = loader.load();
+
+            TelefonoController controller = loader.getController();
+            controller.setStage(stage);
+            // Crear la scene
+            Scene scene = new Scene(root);
+
+            // Setear la scene en el stage actual
+            currentStage.setScene(scene);
+
+            currentStage.show();
+
+            // Manejar el cierre
+            currentStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+                @Override
+                public void handle(WindowEvent event) {
+                    Platform.exit();
+                }
+            });
+
+        } catch (IOException ex) {
+            Logger logger = Logger.getLogger(LoginController.class.getName());
+            logger.log(Level.SEVERE, null, ex);
+        }
     }
 
     @FXML
@@ -93,12 +224,74 @@ public class PrincipalController {
 
     @FXML
     void evenActionSencilla2(ActionEvent event) {
+        try {
 
+            // Obtener el stage actual
+            Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+            // Cargar el FXML especificando el paquete base
+            FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("co/edu/proyectobases/Persona.fxml"));
+            // loader.setController(PrincipalController.class);
+            Parent root = loader.load();
+
+            PersonaController controller = loader.getController();
+            controller.setStage(stage);
+            // Crear la scene
+            Scene scene = new Scene(root);
+
+            // Setear la scene en el stage actual
+            currentStage.setScene(scene);
+
+            currentStage.show();
+
+            // Manejar el cierre
+            currentStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+                @Override
+                public void handle(WindowEvent event) {
+                    Platform.exit();
+                }
+            });
+
+        } catch (IOException ex) {
+            Logger logger = Logger.getLogger(LoginController.class.getName());
+            logger.log(Level.SEVERE, null, ex);
+        }
     }
 
     @FXML
     void evenActionSencilla3(ActionEvent event) {
+        try {
 
+            // Obtener el stage actual
+            Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+            // Cargar el FXML especificando el paquete base
+            FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("co/edu/proyectobases/grupoMuscular-view.fxml"));
+            // loader.setController(PrincipalController.class);
+            Parent root = loader.load();
+
+            GrupoMuscularController controller = loader.getController();
+            controller.setStage(stage);
+            // Crear la scene
+            Scene scene = new Scene(root);
+
+            // Setear la scene en el stage actual
+            currentStage.setScene(scene);
+
+            currentStage.show();
+
+            // Manejar el cierre
+            currentStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+                @Override
+                public void handle(WindowEvent event) {
+                    Platform.exit();
+                }
+            });
+
+        } catch (IOException ex) {
+            Logger logger = Logger.getLogger(LoginController.class.getName());
+            logger.log(Level.SEVERE, null, ex);
+        }
     }
 
     @FXML

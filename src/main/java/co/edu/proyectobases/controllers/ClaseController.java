@@ -9,6 +9,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
+import javafx.stage.Stage;
 
 public class ClaseController {
 
@@ -60,6 +61,8 @@ public class ClaseController {
     @FXML
     private TextField txtNombreEntrenador;
 
+    private Stage stage;
+
     @FXML
     void evenActionAgregar(ActionEvent event) {
 
@@ -99,4 +102,7 @@ public class ClaseController {
 
     }
 
+    public void setStage(Stage primaryStage) {
+        this.stage = primaryStage;
+    }
 }
