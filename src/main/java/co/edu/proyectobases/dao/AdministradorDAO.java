@@ -1,11 +1,14 @@
 package co.edu.proyectobases.dao;
 
+import co.edu.proyectobases.model.Persona;
+
 import java.awt.*;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 public class AdministradorDAO {
@@ -98,4 +101,7 @@ public class AdministradorDAO {
         }
         return state;
     }
+
+
+
 }

@@ -21,7 +21,7 @@
          </children>
       </HBox>
       <Label layoutX="37.0" layoutY="103.0" text="Buscar:" />
-      <TableView fx:id="tblAgendaGym" layoutX="37.0" layoutY="147.0" prefHeight="200.0" prefWidth="529.0">
+      <TableView fx:id="tblAgendaGym" layoutX="37.0" layoutY="147.0" prefHeight="177.0" prefWidth="530.0">
         <columns>
           <TableColumn fx:id="cmIdAgendaGym" prefWidth="75.0" text="id agendaGym" />
           <TableColumn fx:id="cmEntrenador" prefWidth="75.0" text="entrenador" />
@@ -34,5 +34,6 @@
       </TableView>
       <TextField fx:id="txtFiltrar" layoutX="91.0" layoutY="99.0" onKeyTyped="#evenKey" promptText="filtrar" />
       <Button fx:id="btnBuscar" layoutX="261.0" layoutY="99.0" mnemonicParsing="false" onAction="#evenActionBuscar" text="buscar" />
+      <Button fx:id="btnAtras" layoutX="37.0" layoutY="345.0" mnemonicParsing="false" onAction="#evenActionAtras" text="atras" />
    </children>
 </AnchorPane>

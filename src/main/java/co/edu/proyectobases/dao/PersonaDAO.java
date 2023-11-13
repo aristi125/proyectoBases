@@ -1,8 +1,11 @@
 package co.edu.proyectobases.dao;
 
+import co.edu.proyectobases.model.Persona;
+
 import javax.swing.*;
 import java.awt.*;
 import java.sql.*;
+import java.util.ArrayList;
 
 public class PersonaDAO {
 
@@ -18,6 +21,18 @@ public class PersonaDAO {
             }
         }
         return connection;
+    }
+    public static void close(Connection connection, PreparedStatement pst) {
+        try {
+            if (pst != null) {
+                pst.close();
+            }
+            if (connection != null) {
+                connection.close();
+            }
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+        }
     }
 
     public void agregar(Integer cod,String primernombre,String segundonombre,String primerapellido,String segundoapellido,Date fecha,String Carrera, String calle,String barrio,String casa){
@@ -66,5 +81,118 @@ public class PersonaDAO {
         }
 
     }
+    public ArrayList<Persona> consultarTodos() {
+        Connection connection = null;
+        PreparedStatement pst;
+        ResultSet rs;
+        ArrayList<Persona> personas = new ArrayList<>();
 
+        try {
+            connection = getConnection();
+
+            if (connection != null) {
+                String sql = "SELECT * FROM persona";
+                pst = connection.prepareStatement(sql);
+                rs = pst.executeQuery();
+
+                while (rs.next()) {
+                    Persona persona = new Persona();
+                    persona.setCod(rs.getInt("cod"));
+                    persona.setPrimerNombre(rs.getString("primernombre"));
+                    persona.setSegundoNombre(rs.getString("segundonombre"));
+                    persona.setPrimerApellido(rs.getString("primerapellido"));
+                    persona.setSegundoApellido(rs.getString("segundoapellido"));
+                    persona.setFechaNacimiento(rs.getDate("fechanacimiento"));
+                    persona.setCarrera(rs.getString("carrera"));
+                    persona.setCalle(rs.getString("calle"));
+                    persona.setBarrio(rs.getString("barrio"));
+                    persona.setCasa(rs.getString("casa"));
+
+                    personas.add(persona);
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "No hay conexión con la base de datos", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        } catch (HeadlessException | SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al conectar con la base de datos por la siguiente razón:\n" + e.getMessage());
+        } finally {
+            try {
+                if (connection != null) {
+                    connection.close();
+                }
+            } catch (SQLException e) {
+                System.err.println(e.getMessage());
+            }
+        }
+
+        return personas;
+    }
+
+    public boolean eliminarPersona(int cod) {
+        Connection connection = null;
+        PreparedStatement pst = null;
+        try {
+            connection = getConnection();
+            String sql = "DELETE FROM persona WHERE cod = ?";
+            pst = connection.prepareStatement(sql);
+            pst.setInt(1, cod);
+            int rowsDeleted = pst.executeUpdate();
+            if (rowsDeleted == 1) {
+                return true;
+            }
+        } catch (SQLException e) {
+            System.out.println("Error al eliminar persona: " + e.getMessage());
+        } finally {
+            close(connection, pst);
+        }
+        return false;
+    }
+
+    public ArrayList<Persona> buscarPersonasPorPrimerNombre(String primerNombre) {
+        Connection connection = null;
+        PreparedStatement pst;
+        ResultSet rs;
+        ArrayList<Persona> personas = new ArrayList<>();
+
+        try {
+            connection = getConnection();
+
+            if (connection != null) {
+                String sql = "SELECT * FROM persona WHERE primernombre = ?";
+                pst = connection.prepareStatement(sql);
+                pst.setString(1, primerNombre);
+                rs = pst.executeQuery();
+
+                while (rs.next()) {
+                    Persona persona = new Persona();
+                    persona.setCod(rs.getInt("cod"));
+                    persona.setPrimerNombre(rs.getString("primernombre"));
+                    persona.setSegundoNombre(rs.getString("segundonombre"));
+                    persona.setPrimerApellido(rs.getString("primerapellido"));
+                    persona.setSegundoApellido(rs.getString("segundoapellido"));
+                    persona.setFechaNacimiento(rs.getDate("fechanacimiento"));
+                    persona.setCarrera(rs.getString("carrera"));
+                    persona.setCalle(rs.getString("calle"));
+                    persona.setBarrio(rs.getString("barrio"));
+                    persona.setCasa(rs.getString("casa"));
+
+                    personas.add(persona);
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "No hay conexión con la base de datos", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        } catch (HeadlessException | SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al conectar con la base de datos por la siguiente razón:\n" + e.getMessage());
+        } finally {
+            try {
+                if (connection != null) {
+                    connection.close();
+                }
+            } catch (SQLException e) {
+                System.err.println(e.getMessage());
+            }
+        }
+
+        return personas;
+    }
 }
