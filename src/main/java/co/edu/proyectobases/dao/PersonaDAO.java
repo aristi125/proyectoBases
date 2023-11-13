@@ -19,8 +19,8 @@ public class PersonaDAO {
         }
         return connection;
     }
-/**
-    public void agregar(Integer cod,String primernombre,String segundonombre,String primerapellido,String segundoapellido) {
+
+    public void agregar(Integer cod,String primernombre,String segundonombre,String primerapellido,String segundoapellido,Date fecha,String Carrera, String calle,String barrio,String casa){
 
         Connection connection = null;
         PreparedStatement pst;
@@ -34,11 +34,13 @@ public class PersonaDAO {
             connection = getConnection();
 
             if (connection != null) {
-                String sql = "SELECT * FROM administrador WHERE usuario = ? AND contrasena = ?";
+                String sql = "INSERT INTO persona (cod, primernombre, segundonombre, primerapellido, segundoapellido, fechanacimiento, carrera, calle, barrio, casa)\n" +
+                        "VALUES\n" +
+                        "    ("+cod+", '"+primernombre+"', '"+segundonombre+"', '"+primerapellido+"', '"+segundoapellido+"', '"+fecha+"', '"+Carrera+"', '"+calle+"', '"+barrio+"', '"+casa+"')";
 
                 pst = connection.prepareStatement(sql);
-                pst.setString(1, usuario);
-                pst.setString(2, contrasena);
+                //pst.setString(1, usuario);
+                //pst.setString(2, contrasena);
 
                 rs = pst.executeQuery();
 
@@ -62,7 +64,7 @@ public class PersonaDAO {
             }
 
         }
-        return state;
+
     }
- */
+
 }
