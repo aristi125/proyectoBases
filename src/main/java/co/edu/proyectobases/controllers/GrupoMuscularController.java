@@ -155,26 +155,11 @@ public class GrupoMuscularController implements Initializable {
         if (txtFiltrar.getText().isEmpty()) {
             llenarTabla();
         }
-
-        if (!comb.getSelectionModel().getSelectedItem().toString().equals("")) {
+        else if (!comb.getSelectionModel().getSelectedItem().toString().equals("")) {
             System.out.println("Entro a la condicion");
             if (comb.getSelectionModel().getSelectedItem().toString().equals("Maquina")) {
                 tblGrupoMuscular.getItems().clear();
-                ObservableList<Map> lista = buscarPorNombreMaquina(txtCodMaquina.getText());
-
-                this.cmCodigoMusculo.setCellValueFactory(new MapValueFactory(coCodigo));
-                this.cmNombreMusculo.setCellValueFactory(new MapValueFactory(coNombre));
-                this.cmCodMaquina.setCellValueFactory(new MapValueFactory(coMaquina));
-                this.cmCodRutina.setCellValueFactory(new MapValueFactory(coRutina));
-                this.cmNombreRutina.setCellValueFactory(new MapValueFactory(coNombreRutina));
-                this.cmNombreMaquina.setCellValueFactory(new MapValueFactory(coNombreMaquina));
-
-                tblGrupoMuscular.setItems(lista);
-
-            } else if (comb.getSelectionModel().getSelectedItem().toString().equals("Musculo")) {
-                System.out.println("Se selecciono musculo");
-                tblGrupoMuscular.getItems().clear();
-                ObservableList<Map> lista = buscarPorNombreMuscular(txtCodigoMusculo.getText());
+                ObservableList<Map> lista = buscarPorNombreMaquina(txtFiltrar.getText());
 
                 this.cmCodigoMusculo.setCellValueFactory(new MapValueFactory("codgrupomuscular"));
                 this.cmNombreMusculo.setCellValueFactory(new MapValueFactory("nombre_grupomuscular"));
@@ -185,16 +170,33 @@ public class GrupoMuscularController implements Initializable {
 
                 tblGrupoMuscular.setItems(lista);
 
+
+
+            } else if (comb.getSelectionModel().getSelectedItem().toString().equals("Musculo")) {
+                System.out.println("Se selecciono musculo");
+                tblGrupoMuscular.getItems().clear();
+                ObservableList<Map> lista = buscarPorNombreMuscular(txtFiltrar.getText());
+
+                this.cmCodigoMusculo.setCellValueFactory(new MapValueFactory("codgrupomuscular"));
+                this.cmNombreMusculo.setCellValueFactory(new MapValueFactory("nombre_grupomuscular"));
+                this.cmCodMaquina.setCellValueFactory(new MapValueFactory("maquina_codmaquina"));
+                this.cmCodRutina.setCellValueFactory(new MapValueFactory("rutina_codrutina"));
+                this.cmNombreRutina.setCellValueFactory(new MapValueFactory("nombre_rutina"));
+                this.cmNombreMaquina.setCellValueFactory(new MapValueFactory("nombre_maquina"));
+
+                tblGrupoMuscular.setItems(lista);
+                System.out.println(lista);
+
             } else if (comb.getSelectionModel().getSelectedItem().toString().equals("Rutina")) {
                 tblGrupoMuscular.getItems().clear();
-                ObservableList<Map> lista = buscarPorNombreRutina(txtCodRutina.getText());
+                ObservableList<Map> lista = buscarPorNombreRutina(txtFiltrar.getText());
 
-                this.cmCodigoMusculo.setCellValueFactory(new MapValueFactory(coCodigo));
-                this.cmNombreMusculo.setCellValueFactory(new MapValueFactory(coNombre));
-                this.cmCodMaquina.setCellValueFactory(new MapValueFactory(coMaquina));
-                this.cmCodRutina.setCellValueFactory(new MapValueFactory(coRutina));
-                this.cmNombreRutina.setCellValueFactory(new MapValueFactory(coNombreRutina));
-                this.cmNombreMaquina.setCellValueFactory(new MapValueFactory(coNombreMaquina));
+                this.cmCodigoMusculo.setCellValueFactory(new MapValueFactory("codgrupomuscular"));
+                this.cmNombreMusculo.setCellValueFactory(new MapValueFactory("nombre_grupomuscular"));
+                this.cmCodMaquina.setCellValueFactory(new MapValueFactory("maquina_codmaquina"));
+                this.cmCodRutina.setCellValueFactory(new MapValueFactory("rutina_codrutina"));
+                this.cmNombreRutina.setCellValueFactory(new MapValueFactory("nombre_rutina"));
+                this.cmNombreMaquina.setCellValueFactory(new MapValueFactory("nombre_maquina"));
 
                 tblGrupoMuscular.setItems(lista);
             }
@@ -348,7 +350,7 @@ public class GrupoMuscularController implements Initializable {
                 "JOIN " +
                 "    rutina r ON gm.rutina_codrutina = r.codrutina " +
                 "WHERE " +
-                "    gm.codgrupomuscular = ?";
+                "    gm.nombre = ?";
 
         ObservableList<Map> gruposmuscularesList = FXCollections.observableArrayList();
         try {
@@ -360,32 +362,17 @@ public class GrupoMuscularController implements Initializable {
 
             ResultSet resultSet = consulta.executeQuery();
             while (resultSet.next()) {
-                GrupoMuscular grupoMuscular = new GrupoMuscular();
-                Maquina maquina = new Maquina();
-                Rutina rutina = new Rutina();
 
-                Map<String, Object> coleccion = new HashMap<>();
+                Map<String, Object> row = new HashMap<>();
 
-                grupoMuscular.setCodGrupoMuscular(resultSet.getInt("codgrupomuscular"));
-                grupoMuscular.setNombre(resultSet.getString("nombre_grupomuscular"));
-                grupoMuscular.setFk_cod_maquina(resultSet.getInt("maquina_codmaquina"));
-                grupoMuscular.setFk_cod_rutina(resultSet.getInt("rutina_codrutina"));
+                row.put("codgrupomuscular",resultSet.getInt("codgrupomuscular"));
+                row.put("nombre_grupomuscular",resultSet.getString("nombre_grupomuscular"));
+                row.put("maquina_codmaquina",resultSet.getInt("maquina_codmaquina"));
+                row.put("rutina_codrutina",resultSet.getInt("rutina_codrutina"));
+                row.put("nombre_maquina",resultSet.getString("nombre_maquina"));
+                row.put("nombre_rutina",resultSet.getString("nombre_rutina"));
 
-                maquina.setCodMaquina(resultSet.getInt("maquina_codmaquina"));
-                maquina.setNombre(resultSet.getString("nombre_maquina"));
-
-                rutina.setCodRutina(resultSet.getInt("rutina_codrutina"));
-                rutina.setNombre(resultSet.getString("nombre_rutina"));
-
-                //// Agregar al ObservableList
-                coleccion.put(coCodigo, String.valueOf(grupoMuscular.getCodGrupoMuscular()));
-                coleccion.put(coNombre, grupoMuscular.getNombre());
-                coleccion.put(coMaquina, maquina.getCodMaquina()); // Cambié a obtener el nombre de la máquina
-                coleccion.put(coRutina, rutina.getCodRutina()); // Cambié a obtener el nombre de la ruti
-                coleccion.put(coNombreRutina,rutina.getNombre());
-                coleccion.put(coNombreMaquina, maquina.getNombre());
-
-                gruposmuscularesList.add(coleccion);
+                gruposmuscularesList.add(row);
             }
 
             consulta.close();
@@ -412,7 +399,7 @@ public class GrupoMuscularController implements Initializable {
                 "JOIN " +
                 "    rutina r ON gm.rutina_codrutina = r.codrutina " +
                 "WHERE " +
-                "    r.nombre_rutina = ?";
+                "    r.nombre = ?";
 
         ObservableList<Map> gruposmuscularesList = FXCollections.observableArrayList();
         try {
@@ -424,32 +411,16 @@ public class GrupoMuscularController implements Initializable {
 
             ResultSet resultSet = consulta.executeQuery();
             while (resultSet.next()) {
-                GrupoMuscular grupoMuscular = new GrupoMuscular();
-                Maquina maquina = new Maquina();
-                Rutina rutina = new Rutina();
+                Map<String, Object> row = new HashMap<>();
 
-                Map<String, Object> coleccion = new HashMap<>();
+                row.put("codgrupomuscular",resultSet.getInt("codgrupomuscular"));
+                row.put("nombre_grupomuscular",resultSet.getString("nombre_grupomuscular"));
+                row.put("maquina_codmaquina",resultSet.getInt("maquina_codmaquina"));
+                row.put("rutina_codrutina",resultSet.getInt("rutina_codrutina"));
+                row.put("nombre_maquina",resultSet.getString("nombre_maquina"));
+                row.put("nombre_rutina",resultSet.getString("nombre_rutina"));
 
-                grupoMuscular.setCodGrupoMuscular(resultSet.getInt("codgrupomuscular"));
-                grupoMuscular.setNombre(resultSet.getString("nombre_grupomuscular"));
-                grupoMuscular.setFk_cod_maquina(resultSet.getInt("maquina_codmaquina"));
-                grupoMuscular.setFk_cod_rutina(resultSet.getInt("rutina_codrutina"));
-
-                maquina.setCodMaquina(resultSet.getInt("maquina_codmaquina"));
-                maquina.setNombre(resultSet.getString("nombre_maquina"));
-
-                rutina.setCodRutina(resultSet.getInt("rutina_codrutina"));
-                rutina.setNombre(resultSet.getString("nombre_rutina"));
-
-                //// Agregar al ObservableList
-                coleccion.put(coCodigo, String.valueOf(grupoMuscular.getCodGrupoMuscular()));
-                coleccion.put(coNombre, grupoMuscular.getNombre());
-                coleccion.put(coMaquina, maquina.getCodMaquina()); // Cambié a obtener el nombre de la máquina
-                coleccion.put(coRutina, rutina.getCodRutina()); // Cambié a obtener el nombre de la rutina
-                coleccion.put(coNombreRutina, rutina.getNombre());
-                coleccion.put(coNombreMaquina, maquina.getNombre());
-
-                gruposmuscularesList.add(coleccion);
+                gruposmuscularesList.add(row);
             }
 
             consulta.close();
@@ -476,7 +447,7 @@ public class GrupoMuscularController implements Initializable {
                 "JOIN " +
                 "    rutina r ON gm.rutina_codrutina = r.codrutina " +
                 "WHERE " +
-                "    m.nombre_maquina = ?";
+                "    m.nombre = ?";
 
         ObservableList<Map> gruposmuscularesList = FXCollections.observableArrayList();
         try {
@@ -488,32 +459,16 @@ public class GrupoMuscularController implements Initializable {
 
             ResultSet resultSet = consulta.executeQuery();
             while (resultSet.next()) {
-                GrupoMuscular grupoMuscular = new GrupoMuscular();
-                Maquina maquina = new Maquina();
-                Rutina rutina = new Rutina();
+                Map<String, Object> row = new HashMap<>();
 
-                Map<String, Object> coleccion = new HashMap<>();
+                row.put("codgrupomuscular",resultSet.getInt("codgrupomuscular"));
+                row.put("nombre_grupomuscular",resultSet.getString("nombre_grupomuscular"));
+                row.put("maquina_codmaquina",resultSet.getInt("maquina_codmaquina"));
+                row.put("rutina_codrutina",resultSet.getInt("rutina_codrutina"));
+                row.put("nombre_maquina",resultSet.getString("nombre_maquina"));
+                row.put("nombre_rutina",resultSet.getString("nombre_rutina"));
 
-                grupoMuscular.setCodGrupoMuscular(resultSet.getInt("codgrupomuscular"));
-                grupoMuscular.setNombre(resultSet.getString("nombre_grupomuscular"));
-                grupoMuscular.setFk_cod_maquina(resultSet.getInt("maquina_codmaquina"));
-                grupoMuscular.setFk_cod_rutina(resultSet.getInt("rutina_codrutina"));
-
-                maquina.setCodMaquina(resultSet.getInt("maquina_codmaquina"));
-                maquina.setNombre(resultSet.getString("nombre_maquina"));
-
-                rutina.setCodRutina(resultSet.getInt("rutina_codrutina"));
-                rutina.setNombre(resultSet.getString("nombre_rutina"));
-
-                //// Agregar al ObservableList
-                coleccion.put(coCodigo, String.valueOf(grupoMuscular.getCodGrupoMuscular()));
-                coleccion.put(coNombre, grupoMuscular.getNombre());
-                coleccion.put(coMaquina, maquina.getCodMaquina());
-                coleccion.put(coRutina, rutina.getCodRutina());
-                coleccion.put(coNombreRutina, rutina.getNombre());
-                coleccion.put(coNombreMaquina, maquina.getNombre());
-
-                gruposmuscularesList.add(coleccion);
+                gruposmuscularesList.add(row);
             }
 
             consulta.close();

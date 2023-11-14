@@ -6,7 +6,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.ResourceBundle;
@@ -14,6 +13,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import co.edu.proyectobases.model.Persona;
+import co.edu.proyectobases.model.PersonaTelefono;
 import co.edu.proyectobases.model.Telefono;
 import co.edu.proyectobases.utils.ConexionBaseDatos;
 import javafx.application.Platform;
@@ -23,6 +23,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -30,11 +31,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.MapValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
-public class TelefonoController {
+public class TelefonoController implements Initializable{
 
     @FXML
     private ResourceBundle resources;
@@ -52,6 +54,9 @@ public class TelefonoController {
     private Button btnBuscar;
 
     @FXML
+    private TableColumn<?, ?> cmCodCliente;
+
+    @FXML
     private TableColumn<?, ?> cmCodigoTele;
 
     @FXML
@@ -62,6 +67,9 @@ public class TelefonoController {
 
     @FXML
     private TableView<Map> tblTelefono;
+
+    @FXML
+    private TextField txtCodCliente;
 
     @FXML
     private TextField txtCodTelefono;
@@ -77,10 +85,10 @@ public class TelefonoController {
 
     private Stage stage;
 
-    private final String coCodTelefono = "cmCodigoTeleno";
-    private final String coNombrePersona = "cmNombrePersona";
+    private final String coCodTelefono = "cmCodigoTele";
+    private final String coNombrePersona = "cmNombrePerso";
     private final String coNumeroTelefono = "cmTelefono";
-    private final String coCodigoPersona = "cmCodigoPersona";
+    private final String coCodigoPersona = "cmCodCliente";
 
 
 
@@ -128,6 +136,24 @@ public class TelefonoController {
     @FXML
     void evenActionBuscar(ActionEvent event) {
 
+        if(txtFiltrar.getText().isEmpty()){
+            llenarTabla();
+        }
+        else {
+            tblTelefono.getItems().clear();
+
+            ObservableList<Map> lista = buscarTelefonosPorNombrePersona(txtFiltrar.getText());
+
+            this.cmCodCliente.setCellValueFactory(new MapValueFactory(coCodigoPersona));
+            this.cmCodigoTele.setCellValueFactory(new MapValueFactory(coCodTelefono));
+            this.cmNombrePerso.setCellValueFactory(new MapValueFactory(coNombrePersona));
+            this.cmTelefono.setCellValueFactory(new MapValueFactory(coNumeroTelefono));
+
+            tblTelefono.setItems(lista);
+        }
+
+
+
     }
 
     @FXML
@@ -139,11 +165,13 @@ public class TelefonoController {
     void initialize() {
         assert btnAgregar != null : "fx:id=\"btnAgregar\" was not injected: check your FXML file 'telefono-view.fxml'.";
         assert btnAtras != null : "fx:id=\"btnAtras\" was not injected: check your FXML file 'telefono-view.fxml'.";
+        assert cmCodCliente != null : "fx:id=\"cmCodCliente\" was not injected: check your FXML file 'telefono-view.fxml'.";
         assert btnBuscar != null : "fx:id=\"btnBuscar\" was not injected: check your FXML file 'telefono-view.fxml'.";
         assert cmCodigoTele != null : "fx:id=\"cmCodigoTele\" was not injected: check your FXML file 'telefono-view.fxml'.";
         assert cmNombrePerso != null : "fx:id=\"cmNombrePerso\" was not injected: check your FXML file 'telefono-view.fxml'.";
         assert cmTelefono != null : "fx:id=\"cmTelefono\" was not injected: check your FXML file 'telefono-view.fxml'.";
         assert tblTelefono != null : "fx:id=\"tblTelefono\" was not injected: check your FXML file 'telefono-view.fxml'.";
+        assert txtCodCliente != null : "fx:id=\"txtCodCliente\" was not injected: check your FXML file 'telefono-view.fxml'.";
         assert txtCodTelefono != null : "fx:id=\"txtCodTelefono\" was not injected: check your FXML file 'telefono-view.fxml'.";
         assert txtFiltrar != null : "fx:id=\"txtFiltrar\" was not injected: check your FXML file 'telefono-view.fxml'.";
         assert txtMombre != null : "fx:id=\"txtMombre\" was not injected: check your FXML file 'telefono-view.fxml'.";
@@ -156,9 +184,8 @@ public class TelefonoController {
     }
 
 
-    public ObservableList<Map> buscarTelefonosPorNombrePersona(Integer nombrePersona){
-
-        ObservableList<Map> personas = FXCollections.observableArrayList();
+    public ObservableList<Map> buscarTelefonosPorNombrePersona(String nombrePersona) {
+        ObservableList<Map> telefonos = FXCollections.observableArrayList();
 
         try {
             Connection conexion = ConexionBaseDatos.getInstance().getConnection();
@@ -167,40 +194,35 @@ public class TelefonoController {
                     "    t.codtelefono,\n" +
                     "    t.numerotelefono,\n" +
                     "    t.persona_cod,\n" +
-                    "    p.primernombre || ' ' || p.primerapellido AS nombre_persona\n" +
+                    "    p.primernombre \n" +
                     "FROM \n" +
                     "    telefono t\n" +
                     "JOIN \n" +
                     "    persona p ON t.persona_cod = p.cod\n" +
-                    "JOIN \n" +
-                    "    cliente c ON c.persona_cod = p.cod\n" +
                     "WHERE \n" +
                     "    p.primernombre = ?";
             PreparedStatement consulta = conexion.prepareStatement(sql);
-            consulta.setInt(1, nombrePersona);
+            consulta.setString(1, nombrePersona);
 
             ResultSet resultSet = consulta.executeQuery();
 
-            while(resultSet.next()){
-
+            while (resultSet.next()) {
                 Map<String, Object> row = new HashMap<>();
 
+                row.put("cmCodigoTele", resultSet.getInt("codtelefono"));
+                row.put("cmCodCliente", resultSet.getInt("persona_cod"));
+                row.put("cmTelefono", resultSet.getLong("numerotelefono"));
+                row.put("cmNombrePerso", resultSet.getString("primernombre"));
 
-                row.put("codtelefono", resultSet.getInt("cod"));
-                row.put("persona_cod", resultSet.getInt("persona_cod"));
-                row.put("numerotelefono", resultSet.getInt("numero"));
-                row.put("nombre_persona", resultSet.getString("nombre_persona"));
-
-
-                personas.add(row);
+                telefonos.add(row);
             }
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return personas;
-
+        return telefonos;
     }
+
 
 
     //Se activa cuando se cree la tabla persona
@@ -212,7 +234,7 @@ public class TelefonoController {
                 "    t.codtelefono,\n" +
                 "    t.numerotelefono,\n" +
                 "    t.persona_cod,\n" +
-                "    p.primernombre || ' ' || p.primerapellido AS nombre_persona\n" +
+                "    p.primernombre \n" +
                 "FROM \n" +
                 "    telefono t\n" +
                 "JOIN \n" +
@@ -229,19 +251,20 @@ public class TelefonoController {
                 Telefono telefono = new Telefono();
                 Map<String, Object> coleccion = new HashMap<>();
 
-                telefono.setCodTelefono(resultSet.getInt("cod"));
-                telefono.setNumeroTelefono(resultSet.getInt("numero"));
+                telefono.setCodTelefono(resultSet.getInt("codtelefono"));
+                telefono.setNumeroTelefono(resultSet.getLong("numerotelefono"));
+
                 telefono.setFk_cod_persona(resultSet.getInt("persona_cod"));
 
                 persona.setCod(resultSet.getInt("persona_cod"));
-                persona.setPrimerNombre(resultSet.getString("nombre_persona"));
+                persona.setPrimerNombre(resultSet.getString("primernombre"));
 
                 //// Agregar al ObservableList
 
-                coleccion.put(coCodTelefono, String.valueOf(telefono.getCodTelefono()));
-                coleccion.put(coNumeroTelefono, String.valueOf(telefono.getNumeroTelefono()));
-                coleccion.put(coCodigoPersona, String.valueOf(telefono.getFk_cod_persona()));
-                coleccion.put(coNombrePersona, String.valueOf(persona.getPrimerNombre()));
+                coleccion.put(coCodTelefono, telefono.getCodTelefono());
+                coleccion.put(coNumeroTelefono, (telefono.getNumeroTelefono()));
+                coleccion.put(coCodigoPersona, (persona.getCod()));
+                coleccion.put(coNombrePersona, (persona.getPrimerNombre()));
 
                 telefonosList.add(coleccion);
 
@@ -257,5 +280,24 @@ public class TelefonoController {
         return telefonosList;
     }
 
+    private void llenarTabla(){
+        ObservableList<Map> lista = todosTelefonos();
 
+
+
+        this.cmCodCliente.setCellValueFactory(new MapValueFactory(coCodigoPersona));
+        this.cmCodigoTele.setCellValueFactory(new MapValueFactory(coCodTelefono));
+        this.cmNombrePerso.setCellValueFactory(new MapValueFactory(coNombrePersona));
+        this.cmTelefono.setCellValueFactory(new MapValueFactory(coNumeroTelefono));
+
+
+
+        this.tblTelefono.setItems(lista);
+    }
+
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        llenarTabla();
+    }
 }

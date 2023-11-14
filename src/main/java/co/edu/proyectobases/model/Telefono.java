@@ -13,7 +13,7 @@ import java.io.Serializable;
 public class Telefono implements Serializable {
 
     private Integer codTelefono;
-    private Integer numeroTelefono;
+    private Long numeroTelefono;
     private Integer fk_cod_persona;
 
 }
