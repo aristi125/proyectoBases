@@ -15,6 +15,7 @@ import java.util.List;
 public class Persona implements Serializable{
 
     private int cod;
+
     private String primerNombre;
     private String segundoNombre;
     private String primerApellido;

@@ -41,7 +41,7 @@
          </font>
       </Button>
       <Separator layoutX="321.0" layoutY="120.0" orientation="VERTICAL" prefHeight="306.0" prefWidth="3.0" style="-fx-background-color: #000000;" />
-      <TableView fx:id="tblAgenda" layoutX="344.0" layoutY="203.0" prefHeight="200.0" prefWidth="332.0">
+      <TableView fx:id="tblAgenda" layoutX="344.0" layoutY="203.0" prefHeight="200.0" prefWidth="301.0">
         <columns>
           <TableColumn fx:id="cmCodigoId" prefWidth="75.0" text="Codigo" />
           <TableColumn fx:id="cmNombre" prefWidth="75.0" text="Nombre" />
