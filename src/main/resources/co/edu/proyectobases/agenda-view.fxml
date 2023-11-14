@@ -22,29 +22,26 @@
             </Label>
          </children>
       </HBox>
-      <DatePicker fx:id="dateHoraInicio" layoutX="128.0" layoutY="216.0" />
-      <DatePicker fx:id="dateHoraFinal" layoutX="128.0" layoutY="262.0" />
-      <Label layoutX="28.0" layoutY="220.0" text="Hora de Inicio:" />
-      <Label layoutX="27.0" layoutY="266.0" prefHeight="18.0" prefWidth="77.0" text="Hora de fin:" />
+      <DatePicker fx:id="dateHoraInicio" layoutX="128.0" layoutY="186.0" />
+      <DatePicker fx:id="dateHoraFinal" layoutX="128.0" layoutY="232.0" />
+      <Label layoutX="28.0" layoutY="190.0" text="Hora de Inicio:" />
+      <Label layoutX="27.0" layoutY="236.0" prefHeight="18.0" prefWidth="77.0" text="Hora de fin:" />
       <Label layoutX="25.0" layoutY="152.0" text="Codigo id:" />
       <TextField fx:id="txtId" layoutX="129.0" layoutY="143.0" onKeyTyped="#evenKey" prefHeight="26.0" prefWidth="175.0" promptText="codigo: 01" style="-fx-background-radius: 10;" />
-      <Label layoutX="25.0" layoutY="185.0" prefHeight="18.0" prefWidth="54.0" text="Nombre:" />
-      <TextField layoutX="128.0" layoutY="177.0" onKeyTyped="#evenKey" prefHeight="26.0" prefWidth="175.0" promptText="michael" style="-fx-background-radius: 10;" />
-      <Button fx:id="btnAgregar" layoutX="142.0" layoutY="321.0" mnemonicParsing="false" onAction="#evenActionAgendar" prefHeight="26.0" prefWidth="97.0" text="Agendar">
+      <Button fx:id="btnAgregar" layoutX="40.0" layoutY="290.0" mnemonicParsing="false" onAction="#evenActionAgendar" prefHeight="26.0" prefWidth="97.0" text="Agendar">
          <font>
             <Font size="16.0" />
          </font>
       </Button>
-      <Button fx:id="bntAtras" layoutX="32.0" layoutY="385.0" mnemonicParsing="false" onAction="#evenActionAtras" prefHeight="30.0" prefWidth="65.0" text="atras">
+      <Button fx:id="bntAtras" layoutX="32.0" layoutY="420.0" mnemonicParsing="false" onAction="#evenActionAtras" prefHeight="30.0" prefWidth="65.0" text="atras">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
       <Separator layoutX="321.0" layoutY="120.0" orientation="VERTICAL" prefHeight="306.0" prefWidth="3.0" style="-fx-background-color: #000000;" />
-      <TableView fx:id="tblAgenda" layoutX="344.0" layoutY="203.0" prefHeight="200.0" prefWidth="301.0">
+      <TableView fx:id="tblAgenda" layoutX="374.0" layoutY="208.0" prefHeight="200.0" prefWidth="225.0">
         <columns>
           <TableColumn fx:id="cmCodigoId" prefWidth="75.0" text="Codigo" />
-          <TableColumn fx:id="cmNombre" prefWidth="75.0" text="Nombre" />
             <TableColumn fx:id="cmHoraInicio" prefWidth="75.0" text="Inicio" />
             <TableColumn fx:id="cmHoraFin" prefWidth="75.0" text="Fin" />
         </columns>
@@ -52,5 +49,10 @@
       <Label layoutX="344.0" layoutY="148.0" text="Buscar:" />
       <TextField fx:id="txtFiltrar" layoutX="398.0" layoutY="144.0" onKeyTyped="#evenKey" prefHeight="26.0" prefWidth="113.0" promptText="filtrar" style="-fx-background-radius: 10;" />
       <Button fx:id="btnbuscar" layoutX="533.0" layoutY="143.0" mnemonicParsing="false" onAction="#evenActionBuscar" prefHeight="26.0" prefWidth="51.0" text="buscar" />
+      <Button fx:id="btnEliminar" layoutX="190.0" layoutY="291.0" mnemonicParsing="false" onAction="#evenActionEliminar" prefHeight="38.0" prefWidth="77.0" text="Eliminar">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

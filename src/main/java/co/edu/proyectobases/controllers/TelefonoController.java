@@ -2,11 +2,23 @@ package co.edu.proyectobases.controllers;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import co.edu.proyectobases.model.Persona;
+import co.edu.proyectobases.model.Telefono;
+import co.edu.proyectobases.utils.ConexionBaseDatos;
 import javafx.application.Platform;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -49,7 +61,7 @@ public class TelefonoController {
     private TableColumn<?, ?> cmTelefono;
 
     @FXML
-    private TableView<?> tblTelefono;
+    private TableView<Map> tblTelefono;
 
     @FXML
     private TextField txtCodTelefono;
@@ -64,6 +76,13 @@ public class TelefonoController {
     private TextField txtTelefono;
 
     private Stage stage;
+
+    private final String coCodTelefono = "cmCodigoTeleno";
+    private final String coNombrePersona = "cmNombrePersona";
+    private final String coNumeroTelefono = "cmTelefono";
+    private final String coCodigoPersona = "cmCodigoPersona";
+
+
 
     @FXML
     void evenActionAgregar(ActionEvent event) {
@@ -135,4 +154,108 @@ public class TelefonoController {
     public void setStage(Stage stage) {
         this.stage =  stage;
     }
+
+
+    public ObservableList<Map> buscarTelefonosPorNombrePersona(Integer nombrePersona){
+
+        ObservableList<Map> personas = FXCollections.observableArrayList();
+
+        try {
+            Connection conexion = ConexionBaseDatos.getInstance().getConnection();
+
+            String sql = "SELECT \n" +
+                    "    t.codtelefono,\n" +
+                    "    t.numerotelefono,\n" +
+                    "    t.persona_cod,\n" +
+                    "    p.primernombre || ' ' || p.primerapellido AS nombre_persona\n" +
+                    "FROM \n" +
+                    "    telefono t\n" +
+                    "JOIN \n" +
+                    "    persona p ON t.persona_cod = p.cod\n" +
+                    "JOIN \n" +
+                    "    cliente c ON c.persona_cod = p.cod\n" +
+                    "WHERE \n" +
+                    "    p.primernombre = ?";
+            PreparedStatement consulta = conexion.prepareStatement(sql);
+            consulta.setInt(1, nombrePersona);
+
+            ResultSet resultSet = consulta.executeQuery();
+
+            while(resultSet.next()){
+
+                Map<String, Object> row = new HashMap<>();
+
+
+                row.put("codtelefono", resultSet.getInt("cod"));
+                row.put("persona_cod", resultSet.getInt("persona_cod"));
+                row.put("numerotelefono", resultSet.getInt("numero"));
+                row.put("nombre_persona", resultSet.getString("nombre_persona"));
+
+
+                personas.add(row);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return personas;
+
+    }
+
+
+    //Se activa cuando se cree la tabla persona
+
+    public ObservableList<Map> todosTelefonos(){
+
+
+        var sql = "SELECT \n" +
+                "    t.codtelefono,\n" +
+                "    t.numerotelefono,\n" +
+                "    t.persona_cod,\n" +
+                "    p.primernombre || ' ' || p.primerapellido AS nombre_persona\n" +
+                "FROM \n" +
+                "    telefono t\n" +
+                "JOIN \n" +
+                "    persona p ON t.persona_cod = p.cod";
+
+        ObservableList<Map> telefonosList = FXCollections.observableArrayList();
+        try{
+            Connection conexion = ConexionBaseDatos.getInstance().getConnection();
+            PreparedStatement consulta = conexion.prepareStatement(sql);
+            ResultSet resultSet = consulta.executeQuery();
+            while (resultSet.next()){
+
+                Persona persona = new Persona();
+                Telefono telefono = new Telefono();
+                Map<String, Object> coleccion = new HashMap<>();
+
+                telefono.setCodTelefono(resultSet.getInt("cod"));
+                telefono.setNumeroTelefono(resultSet.getInt("numero"));
+                telefono.setFk_cod_persona(resultSet.getInt("persona_cod"));
+
+                persona.setCod(resultSet.getInt("persona_cod"));
+                persona.setPrimerNombre(resultSet.getString("nombre_persona"));
+
+                //// Agregar al ObservableList
+
+                coleccion.put(coCodTelefono, String.valueOf(telefono.getCodTelefono()));
+                coleccion.put(coNumeroTelefono, String.valueOf(telefono.getNumeroTelefono()));
+                coleccion.put(coCodigoPersona, String.valueOf(telefono.getFk_cod_persona()));
+                coleccion.put(coNombrePersona, String.valueOf(persona.getPrimerNombre()));
+
+                telefonosList.add(coleccion);
+
+            }
+
+            //resultSet.close();
+            consulta.close();
+
+        }catch (Exception e){
+            throw new RuntimeException(e);
+        }
+
+        return telefonosList;
+    }
+
+
 }

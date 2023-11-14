@@ -7,11 +7,13 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
 public class PersonaRepositorioImpl implements Repositorio<Persona> {
     private Connection getConnection() throws SQLException {
         return ConexionBaseDatos.getInstance();
     }
     //=====================================================
+
 
     //METODOS SOBRE ESCRITOS
     @Override
@@ -82,4 +84,5 @@ public class PersonaRepositorioImpl implements Repositorio<Persona> {
         p.setCasa(reslut.getString("casa"));
         return p;
     }
-}
+    */
+

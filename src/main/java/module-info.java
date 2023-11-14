@@ -13,7 +13,7 @@ module co.edu.proyectobases {
     opens co.edu.proyectobases to javafx.fxml;
 
     exports co.edu.proyectobases.model;
-    exports co.edu.proyectobases.test;
+    //exports co.edu.proyectobases.test;
     exports co.edu.proyectobases.repository;
     exports co.edu.proyectobases.utils;
     exports co.edu.proyectobases;

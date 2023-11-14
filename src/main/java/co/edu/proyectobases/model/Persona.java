@@ -14,8 +14,7 @@ import java.util.List;
 
 public class Persona implements Serializable{
 
-    private int cod;
-
+    private Integer cod;
     private String primerNombre;
     private String segundoNombre;
     private String primerApellido;
@@ -26,6 +25,5 @@ public class Persona implements Serializable{
     private String barrio;
     private String casa;
 
-    private List<Telefono> listaTelefonos;
 
 }

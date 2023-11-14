@@ -2,10 +2,12 @@ package co.edu.proyectobases.controllers;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import co.edu.proyectobases.utils.ConexionBaseDatos;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
@@ -106,38 +108,7 @@ public class PrincipalController {
 
     @FXML
     void evenActionInterme1(ActionEvent event) {
-        try {
 
-            // Obtener el stage actual
-            Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-
-            // Cargar el FXML especificando el paquete base
-            FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("co/edu/proyectobases/agenda-view.fxml"));
-            // loader.setController(PrincipalController.class);
-            Parent root = loader.load();
-
-            AgendaController controller = loader.getController();
-            controller.setStage(stage);
-            // Crear la scene
-            Scene scene = new Scene(root);
-
-            // Setear la scene en el stage actual
-            currentStage.setScene(scene);
-
-            currentStage.show();
-
-            // Manejar el cierre
-            currentStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
-                @Override
-                public void handle(WindowEvent event) {
-                    Platform.exit();
-                }
-            });
-
-        } catch (IOException ex) {
-            Logger logger = Logger.getLogger(LoginController.class.getName());
-            logger.log(Level.SEVERE, null, ex);
-        }
     }
 
     @FXML
@@ -214,11 +185,76 @@ public class PrincipalController {
 
     @FXML
     void evenActionInterme4(ActionEvent event) {
+        try {
+
+            // Obtener el stage actual
+            Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+            // Cargar el FXML especificando el paquete base
+            FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("co/edu/proyectobases/grupoMuscular-view.fxml"));
+            // loader.setController(PrincipalController.class);
+            Parent root = loader.load();
+
+            GrupoMuscularController controller = loader.getController();
+            controller.setStage(stage);
+            // Crear la scene
+            Scene scene = new Scene(root);
+
+            // Setear la scene en el stage actual
+            currentStage.setScene(scene);
+
+            currentStage.show();
+
+            // Manejar el cierre
+            currentStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+                @Override
+                public void handle(WindowEvent event) {
+                    Platform.exit();
+                }
+            });
+
+        } catch (IOException ex) {
+            Logger logger = Logger.getLogger(LoginController.class.getName());
+            logger.log(Level.SEVERE, null, ex);
+        }
 
     }
 
     @FXML
     void evenActionSencilla1(ActionEvent event) {
+        try {
+
+            // Obtener el stage actual
+            Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+            // Cargar el FXML especificando el paquete base
+            FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("co/edu/proyectobases/agenda-view.fxml"));
+            // loader.setController(PrincipalController.class);
+            Parent root = loader.load();
+
+            AgendaController controller = loader.getController();
+            controller.setStage(stage);
+            // Crear la scene
+            Scene scene = new Scene(root);
+
+            // Setear la scene en el stage actual
+            currentStage.setScene(scene);
+
+            currentStage.show();
+
+            // Manejar el cierre
+            currentStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+                @Override
+                public void handle(WindowEvent event) {
+                    Platform.exit();
+                }
+            });
+
+        } catch (IOException ex) {
+            Logger logger = Logger.getLogger(LoginController.class.getName());
+            logger.log(Level.SEVERE, null, ex);
+        }
+
 
     }
 
@@ -294,6 +330,7 @@ public class PrincipalController {
         }
     }
 
+
     @FXML
     void initialize() {
 
@@ -308,8 +345,9 @@ public class PrincipalController {
         assert btnSencilla1 != null : "fx:id=\"btnSencilla1\" was not injected: check your FXML file 'principal-view.fxml'.";
         assert btnSencilla2 != null : "fx:id=\"btnSencilla2\" was not injected: check your FXML file 'principal-view.fxml'.";
         assert btnSencilla3 != null : "fx:id=\"btnSencilla3\" was not injected: check your FXML file 'principal-view.fxml'.";
-
     }
+
+
 
     public void loadStage(Event event) throws IOException {
 

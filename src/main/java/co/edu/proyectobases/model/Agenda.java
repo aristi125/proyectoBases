@@ -17,7 +17,7 @@ import java.util.List;
 
 public class Agenda implements Serializable {
 
-    private int codAgenda;
+    private Integer codAgenda;
     private LocalDateTime horaInicio;
     private LocalDateTime horaFinal;
 

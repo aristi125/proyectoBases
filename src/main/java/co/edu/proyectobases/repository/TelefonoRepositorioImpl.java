@@ -1,5 +1,5 @@
 package co.edu.proyectobases.repository;
-
+/**
 import co.edu.proyectobases.model.Persona;
 import co.edu.proyectobases.model.Telefono;
 import co.edu.proyectobases.utils.ConexionBaseDatos;
@@ -88,7 +88,3 @@ public class TelefonoRepositorioImpl implements Repositorio<Telefono> {
         p.setCarrera(reslut.getString("carrera"));
         return p;
         */
-        return null;
-    }
-    //=====================================
-}

@@ -13,12 +13,6 @@ import java.util.List;
 
 public class Maquina implements Serializable {
 
-    private int codMaquina;
+    private Integer codMaquina;
     private String nombre;
-
-    private List<MaquinaAgendaC> detalleMaquinaCliente;
-
-    private List<GrupoMuscular> listGrupoMuscular;
-
-    private List<MaquinaAgendaGym> listDetalleMaquinaGym;
 }

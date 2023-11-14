@@ -5,12 +5,10 @@ import java.util.List;
 
 public class AgendaGym extends Agenda implements Serializable {
 
-    private List<MaquinaAgendaGym> listDetalleMaquinaGym;
+    private Integer fk_cod_agenda;
 
-    private List<Clase> listClase;
+    private Integer fk_cod_cliente;
 
-    private List<Cliente> listCliente;
 
-    private List<Entrenador> listEntrenador;
 
 }

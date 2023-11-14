@@ -11,7 +11,7 @@ import java.io.Serializable;
 @ToString
 public class MaquinaAgendaC implements Serializable {
 
-    private AgendaC agendaCliente;
+    private Integer fk_cod_agendaCliente;
 
-    private Maquina maquina;
+    private Integer fk_cod_maquina;
 }
