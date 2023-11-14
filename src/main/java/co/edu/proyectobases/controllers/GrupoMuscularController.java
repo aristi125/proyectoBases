@@ -2,11 +2,23 @@ package co.edu.proyectobases.controllers;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import co.edu.proyectobases.model.GrupoMuscular;
+import co.edu.proyectobases.model.Persona;
+import co.edu.proyectobases.utils.ConexionBaseDatos;
 import javafx.application.Platform;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -64,6 +76,12 @@ public class GrupoMuscularController {
     private TextField txtNombreMaquina;
 
     private Stage stage;
+
+    private final String coCodigo = "cmCodigo";
+    private final String coMaquina = "cmMaquina";
+    private final String coNombre = "cmNombre";
+    private final String coRutina = "cmRutina";
+
     @FXML
     void evenActionAgregar(ActionEvent event) {
 
@@ -132,5 +150,78 @@ public class GrupoMuscularController {
     }
     public void setStage(Stage primaryStage) {
         this.stage = primaryStage;
+    }
+
+
+    public ObservableList<Map> todosGruposMusculares(){
+        var sql = "SELECT * FROM grupomuscular";
+
+        ObservableList<Map> gruposmuscularesList = FXCollections.observableArrayList();
+        try{
+            Connection conexion = ConexionBaseDatos.getInstance().getConnection();
+            PreparedStatement consulta = conexion.prepareStatement(sql);
+            ResultSet resultSet = consulta.executeQuery();
+            while (resultSet.next()){
+
+                GrupoMuscular grupoMuscular = new GrupoMuscular();
+                Map<String, Object> coleccion = new HashMap<>();
+
+                grupoMuscular.setCodGrupoMuscular(Integer.parseInt(resultSet.getString("codgrupomuscular")));
+                grupoMuscular.setNombre(resultSet.getString("nombre"));
+                grupoMuscular.setFk_cod_maquina(Integer.valueOf(resultSet.getString("maquina_codmaquina")));
+                grupoMuscular.setFk_cod_rutina(Integer.valueOf(resultSet.getString("rutina_codrutina")));
+
+                //// Agregar al ObservableList
+
+
+
+                coleccion.put(coCodigo,String.valueOf(grupoMuscular.getCodGrupoMuscular()));
+                coleccion.put(coNombre,grupoMuscular.getNombre());
+                coleccion.put(coMaquina,grupoMuscular.getFk_cod_maquina());
+                coleccion.put(coRutina,grupoMuscular.getFk_cod_rutina());
+
+                gruposmuscularesList.add(coleccion);
+
+            }
+
+            consulta.close();
+
+        }catch (Exception e){
+            throw new RuntimeException(e);
+        }
+
+        return gruposmuscularesList;
+    }
+
+    public ObservableList<Map> buscarGruposMuscularesPorCodigo(Integer codgrupomuscular){
+
+        ObservableList<Map> gruposmusculares = FXCollections.observableArrayList();
+
+        try {
+            Connection conexion = ConexionBaseDatos.getInstance().getConnection();
+
+            String sql = "SELECT * FROM grupomuscular WHERE codgrupomuscular = ?";
+            PreparedStatement consulta = conexion.prepareStatement(sql);
+            consulta.setString(1, codgrupomuscular.toString());
+
+            ResultSet resultSet = consulta.executeQuery();
+
+            while(resultSet.next()){
+
+                Map<String, Object> row = new HashMap<>();
+
+                row.put("cod", resultSet.getInt("codgrupomuscular"));
+                row.put("nombre", resultSet.getString("nombre"));
+                row.put("maquina_codmaquina", resultSet.getInt("maquina_codmaquina"));
+                row.put("rutina_codrutina", resultSet.getInt("rutina_codrutina"));
+
+                gruposmusculares.add(row);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return gruposmusculares;
+
     }
 }

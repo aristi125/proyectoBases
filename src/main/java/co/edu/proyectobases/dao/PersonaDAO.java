@@ -11,12 +11,17 @@ import java.util.ArrayList;
 public class PersonaDAO {
 
 
+    private Connection connection;
 
+    public PersonaDAO() {
+        connection = ConexionBaseDatos.getInstance().getConnection();
+    }
 
 
     public void agregar(Integer cod, String primernombre, String segundonombre, String primerapellido, String segundoapellido, String fecha, String Carrera, String calle, String barrio, String casa) throws SQLException {
-        try (Connection connection = ConexionBaseDatos.getInstance().getConnection();
-             PreparedStatement pst = connection.prepareStatement("INSERT INTO persona (cod, primernombre, segundonombre, primerapellido, segundoapellido, fechanacimiento, carrera, calle, barrio, casa) VALUES (?, ?, ?, ?, ?, TO_DATE(?, 'YYYY-MM-DD'), ?, ?, ?, ?)")) {
+
+             PreparedStatement pst = connection.prepareStatement("INSERT INTO persona (cod, primernombre, segundonombre, primerapellido, segundoapellido, fechanacimiento, carrera, calle, barrio, casa) VALUES (?, ?, ?, ?, ?, TO_DATE(?, 'YYYY-MM-DD'), ?, ?, ?, ?)");
+
 
             pst.setInt(1, cod);
             pst.setString(2, primernombre);
@@ -30,13 +35,13 @@ public class PersonaDAO {
             pst.setString(10, casa);
 
             pst.executeUpdate();
-connection.commit();
-        } catch (SQLException e) {
+            //connection.commit();
+        //} catch (SQLException e) {
             // Lanzar la excepción para que pueda ser manejada en el nivel superior
-            throw new SQLException("Error al agregar persona", e);
+          //  throw new SQLException("Error al agregar persona", e);
         }
         // connection.close(); // No es necesario cerrar la conexión explícitamente aquí
-    }
+
 
 
 

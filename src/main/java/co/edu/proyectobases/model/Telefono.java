@@ -12,8 +12,8 @@ import java.io.Serializable;
 
 public class Telefono implements Serializable {
 
-    private String codTelefono;
-    private String telefono;
+    private Integer codTelefono;
+    private Integer numeroTelefono;
     private Integer fk_cod_persona;
 
 }
