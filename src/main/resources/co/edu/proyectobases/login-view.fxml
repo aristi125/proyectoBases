@@ -5,6 +5,10 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.effect.Light.Distant?>
+<?import javafx.scene.effect.Lighting?>
+<?import javafx.scene.effect.Shadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
@@ -30,10 +34,20 @@
                         <Insets top="10.0" />
                      </VBox.margin>
                   </Label>
-                  <TextField fx:id="txtUsuario" onKeyTyped="#evenKey">
+                  <TextField fx:id="txtUsuario" onKeyTyped="#evenKey" style="-fx-background-radius: 10;">
                      <font>
                         <Font size="18.0" />
                      </font>
+                     <effect>
+                        <Lighting>
+                           <bumpInput>
+                              <Shadow />
+                           </bumpInput>
+                           <light>
+                              <Light.Distant />
+                           </light>
+                        </Lighting>
+                     </effect>
                   </TextField>
                   <Label text="Contraseña:">
                      <font>
@@ -43,18 +57,31 @@
                         <Insets top="10.0" />
                      </VBox.margin>
                   </Label>
-                  <PasswordField fx:id="txtContrasena" onKeyTyped="#evenKey">
+                  <PasswordField fx:id="txtContrasena" onKeyTyped="#evenKey" style="-fx-background-radius: 10;">
                      <font>
                         <Font size="18.0" />
                      </font>
+                     <effect>
+                        <Lighting>
+                           <bumpInput>
+                              <Shadow />
+                           </bumpInput>
+                           <light>
+                              <Light.Distant />
+                           </light>
+                        </Lighting>
+                     </effect>
                   </PasswordField>
-                  <Button fx:id="btnIngresar" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#evenaction" text="Ingresar">
+                  <Button fx:id="btnIngresar" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#evenaction" style="-fx-background-radius: 15;" text="Ingresar">
                      <font>
                         <Font size="18.0" />
                      </font>
                      <VBox.margin>
                         <Insets top="20.0" />
                      </VBox.margin>
+                     <effect>
+                        <InnerShadow />
+                     </effect>
                   </Button>
                </children>
                <VBox.margin>

@@ -7,6 +7,10 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.effect.Light.Distant?>
+<?import javafx.scene.effect.Lighting?>
+<?import javafx.scene.effect.Shadow?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
@@ -32,16 +36,116 @@
       <Label layoutX="397.0" layoutY="186.0" text="Calle:" />
       <Label layoutX="397.0" layoutY="214.0" text="Barrio:" />
       <Label layoutX="397.0" layoutY="241.0" text="Casa:" />
-      <TextField fx:id="txtCodigoPersona" layoutX="176.0" layoutY="114.0" onKeyTyped="#evenKey" promptText="Codigo" style="-fx-background-radius: 10;" />
-      <TextField fx:id="txtPrimerNom" layoutX="176.0" layoutY="146.0" onKeyTyped="#evenKey" promptText="Primer normbre" style="-fx-background-radius: 10;" />
-      <TextField fx:id="txtSegundoNom" layoutX="177.0" layoutY="177.0" onKeyTyped="#evenKey" promptText="Segundo nombre" style="-fx-background-radius: 10;" />
-      <TextField fx:id="txtPrimerApe" layoutX="178.0" layoutY="207.0" onKeyTyped="#evenKey" promptText="Primer apellido" style="-fx-background-radius: 10;" />
-      <TextField fx:id="txtSegundoApe" layoutX="178.0" layoutY="235.0" onKeyTyped="#evenKey" promptText="Segundo apellido" style="-fx-background-radius: 10;" />
-      <DatePicker fx:id="DateFechaNaci" layoutX="178.0" layoutY="265.0" prefHeight="26.0" prefWidth="150.0" style="-fx-background-radius: 10;" />
-      <TextField fx:id="txtCarrera" layoutX="457.0" layoutY="155.0" onKeyTyped="#evenKey" promptText="Carrera" style="-fx-background-radius: 10;" />
-      <TextField fx:id="txtCalle" layoutX="457.0" layoutY="182.0" onKeyTyped="#evenKey" promptText="Calle" style="-fx-background-radius: 10;" />
-      <TextField fx:id="txtBarrio" layoutX="458.0" layoutY="210.0" onKeyTyped="#evenKey" promptText="Barrio" style="-fx-background-radius: 10;" />
-      <TextField fx:id="txtCasa" layoutX="459.0" layoutY="237.0" onKeyTyped="#evenKey" promptText="Casa" style="-fx-background-radius: 10;" />
+      <TextField fx:id="txtCodigoPersona" layoutX="176.0" layoutY="114.0" onKeyTyped="#evenKey" promptText="Codigo" style="-fx-background-radius: 10;">
+         <effect>
+            <Lighting>
+               <bumpInput>
+                  <Shadow />
+               </bumpInput>
+               <light>
+                  <Light.Distant />
+               </light>
+            </Lighting>
+         </effect></TextField>
+      <TextField fx:id="txtPrimerNom" layoutX="176.0" layoutY="146.0" onKeyTyped="#evenKey" promptText="Primer normbre" style="-fx-background-radius: 10;">
+         <effect>
+            <Lighting>
+               <bumpInput>
+                  <Shadow />
+               </bumpInput>
+               <light>
+                  <Light.Distant />
+               </light>
+            </Lighting>
+         </effect></TextField>
+      <TextField fx:id="txtSegundoNom" layoutX="177.0" layoutY="177.0" onKeyTyped="#evenKey" promptText="Segundo nombre" style="-fx-background-radius: 10;">
+         <effect>
+            <Lighting>
+               <bumpInput>
+                  <Shadow />
+               </bumpInput>
+               <light>
+                  <Light.Distant />
+               </light>
+            </Lighting>
+         </effect></TextField>
+      <TextField fx:id="txtPrimerApe" layoutX="178.0" layoutY="207.0" onKeyTyped="#evenKey" promptText="Primer apellido" style="-fx-background-radius: 10;">
+         <effect>
+            <Lighting>
+               <bumpInput>
+                  <Shadow />
+               </bumpInput>
+               <light>
+                  <Light.Distant />
+               </light>
+            </Lighting>
+         </effect></TextField>
+      <TextField fx:id="txtSegundoApe" layoutX="178.0" layoutY="235.0" onKeyTyped="#evenKey" promptText="Segundo apellido" style="-fx-background-radius: 10;">
+         <effect>
+            <Lighting>
+               <bumpInput>
+                  <Shadow />
+               </bumpInput>
+               <light>
+                  <Light.Distant />
+               </light>
+            </Lighting>
+         </effect></TextField>
+      <DatePicker fx:id="DateFechaNaci" layoutX="178.0" layoutY="265.0" prefHeight="26.0" prefWidth="150.0" style="-fx-background-radius: 10;">
+         <effect>
+            <Lighting>
+               <bumpInput>
+                  <Shadow />
+               </bumpInput>
+               <light>
+                  <Light.Distant />
+               </light>
+            </Lighting>
+         </effect></DatePicker>
+      <TextField fx:id="txtCarrera" layoutX="457.0" layoutY="155.0" onKeyTyped="#evenKey" promptText="Carrera" style="-fx-background-radius: 10;">
+         <effect>
+            <Lighting>
+               <bumpInput>
+                  <Shadow />
+               </bumpInput>
+               <light>
+                  <Light.Distant />
+               </light>
+            </Lighting>
+         </effect></TextField>
+      <TextField fx:id="txtCalle" layoutX="457.0" layoutY="182.0" onKeyTyped="#evenKey" promptText="Calle" style="-fx-background-radius: 10;">
+         <effect>
+            <Lighting>
+               <bumpInput>
+                  <Shadow />
+               </bumpInput>
+               <light>
+                  <Light.Distant />
+               </light>
+            </Lighting>
+         </effect></TextField>
+      <TextField fx:id="txtBarrio" layoutX="458.0" layoutY="210.0" onKeyTyped="#evenKey" promptText="Barrio" style="-fx-background-radius: 10;">
+         <effect>
+            <Lighting>
+               <bumpInput>
+                  <Shadow />
+               </bumpInput>
+               <light>
+                  <Light.Distant />
+               </light>
+            </Lighting>
+         </effect></TextField>
+      <TextField fx:id="txtCasa" layoutX="459.0" layoutY="237.0" onKeyTyped="#evenKey" promptText="Casa" style="-fx-background-radius: 10;">
+         <effect>
+            <Lighting>
+               <bumpInput>
+                  <Shadow />
+               </bumpInput>
+               <light>
+                  <Light.Distant />
+               </light>
+            </Lighting>
+         </effect></TextField>
       <HBox alignment="CENTER" layoutX="411.0" layoutY="103.0" prefHeight="26.0" prefWidth="200.0" style="-fx-background-radius: 30; -fx-background-color: #457b9d;">
          <children>
             <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="18.0" prefWidth="210.0" text="Donde Vive">
@@ -67,10 +171,44 @@
             <TableColumn fx:id="cmCasa" prefWidth="75.0" text="casa" />
         </columns>
       </TableView>
-      <Button fx:id="btnAgregar" layoutX="324.0" layoutY="308.0" mnemonicParsing="false" onAction="#evenActionAgregar" prefHeight="26.0" prefWidth="140.0" style="-fx-background-radius: 15;" text="agregar" />
-      <Button fx:id="btnAtras" layoutX="21.0" layoutY="586.0" mnemonicParsing="false" onAction="#evenActionAtras" prefHeight="26.0" prefWidth="62.0" style="-fx-background-radius: 15;" text="atras" />
-      <Button fx:id="btnBuscar" layoutX="674.0" layoutY="365.0" mnemonicParsing="false" onAction="#evenActionBuscar" prefHeight="26.0" prefWidth="73.0" text="Buscar" />
-      <Button fx:id="btn" layoutX="621.0" layoutY="586.0" mnemonicParsing="false" onAction="#evenActioEliminar" text="Eliminar" />
-      <TextField fx:id="txtFiltrar" layoutX="501.0" layoutY="365.0" onKeyTyped="#evenKey" promptText="filtrar" />
+      <Button fx:id="btnAgregar" layoutX="324.0" layoutY="308.0" mnemonicParsing="false" onAction="#evenActionAgregar" prefHeight="26.0" prefWidth="140.0" style="-fx-background-radius: 15;" text="agregar">
+         <font>
+            <Font size="14.0" />
+         </font>
+         <effect>
+            <InnerShadow />
+         </effect></Button>
+      <Button fx:id="btnAtras" layoutX="21.0" layoutY="586.0" mnemonicParsing="false" onAction="#evenActionAtras" prefHeight="26.0" prefWidth="62.0" style="-fx-background-radius: 15;" text="atras">
+         <font>
+            <Font size="14.0" />
+         </font>
+         <effect>
+            <InnerShadow />
+         </effect></Button>
+      <Button fx:id="btnBuscar" layoutX="674.0" layoutY="365.0" mnemonicParsing="false" onAction="#evenActionBuscar" prefHeight="26.0" prefWidth="73.0" style="-fx-background-radius: 15;" text="Buscar">
+         <font>
+            <Font size="14.0" />
+         </font>
+         <effect>
+            <InnerShadow />
+         </effect></Button>
+      <Button fx:id="btn" layoutX="621.0" layoutY="586.0" mnemonicParsing="false" onAction="#evenActioEliminar" style="-fx-background-radius: 15;" text="Eliminar">
+         <font>
+            <Font size="14.0" />
+         </font>
+         <effect>
+            <InnerShadow />
+         </effect></Button>
+      <TextField fx:id="txtFiltrar" layoutX="501.0" layoutY="365.0" onKeyTyped="#evenKey" promptText="filtrar" style="-fx-background-radius: 10;">
+         <effect>
+            <Lighting>
+               <bumpInput>
+                  <Shadow />
+               </bumpInput>
+               <light>
+                  <Light.Distant />
+               </light>
+            </Lighting>
+         </effect></TextField>
    </children>
 </AnchorPane>

@@ -7,6 +7,10 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.effect.Light.Distant?>
+<?import javafx.scene.effect.Lighting?>
+<?import javafx.scene.effect.Shadow?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
@@ -22,21 +26,57 @@
             </Label>
          </children>
       </HBox>
-      <DatePicker fx:id="dateHoraInicio" layoutX="128.0" layoutY="186.0" />
-      <DatePicker fx:id="dateHoraFinal" layoutX="128.0" layoutY="232.0" />
+      <DatePicker fx:id="dateHoraInicio" layoutX="128.0" layoutY="186.0">
+         <effect>
+            <Lighting>
+               <bumpInput>
+                  <Shadow />
+               </bumpInput>
+               <light>
+                  <Light.Distant />
+               </light>
+            </Lighting>
+         </effect></DatePicker>
+      <DatePicker fx:id="dateHoraFinal" layoutX="128.0" layoutY="232.0">
+         <effect>
+            <Lighting>
+               <bumpInput>
+                  <Shadow />
+               </bumpInput>
+               <light>
+                  <Light.Distant />
+               </light>
+            </Lighting>
+         </effect></DatePicker>
       <Label layoutX="28.0" layoutY="190.0" text="Hora de Inicio:" />
       <Label layoutX="27.0" layoutY="236.0" prefHeight="18.0" prefWidth="77.0" text="Hora de fin:" />
       <Label layoutX="25.0" layoutY="152.0" text="Codigo id:" />
-      <TextField fx:id="txtId" layoutX="129.0" layoutY="143.0" onKeyTyped="#evenKey" prefHeight="26.0" prefWidth="175.0" promptText="codigo: 01" style="-fx-background-radius: 10;" />
-      <Button fx:id="btnAgregar" layoutX="40.0" layoutY="290.0" mnemonicParsing="false" onAction="#evenActionAgendar" prefHeight="26.0" prefWidth="97.0" text="Agendar">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Button>
-      <Button fx:id="bntAtras" layoutX="32.0" layoutY="420.0" mnemonicParsing="false" onAction="#evenActionAtras" prefHeight="30.0" prefWidth="65.0" text="atras">
+      <TextField fx:id="txtId" layoutX="129.0" layoutY="143.0" onKeyTyped="#evenKey" prefHeight="26.0" prefWidth="175.0" promptText="codigo: 01" style="-fx-background-radius: 10;">
+         <effect>
+            <Lighting>
+               <bumpInput>
+                  <Shadow />
+               </bumpInput>
+               <light>
+                  <Light.Distant />
+               </light>
+            </Lighting>
+         </effect></TextField>
+      <Button fx:id="btnAgregar" layoutX="40.0" layoutY="290.0" mnemonicParsing="false" onAction="#evenActionAgendar" prefHeight="26.0" prefWidth="97.0" style="-fx-background-radius: 15;" text="Agendar">
          <font>
             <Font size="14.0" />
          </font>
+         <effect>
+            <InnerShadow />
+         </effect>
+      </Button>
+      <Button fx:id="bntAtras" layoutX="32.0" layoutY="420.0" mnemonicParsing="false" onAction="#evenActionAtras" prefHeight="30.0" prefWidth="65.0" style="-fx-background-radius: 15;" text="atras">
+         <font>
+            <Font size="14.0" />
+         </font>
+         <effect>
+            <InnerShadow />
+         </effect>
       </Button>
       <Separator layoutX="321.0" layoutY="120.0" orientation="VERTICAL" prefHeight="306.0" prefWidth="3.0" style="-fx-background-color: #000000;" />
       <TableView fx:id="tblAgenda" layoutX="374.0" layoutY="208.0" prefHeight="200.0" prefWidth="225.0">
@@ -47,12 +87,31 @@
         </columns>
       </TableView>
       <Label layoutX="344.0" layoutY="148.0" text="Buscar:" />
-      <TextField fx:id="txtFiltrar" layoutX="398.0" layoutY="144.0" onKeyTyped="#evenKey" prefHeight="26.0" prefWidth="113.0" promptText="filtrar" style="-fx-background-radius: 10;" />
-      <Button fx:id="btnbuscar" layoutX="533.0" layoutY="143.0" mnemonicParsing="false" onAction="#evenActionBuscar" prefHeight="26.0" prefWidth="51.0" text="buscar" />
-      <Button fx:id="btnEliminar" layoutX="190.0" layoutY="291.0" mnemonicParsing="false" onAction="#evenActionEliminar" prefHeight="38.0" prefWidth="77.0" text="Eliminar">
+      <TextField fx:id="txtFiltrar" layoutX="398.0" layoutY="144.0" onKeyTyped="#evenKey" prefHeight="26.0" prefWidth="113.0" promptText="filtrar" style="-fx-background-radius: 10;">
+         <effect>
+            <Lighting>
+               <bumpInput>
+                  <Shadow />
+               </bumpInput>
+               <light>
+                  <Light.Distant />
+               </light>
+            </Lighting>
+         </effect></TextField>
+      <Button fx:id="btnbuscar" layoutX="533.0" layoutY="143.0" mnemonicParsing="false" onAction="#evenActionBuscar" prefHeight="30.0" prefWidth="66.0" style="-fx-background-radius: 15;" text="buscar">
          <font>
-            <Font size="16.0" />
+            <Font size="14.0" />
          </font>
+         <effect>
+            <InnerShadow />
+         </effect></Button>
+      <Button fx:id="btnEliminar" layoutX="190.0" layoutY="291.0" mnemonicParsing="false" onAction="#evenActionEliminar" prefHeight="30.0" prefWidth="78.0" style="-fx-background-radius: 15;" text="Eliminar">
+         <font>
+            <Font size="14.0" />
+         </font>
+         <effect>
+            <InnerShadow />
+         </effect>
       </Button>
    </children>
 </AnchorPane>
